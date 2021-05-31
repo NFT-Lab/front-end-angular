@@ -1,0 +1,20 @@
+<mat-card class="form-inner">
+  <h2>Effettua il login</h2>
+  <p>Non hai ancora un account? <a>Registrati</a></p>
+  <form fxLayout="column" [formGroup]="formGroup" (ngSubmit)="login()">
+
+    <p id="error">{{errorMessage}}</p>
+
+    <mat-form-field>
+      <input matInput placeholder="E-mail" formControlName="email">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Password" formControlName="password">
+    </mat-form-field>
+
+    <a id="forgot">Password dimenticata?</a>
+
+    <button mat-raised-button color="warn" type="submit">Login</button>
+  </form>
+</mat-card>
