@@ -1,0 +1,304 @@
+openapi: 3.1.0
+info:
+  title: NFT Api
+  version: '1.0'
+  contact:
+    name: SyncLab
+  description: 'NFT API '
+servers:
+  - url: 'http://localhost:3000'
+paths:
+  /login:
+    post:
+      summary: ''
+      operationId: post-login
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+      description: endpoint per accedere all'applicazione
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      tags:
+        - User
+  /signup:
+    post:
+      summary: ''
+      operationId: post-signup
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          description: Bad Request
+        '409':
+          description: Conflict
+        '500':
+          description: Internal Server Error
+      description: Registrazione di un utente
+      tags:
+        - User
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+  /nft:
+    get:
+      summary: Your GET endpoint
+      tags:
+        - NFT
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Nft'
+              examples: {}
+      operationId: get-nft
+      description: Homepage
+      parameters:
+        - schema:
+            type: array
+          in: query
+          name: categorie
+        - schema:
+            type: string
+          in: query
+          name: nomeNft
+        - schema:
+            type: array
+          in: query
+          name: tipologie
+        - schema:
+            type: number
+          in: query
+          name: prezzoMin
+        - schema:
+            type: number
+          in: query
+          name: prezzoMax
+  /categories:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Categories'
+      operationId: get-categories
+      description: Categorie di un opera
+  '/user/{id}':
+    put:
+      summary: ''
+      operationId: put-user
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+      description: Modificare dati dell'utente
+      tags:
+        - User
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+  /user/password:
+    put:
+      summary: ''
+      operationId: put-user-password
+      responses:
+        '200':
+          description: OK
+      description: Modifica passowrd
+      tags:
+        - User
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewPassword'
+  /nft/user:
+    get:
+      summary: Your GET endpoint
+      tags:
+        - User
+        - NFT
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Nft'
+      operationId: get-nft-user
+      description: Opere dell'utente
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: userId
+    post:
+      summary: ''
+      operationId: post-nft-user
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Nft'
+        '500':
+          description: Internal Server Error
+      description: Inserimento opera
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: userId
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Nft'
+      tags:
+        - NFT
+        - User
+    put:
+      summary: ''
+      operationId: put-nft-user
+      responses:
+        '200':
+          description: OK
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: nftId
+      description: Modifica di un opera dell'utente
+      tags:
+        - NFT
+        - User
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Nft'
+components:
+  schemas:
+    User:
+      title: User
+      type: object
+      properties:
+        id:
+          type: integer
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+        name:
+          type: string
+        surname:
+          type: string
+        dob:
+          type: string
+          format: date
+        wallet:
+          type: string
+          pattern: '^[A-Fa-f0-9]'
+          minLength: 34
+          maxLength: 34
+      required:
+        - email
+        - password
+    Nft:
+      title: Nft
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        author:
+          type: string
+        owner:
+          type: string
+        price:
+          type: number
+          minimum: 0
+        categories:
+          type: array
+          items:
+            type: string
+        type:
+          type: string
+          enum:
+            - video
+            - audio
+            - doc
+            - img
+        currency:
+          type: string
+        path:
+          type: string
+    Categories:
+      title: Categories
+      type: object
+      description: Categorie
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    NewPassword:
+      title: NewPassword
+      type: object
+      description: Password
+      properties:
+        id:
+          type: string
+        oldPassword:
+          type: string
+        newPassword:
+          type: string
+tags:
+  - name: Log
+  - name: NFT
+  - name: User
