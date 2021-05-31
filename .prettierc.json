@@ -3,14 +3,6 @@
   "bracketSpacing": false,
   "endOfLine": "lf",
   "htmlWhitespaceSensitivity": "css",
-  "overrides": [
-    {
-      "files": ["*.ts"],
-      "options": {
-        "printWidth": 190
-      }
-    }
-  ],
   "printWidth": 120,
   "proseWrap": "preserve",
   "quoteProps": "as-needed",
