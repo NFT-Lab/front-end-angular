@@ -98,9 +98,21 @@
             ],
             "scripts": []
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
-  "defaultProject": "NFTLab-front-end-Angular"
+  "defaultProject": "NFTLab-front-end-Angular",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
 }
