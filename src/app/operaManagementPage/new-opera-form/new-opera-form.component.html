@@ -1,0 +1,31 @@
+<button mat-raised-button color="warn" (click)="setTrue()">
+  Inserisci nuova opera
+</button>
+
+<mat-card id="new-opera-form" *ngIf="button">
+  <form fxLayout="column" [formGroup]="formGroup" (ngSubmit)="addOpera()">
+    <p id="error">{{ errorMessage }}</p>
+
+    <mat-form-field>
+      <input matInput placeholder="Nome" formControlName="name" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Descrizione" formControlName="description" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Tipo" formControlName="type" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Categoria" formControlName="categories" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Prezzo" formControlName="price" />
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">Inserisci</button>
+  </form>
+</mat-card>

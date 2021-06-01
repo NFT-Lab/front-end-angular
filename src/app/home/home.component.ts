@@ -11,7 +11,6 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {}
 
   logout(): void {
-    console.log('logout');
     localStorage.clear();
   }
 }

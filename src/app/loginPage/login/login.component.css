@@ -25,10 +25,6 @@ body {
   margin-left: 3em;
 }
 
-#myVideo {
-  object-fit: fill;
-}
-
 #video-content {
   position: absolute;
   bottom: 40%;

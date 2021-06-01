@@ -17,13 +17,16 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { OperaManagementComponent } from './operaManagementPage/opera-management/opera-management.component';
+import { NewOperaFormComponent } from './operaManagementPage/new-opera-form/new-opera-form.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
     LoginFormComponent,
+    OperaManagementComponent,
+    NewOperaFormComponent,
   ],
   imports: [
     BrowserModule,
