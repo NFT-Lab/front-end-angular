@@ -1,6 +1,7 @@
-import { AuthenticationService } from './../authentication.service';
+import { AuthenticationService } from '@service/authentication.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-form',
@@ -11,7 +12,10 @@ export class LoginFormComponent implements OnInit {
   formGroup: FormGroup;
   errorMessage: string;
 
-  constructor(private authenticationService: AuthenticationService) {}
+  constructor(
+    private authenticationService: AuthenticationService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.initForm();
@@ -23,7 +27,7 @@ export class LoginFormComponent implements OnInit {
       password: new FormControl('', [
         Validators.required,
         Validators.pattern(
-          /^(?=.\d)(?=.[a-z])(?=.[A-Z])(?=.[^a-zA-Z0-9])(?!.*\s).{8,}$/
+          /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/
         ),
       ]),
     });
@@ -35,6 +39,7 @@ export class LoginFormComponent implements OnInit {
         (res) => {
           this.errorMessage = '';
           localStorage.setItem('User', JSON.stringify(res));
+          this.router.navigateByUrl('');
         },
         (error) => {
           if (error.status === 204)
@@ -44,6 +49,12 @@ export class LoginFormComponent implements OnInit {
           }
         }
       );
+    } else if (this.formGroup.controls.email.invalid) {
+      this.errorMessage = `Formato e-mail non valido. Assicurati di
+          averla inserita correttamente.`;
+    } else {
+      this.errorMessage = `La password deve contere almeno 8 caratteri,
+        una lettera minuscola e maiuscola ed un carattere speciale.`;
     }
   }
 }
