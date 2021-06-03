@@ -7,7 +7,7 @@
       "@env": ["environments/environment"],
       "@service/*": ["src/app/_services/*"],
       "@model/*": ["src/app/_models/*"],
-      "@assets/*": ["src/assets/*"]
+      "@mocks/*": ["src/app/_mocks/*"]
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,

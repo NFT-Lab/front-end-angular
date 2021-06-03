@@ -8,9 +8,8 @@ describe('LoginComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LoginComponent ]
-    })
-    .compileComponents();
+      declarations: [LoginComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -21,5 +20,12 @@ describe('LoginComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should has logo and login form', () => {
+    let logo = fixture.nativeElement.querySelector('#login-logo');
+    let form = fixture.nativeElement.querySelector('#form-login');
+    expect(logo).toBeTruthy();
+    expect(form).toBeTruthy();
   });
 });
