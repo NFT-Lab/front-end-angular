@@ -1,5 +1,5 @@
 import { OperaManagementService } from './../../_services/opera-management.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Nft } from '@model/Nft';
 
@@ -9,6 +9,8 @@ import { Nft } from '@model/Nft';
   styleUrls: ['./new-opera-form.component.css'],
 })
 export class NewOperaFormComponent implements OnInit {
+  @Output() nftToAdd: EventEmitter<Nft> = new EventEmitter();
+
   formGroup: FormGroup;
   button: boolean;
   private operas: Nft[];
@@ -37,9 +39,20 @@ export class NewOperaFormComponent implements OnInit {
 
   addOpera(): void {
     //aggiungere controlli
-    this.operaManService.addOpera(this.formGroup.value).subscribe(
+
+    let newNft = this.formGroup.value,
+      user = JSON.parse(localStorage.getItem('User') || '{}');
+
+    newNft.id = '2';
+    newNft.currency = 'euro';
+    newNft.owner = user.name;
+    newNft.author = user.name;
+    newNft.categories = [];
+    newNft.price = 10;
+
+    this.operaManService.addOpera(newNft).subscribe(
       (res) => {
-        this.operas.push(res);
+        this.nftToAdd.emit(res);
       },
       (error) => {
         if (error.status === 500)

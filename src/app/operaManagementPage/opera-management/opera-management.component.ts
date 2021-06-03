@@ -22,4 +22,8 @@ export class OperaManagementComponent implements OnInit {
       .getOperas()
       .subscribe((nft) => (this.operas = nft));
   }
+
+  nftToAddHandler(nft: Nft) {
+    this.operas.push(nft);
+  }
 }
