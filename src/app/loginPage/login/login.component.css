@@ -2,20 +2,17 @@ body {
   background-color: whitesmoke;
 }
 
-.form {
+#form-login {
   width: 50%;
-  height: 100%;
-  display: block;
 }
 
-.form h2 {
+#form-login h2 {
   color: rgba(47, 0, 255, 0.842);
   font-family: "Brush Script MT";
   font-size: 3em;
 }
 
 #bg-login {
-  height: 100%;
   width: 60%;
   overflow: hidden;
 }
@@ -27,7 +24,8 @@ body {
 
 #video-content {
   position: absolute;
-  bottom: 40%;
+  top: 50%;
+  transform: translateY(-50%);
   right: 3%;
   background: rgba(255, 255, 255, 0.5);
   width: 45%;
@@ -42,4 +40,27 @@ body {
 
 #video-content p {
   font-size: 1.2em;
+}
+
+@media screen and (max-width: 800px) {
+  #bg-login {
+    display: none;
+  }
+
+  #video-content {
+    visibility: hidden;
+  }
+
+  #form-login {
+    width: auto;
+  }
+
+  body {
+    background-image: url("./../../../assets/bg-login-mobile.gif");
+  }
+
+  #login-logo {
+    width: 45%;
+    margin-left: 25%;
+  }
 }
