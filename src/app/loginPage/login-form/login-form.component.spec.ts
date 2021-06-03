@@ -1,3 +1,4 @@
+import { AppModule } from './../../app.module';
 import { MockAuthenticationService } from '@mocks/mockAuthentication.service';
 import { AuthenticationService } from '@service/authentication.service';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
@@ -5,12 +6,10 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { LoginFormComponent } from './login-form.component';
-import { Router } from '@angular/router';
 
 describe('LoginFormComponent', () => {
   let component: LoginFormComponent;
   let fixture: ComponentFixture<LoginFormComponent>;
-  let location: Location;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -20,7 +19,7 @@ describe('LoginFormComponent', () => {
           useClass: MockAuthenticationService,
         },
       ],
-      imports: [HttpClientTestingModule, RouterTestingModule],
+      imports: [HttpClientTestingModule, RouterTestingModule, AppModule],
       declarations: [LoginFormComponent],
     }).compileComponents();
   });
@@ -60,6 +59,6 @@ describe('LoginFormComponent', () => {
     email.value = 'test';
     password.value = 'test';
     loginButton.click();
-    expect(component.errorMessage).toBeFalsy();
+    expect(component.errorMessage).toBeTruthy();
   });
 });
