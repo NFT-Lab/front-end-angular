@@ -2,7 +2,7 @@ name: Continuos integration
 
 on:
   push:
-    branches: [main, develop]
+    branches: [main, develop, gestioneOpere]
   pull_request:
     branches: [main]
 

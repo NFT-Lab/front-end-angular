@@ -8,10 +8,12 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./new-opera-form.component.css'],
 })
 export class NewOperaFormComponent implements OnInit {
-  //@Output() nftToAdd: EventEmitter<Nft> = new EventEmitter();
-
   formGroup: FormGroup;
   errorMessage: string;
+  path: string;
+  uploadLabel: string = 'Carica la tua opera';
+  fileName: string;
+  private file: File;
 
   constructor(
     private operaManService: OperaManagementService,
@@ -32,18 +34,36 @@ export class NewOperaFormComponent implements OnInit {
     });
   }
 
+  selectFile(e: Event) {
+    let target = e.target as HTMLInputElement;
+    if (target.files) {
+      this.fileName = target.files[0].name;
+      this.file = target.files[0];
+      if (target.files[0].type.includes('image')) {
+        let reader = new FileReader();
+        reader.readAsDataURL(target.files[0]);
+        reader.onload = (event: any) => {
+          this.path = event.target.result;
+        };
+      } else {
+        this.path = './../../../assets/document.png';
+      }
+    }
+
+    this.uploadLabel = 'Modifica';
+  }
+
   addOpera(): void {
-    //aggiungere controlli
     if (this.formGroup.valid) {
       let newNft = this.formGroup.value,
         user = JSON.parse(localStorage.getItem('User') || '{}');
 
-      newNft.currency = 'euro';
+      newNft.currency = 'ETH';
       newNft.owner = newNft.author = user.name;
       newNft.categories = [];
       newNft.price = Number(newNft.price);
 
-      this.operaManService.addOpera(newNft).subscribe(
+      this.operaManService.addOpera(newNft, this.file).subscribe(
         (res) => {
           this.modalRef.close(res);
         },
@@ -56,5 +76,9 @@ export class NewOperaFormComponent implements OnInit {
     } else {
       this.errorMessage = `Compila tutti i campi per inserire la tua opera.`;
     }
+  }
+
+  closeModal(): void {
+    this.modalRef.close();
   }
 }
