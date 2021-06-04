@@ -1,22 +1,22 @@
 import { OperaManagementService } from './../../_services/opera-management.service';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Nft } from '@model/Nft';
-
+import { MatDialogRef } from '@angular/material/dialog';
 @Component({
   selector: 'app-new-opera-form',
   templateUrl: './new-opera-form.component.html',
   styleUrls: ['./new-opera-form.component.css'],
 })
 export class NewOperaFormComponent implements OnInit {
-  @Output() nftToAdd: EventEmitter<Nft> = new EventEmitter();
+  //@Output() nftToAdd: EventEmitter<Nft> = new EventEmitter();
 
   formGroup: FormGroup;
-  button: boolean;
-  private operas: Nft[];
   errorMessage: string;
 
-  constructor(private operaManService: OperaManagementService) {}
+  constructor(
+    private operaManService: OperaManagementService,
+    private modalRef: MatDialogRef<NewOperaFormComponent>
+  ) {}
 
   ngOnInit(): void {
     this.initForm();
@@ -32,33 +32,29 @@ export class NewOperaFormComponent implements OnInit {
     });
   }
 
-  setTrue(): void {
-    if (!this.button) this.button = true;
-    else this.button = false;
-  }
-
   addOpera(): void {
     //aggiungere controlli
+    if (this.formGroup.valid) {
+      let newNft = this.formGroup.value,
+        user = JSON.parse(localStorage.getItem('User') || '{}');
 
-    let newNft = this.formGroup.value,
-      user = JSON.parse(localStorage.getItem('User') || '{}');
+      newNft.currency = 'euro';
+      newNft.owner = newNft.author = user.name;
+      newNft.categories = [];
+      newNft.price = Number(newNft.price);
 
-    newNft.id = '2';
-    newNft.currency = 'euro';
-    newNft.owner = user.name;
-    newNft.author = user.name;
-    newNft.categories = [];
-    newNft.price = 10;
-
-    this.operaManService.addOpera(newNft).subscribe(
-      (res) => {
-        this.nftToAdd.emit(res);
-      },
-      (error) => {
-        if (error.status === 500)
-          this.errorMessage = `Si è verificato un problema nell'inserimento della
-                tua opera. Riprova più tardi`;
-      }
-    );
+      this.operaManService.addOpera(newNft).subscribe(
+        (res) => {
+          this.modalRef.close(res);
+        },
+        (error) => {
+          if (error.status === 500)
+            this.errorMessage = `Si è verificato un problema nell'inserimento della
+                tua opera. Riprova più tardi.`;
+        }
+      );
+    } else {
+      this.errorMessage = `Compila tutti i campi per inserire la tua opera.`;
+    }
   }
 }

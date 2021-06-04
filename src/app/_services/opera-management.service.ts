@@ -28,4 +28,8 @@ export class OperaManagementService {
       this.httpOptions
     );
   }
+
+  updateOpera(opera: Object): Observable<any> {
+    return this.http.put(this.operaManagementUrl, opera, this.httpOptions);
+  }
 }

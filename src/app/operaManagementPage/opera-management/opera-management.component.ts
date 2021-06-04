@@ -1,4 +1,5 @@
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { NewOperaFormComponent } from './../new-opera-form/new-opera-form.component';
+import { MatDialog } from '@angular/material/dialog';
 import { OperaManagementService } from './../../_services/opera-management.service';
 import { Component, OnInit } from '@angular/core';
 import { Nft } from '@model/Nft';
@@ -11,7 +12,10 @@ import { Nft } from '@model/Nft';
 export class OperaManagementComponent implements OnInit {
   operas: Nft[];
 
-  constructor(private operaManService: OperaManagementService) {}
+  constructor(
+    private operaManService: OperaManagementService,
+    private addOperaModal: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.getOperas();
@@ -23,7 +27,12 @@ export class OperaManagementComponent implements OnInit {
       .subscribe((nft) => (this.operas = nft));
   }
 
-  nftToAddHandler(nft: Nft) {
-    this.operas.push(nft);
+  openAddOperaModal(): void {
+    let modalRef = this.addOperaModal.open(NewOperaFormComponent, {
+      width: '30%',
+    });
+    modalRef.afterClosed().subscribe((opera) => {
+      if (opera) this.operas.push(opera);
+    });
   }
 }
