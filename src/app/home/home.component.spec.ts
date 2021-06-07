@@ -1,3 +1,5 @@
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { HeaderComponent } from './../_shared/header/header.component';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
@@ -10,7 +12,7 @@ describe('HomeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MatMenuModule],
+      imports: [MatMenuModule, MatToolbarModule, MatIconModule],
       declarations: [HomeComponent, HeaderComponent],
     }).compileComponents();
   });
