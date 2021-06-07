@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { OperaDetailsComponent } from './opera-details.component';
 
@@ -8,9 +9,12 @@ describe('OperaDetailsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ OperaDetailsComponent ]
-    })
-    .compileComponents();
+      providers: [
+        { provide: MAT_DIALOG_DATA, useValue: {} },
+        { provide: MatDialogRef, useValue: {} },
+      ],
+      declarations: [OperaDetailsComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

@@ -1,3 +1,4 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { User } from '@model/User';
 import { TestBed } from '@angular/core/testing';
 import { AppModule } from '../app.module';
