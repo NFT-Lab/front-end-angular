@@ -1,8 +1,10 @@
+import { ModifyOperaFormComponent } from './../modify-opera-form/modify-opera-form.component';
 import { NewOperaFormComponent } from './../new-opera-form/new-opera-form.component';
 import { MatDialog } from '@angular/material/dialog';
 import { OperaManagementService } from './../../_services/opera-management.service';
 import { Component, OnInit } from '@angular/core';
 import { Nft } from '@model/Nft';
+import { OperaDetailsComponent } from '../opera-details/opera-details.component';
 
 @Component({
   selector: 'app-opera-management',
@@ -14,7 +16,7 @@ export class OperaManagementComponent implements OnInit {
 
   constructor(
     private operaManService: OperaManagementService,
-    private addOperaModal: MatDialog
+    private addOperaModal: MatDialog //private operaDetailsModal: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -33,6 +35,29 @@ export class OperaManagementComponent implements OnInit {
     });
     modalRef.afterClosed().subscribe((opera) => {
       if (opera) this.operas.push(opera);
+    });
+  }
+
+  openDetailsperaModal(opera: Nft) {
+    this.addOperaModal.open(OperaDetailsComponent, {
+      width: '30%',
+      data: opera,
+    });
+  }
+
+  openModifyOperaModal(opera: Nft) {
+    let modalRef = this.addOperaModal.open(ModifyOperaFormComponent, {
+      width: '30%',
+      data: opera,
+    });
+    modalRef.afterClosed().subscribe((opera) => {
+      if (opera) {
+        let index = -1;
+        this.operas.forEach((nft, i) => {
+          if (nft.id === opera.id) index = i;
+        });
+        this.operas[index] = opera;
+      }
     });
   }
 }

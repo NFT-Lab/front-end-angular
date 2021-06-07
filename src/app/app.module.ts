@@ -11,6 +11,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSelectModule } from '@angular/material/select';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +25,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OperaManagementComponent } from './operaManagementPage/opera-management/opera-management.component';
 import { NewOperaFormComponent } from './operaManagementPage/new-opera-form/new-opera-form.component';
 import { HeaderComponent } from './_shared/header/header.component';
+import { OperaDetailsComponent } from './operaManagementPage/opera-details/opera-details.component';
+import { ModifyOperaFormComponent } from './operaManagementPage/modify-opera-form/modify-opera-form.component';
 
 const materialModules = [
   MatToolbarModule,
@@ -30,6 +36,10 @@ const materialModules = [
   MatInputModule,
   MatDialogModule,
   MatIconModule,
+  MatDividerModule,
+  MatListModule,
+  MatMenuModule,
+  MatSelectModule,
 ];
 @NgModule({
   declarations: [
@@ -40,6 +50,8 @@ const materialModules = [
     OperaManagementComponent,
     NewOperaFormComponent,
     HeaderComponent,
+    OperaDetailsComponent,
+    ModifyOperaFormComponent,
   ],
   imports: [
     BrowserModule,

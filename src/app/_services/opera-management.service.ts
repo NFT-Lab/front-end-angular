@@ -7,7 +7,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class OperaManagementService {
-  private operaManagementUrl = 'http://127.0.0.1:3100/nft/user'; // URL to web api
+  private operaManagementUrl = 'http://127.0.0.1:3103/nft/user'; // URL to web api
+  //private operaManagementUrl = 'http://127.0.0.1:3103/nft/user?__example=test';
   private user = JSON.parse(localStorage.getItem('User') || '{}');
 
   private httpOptionsGet = {

@@ -1,10 +1,26 @@
 <mat-toolbar color="primary">
   <span>NFT Lab</span>
+
   <span class="spacer"></span>
-  <button mat-icon-button>
+
+  <div *ngIf="checkAuth()">
+    <span class="spaces">Effettua il</span>
+    <a routerLink="/login" mat-raised-button color="warn">Login</a>
+    <span class="spaces">oppure</span>
+    <a routerLink="/login" mat-raised-button color="warn">Iscriviti</a>
+  </div>
+
+  <button mat-icon-button [matMenuTriggerFor]="userMenu" *ngIf="!checkAuth()">
     <mat-icon>account_circle</mat-icon>
   </button>
-  <button mat-icon-button>
-    <mat-icon>logout</mat-icon>
-  </button>
+  <mat-menu #userMenu="matMenu">
+    <button routerLink="/nft/user" mat-menu-item>
+      <mat-icon>format_list_bulleted</mat-icon>
+      <span>Le mie opere</span>
+    </button>
+    <button routerLink="/" mat-menu-item (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      <span>Logout</span>
+    </button>
+  </mat-menu>
 </mat-toolbar>

@@ -2,9 +2,9 @@
   id="add-opera-form"
   fxLayout="column"
   [formGroup]="formGroup"
-  (ngSubmit)="addOpera()"
+  (ngSubmit)="updateOpera()"
 >
-  <h2>Inserisci una nuova opera</h2>
+  <h2>Modifica la tua opera</h2>
   <p id="error">{{ errorMessage }}</p>
 
   <mat-form-field>
@@ -13,10 +13,6 @@
 
   <div id="input-container" fxLayout="row" fxLayoutAlign="space-around center">
     <img id="preview" [src]="path" [alt]="" />
-    <button mat-raised-button disabled>
-      <label for="input-file">{{ uploadLabel }}</label>
-    </button>
-    <input id="input-file" type="file" (change)="selectFile($event)" />
   </div>
 
   <p id="file-name" *ngIf="fileName">Nome del file: {{ fileName }}</p>

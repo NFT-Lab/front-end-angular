@@ -10,9 +10,11 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class NewOperaFormComponent implements OnInit {
   formGroup: FormGroup;
   errorMessage: string;
-  path: string;
+  path: string = '';
   uploadLabel: string = 'Carica la tua opera';
   fileName: string;
+  types = ['Immagine', 'Video', 'Documento', 'Audio'];
+  categories = ['Calcio', 'Sport', 'Cucina', 'Musica'];
   private file: File;
 
   constructor(
@@ -54,7 +56,7 @@ export class NewOperaFormComponent implements OnInit {
   }
 
   addOpera(): void {
-    if (this.formGroup.valid) {
+    if (this.formGroup.valid && this.path !== '') {
       let newNft = this.formGroup.value,
         user = JSON.parse(localStorage.getItem('User') || '{}');
 
@@ -74,7 +76,7 @@ export class NewOperaFormComponent implements OnInit {
         }
       );
     } else {
-      this.errorMessage = `Compila tutti i campi per inserire la tua opera.`;
+      this.errorMessage = `Insirisci un'opera e compila tutti i campi per continuare.`;
     }
   }
 

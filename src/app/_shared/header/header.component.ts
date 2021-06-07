@@ -7,4 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent {
   constructor() {}
+
+  checkAuth(): boolean {
+    return localStorage.getItem('User') === null;
+  }
+
+  logout(): void {
+    localStorage.clear();
+  }
 }

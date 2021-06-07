@@ -1,0 +1,15 @@
+#operas-list {
+  width: 40%;
+}
+
+.margin-top-1 {
+  margin-top: 1em;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+#list-items a {
+  cursor: pointer;
+}

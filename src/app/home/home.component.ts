@@ -7,12 +7,4 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
   constructor() {}
-
-  checkAuth(): boolean {
-    return typeof localStorage.getItem('User') === typeof 'string';
-  }
-
-  logout(): void {
-    localStorage.clear();
-  }
 }

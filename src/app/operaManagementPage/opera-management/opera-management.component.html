@@ -1,11 +1,25 @@
-<h1>Le mie opere</h1>
+<app-header></app-header>
 
-<ul>
-  <li *ngFor="let opera of operas">
-    <p>{{ opera.name }}</p>
-  </li>
-</ul>
+<mat-card id="operas-list" class="margin-top-1">
+  <h1>Le mie opere</h1>
 
-<button mat-raised-button color="warn" (click)="openAddOperaModal()">
+  <mat-list id="list-items">
+    <mat-list-item *ngFor="let opera of operas">
+      <a (click)="openDetailsperaModal(opera)">{{ opera.name }}</a>
+      <span class="spacer"></span>
+      <button mat-icon-button (click)="openModifyOperaModal(opera)">
+        <mat-icon>list_alt</mat-icon>
+      </button>
+      <mat-divider></mat-divider>
+    </mat-list-item>
+  </mat-list>
+</mat-card>
+
+<button
+  class="margin-top-1"
+  mat-raised-button
+  color="warn"
+  (click)="openAddOperaModal()"
+>
   Inserisci nuova opera
 </button>
