@@ -54,7 +54,7 @@ export class ModifyOperaFormComponent implements OnInit {
       modOpera.categories = newNft.categories;
       modOpera.price = Number(newNft.price);
 
-      this.operaManService.updateOpera(modOpera).subscribe(
+      this.operaManService.updateOpera(modOpera as Nft).subscribe(
         (res) => {
           this.modalRef.close(res);
         },

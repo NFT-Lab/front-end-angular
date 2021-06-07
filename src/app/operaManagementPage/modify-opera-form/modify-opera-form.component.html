@@ -12,13 +12,17 @@
   </mat-form-field>
 
   <div id="input-container" fxLayout="row" fxLayoutAlign="space-around center">
-    <img id="preview" [src]="path" [alt]="" />
+    <img id="preview" src="./../../../assets/document.png" [alt]="" />
   </div>
 
   <p id="file-name" *ngIf="fileName">Nome del file: {{ fileName }}</p>
 
   <mat-form-field>
-    <input matInput placeholder="Descrizione" formControlName="description" />
+    <textarea
+      matInput
+      placeholder="Descrizione"
+      formControlName="description"
+    ></textarea>
   </mat-form-field>
 
   <mat-form-field>
@@ -40,10 +44,18 @@
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput placeholder="Prezzo" formControlName="price" />
+    <input
+      matInput
+      type="number"
+      placeholder="Prezzo"
+      formControlName="price"
+    />
+    <span matPrefix>€&nbsp;</span>
   </mat-form-field>
   <div fxLayout="row" fxLayoutAlign="space-between">
-    <button mat-raised-button color="primary" type="submit">Inserisci</button>
+    <button mat-raised-button color="primary" type="submit">
+      Salva modifiche
+    </button>
     <button mat-raised-button color="warn" (click)="closeModal()">
       Annulla
     </button>

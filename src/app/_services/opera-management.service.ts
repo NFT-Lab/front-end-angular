@@ -17,7 +17,6 @@ export class OperaManagementService {
   };
 
   private httpOptionsPost = {
-    //headers: new HttpHeaders({ 'Content-Type': 'multipart/form-data;' }),
     params: { id: this.user.id },
   };
 
@@ -39,7 +38,10 @@ export class OperaManagementService {
     );
   }
 
-  updateOpera(opera: Object): Observable<any> {
-    return this.http.put(this.operaManagementUrl, opera, this.httpOptionsGet);
+  updateOpera(opera: Nft): Observable<any> {
+    return this.http.put(this.operaManagementUrl, opera, {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params: { id: opera.id },
+    });
   }
 }
