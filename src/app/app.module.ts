@@ -10,6 +10,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +20,7 @@ import { LoginComponent } from './loginPage/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OperaManagementComponent } from './operaManagementPage/opera-management/opera-management.component';
 import { NewOperaFormComponent } from './operaManagementPage/new-opera-form/new-opera-form.component';
+import { HeaderComponent } from './_shared/header/header.component';
 
 const materialModules = [
   MatToolbarModule,
@@ -27,6 +29,7 @@ const materialModules = [
   MatFormFieldModule,
   MatInputModule,
   MatDialogModule,
+  MatIconModule,
 ];
 @NgModule({
   declarations: [
@@ -36,6 +39,7 @@ const materialModules = [
     LoginFormComponent,
     OperaManagementComponent,
     NewOperaFormComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
