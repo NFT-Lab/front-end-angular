@@ -1,6 +1,6 @@
 <mat-card class="form-inner">
   <h2>Effettua il login</h2>
-  <p>Non hai ancora un account? <a>Registrati</a></p>
+  <p>Non hai ancora un account? <a routerLink="/signup">Registrati</a></p>
   <form fxLayout="column" [formGroup]="formGroup" (ngSubmit)="login()">
     <p id="error">{{ errorMessage }}</p>
 

@@ -28,6 +28,9 @@ import { NewOperaFormComponent } from './operaManagementPage/new-opera-form/new-
 import { HeaderComponent } from './_shared/header/header.component';
 import { OperaDetailsComponent } from './operaManagementPage/opera-details/opera-details.component';
 import { ModifyOperaFormComponent } from './operaManagementPage/modify-opera-form/modify-opera-form.component';
+import { FooterComponent } from './_shared/footer/footer.component';
+import { SignUpComponent } from './signupPage/sign-up/sign-up.component';
+import { SignupFormComponent } from './signupPage/signup-form/signup-form.component';
 
 const materialModules = [
   MatToolbarModule,
@@ -53,6 +56,9 @@ const materialModules = [
     HeaderComponent,
     OperaDetailsComponent,
     ModifyOperaFormComponent,
+    FooterComponent,
+    SignUpComponent,
+    SignupFormComponent,
   ],
   imports: [
     BrowserModule,

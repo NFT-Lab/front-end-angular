@@ -7,7 +7,7 @@
     <span class="spaces">Effettua il</span>
     <a routerLink="/login" id="login-btn" mat-raised-button>Login</a>
     <span class="spaces">oppure</span>
-    <a routerLink="/login" id="signup-btn" mat-raised-button>Iscriviti</a>
+    <a routerLink="/signup" id="signup-btn" mat-raised-button>Iscriviti</a>
   </div>
 
   <p id="welcome" *ngIf="!checkAuth()">Ciao, {{ userName }}</p>
@@ -16,7 +16,7 @@
     <mat-icon id="icon">account_circle</mat-icon>
   </button>
   <mat-menu #userMenu="matMenu">
-    <button routerLink="/nft/user" mat-menu-item>
+    <button routerLink="/user" mat-menu-item>
       <mat-icon>format_list_bulleted</mat-icon>
       <span>Le mie opere</span>
     </button>

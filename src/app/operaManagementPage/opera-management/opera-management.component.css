@@ -79,3 +79,11 @@ img {
   padding-right: 1em;
   padding-bottom: 2em;
 }
+
+#footer {
+  width: 100%;
+}
+
+#content {
+  padding-bottom: 1em;
+}

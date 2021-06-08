@@ -1,8 +1,8 @@
-#form-login {
+#form-signup {
   width: 50%;
 }
 
-#form-login h2 {
+#form-signup h2 {
   color: rgba(47, 0, 255, 0.842);
   font-family: "Brush Script MT";
   font-size: 3em;
@@ -18,36 +18,12 @@
   margin-left: 3em;
 }
 
-#video-content {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 3%;
-  background: rgba(255, 255, 255, 0.5);
-  width: 45%;
-  padding: 1em;
-  border-radius: 1em;
-}
-
-#video-content h1 {
-  color: azure;
-  font-size: 2em;
-}
-
-#video-content p {
-  font-size: 1.2em;
-}
-
 @media screen and (max-width: 800px) {
   #bg-login {
     display: none;
   }
 
-  #video-content {
-    visibility: hidden;
-  }
-
-  #form-login {
+  #form-signup {
     width: auto;
   }
 
