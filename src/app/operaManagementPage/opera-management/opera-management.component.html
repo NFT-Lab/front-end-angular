@@ -1,25 +1,75 @@
 <app-header></app-header>
 
-<mat-card id="operas-list" class="margin-top-1">
-  <h1>Le mie opere</h1>
+<div fxLayout="row wrap">
+  <mat-card id="info" class="margins flex-grow">
+    <h2>
+      Le mie informazioni <mat-icon class="purple">contact_mail</mat-icon>
+    </h2>
+    <mat-list>
+      <mat-list-item>
+        <p class="title">Nome:</p>
+        <p>{{ userData.name }}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <p class="title">Cognome:</p>
+        <p>{{ userData.surname }}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <p class="title">Email:</p>
+        <p>{{ userData.email }}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <p class="title">Wallet:</p>
+        <p>{{ userData.wallet }}</p>
+      </mat-list-item>
+    </mat-list>
 
-  <mat-list id="list-items">
-    <mat-list-item *ngFor="let opera of operas">
-      <a (click)="openDetailsperaModal(opera)">{{ opera.name }}</a>
-      <span class="spacer"></span>
-      <button mat-icon-button (click)="openModifyOperaModal(opera)">
-        <mat-icon>list_alt</mat-icon>
-      </button>
-      <mat-divider></mat-divider>
-    </mat-list-item>
-  </mat-list>
-</mat-card>
+    <button mat-raised-button color="primary">
+      Modifica
+      <mat-icon>create</mat-icon>
+    </button>
 
-<button
-  class="margin-top-1"
-  mat-raised-button
-  color="warn"
-  (click)="openAddOperaModal()"
->
-  Inserisci nuova opera
-</button>
+    <h2 class="margin-top-2">
+      Statistiche <mat-icon class="red">query_stats</mat-icon>
+    </h2>
+
+    <mat-list fxLayoutAlign="center" class="inline">
+      <mat-list-item>
+        <p class="title">Opere caricate:</p>
+        <p>{{ operas.length }}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <p class="title">Opere acquistate:</p>
+        <p>2</p>
+      </mat-list-item>
+      <mat-list-item>
+        <p class="title">Opere vendute:</p>
+        <p>0</p>
+      </mat-list-item>
+    </mat-list>
+  </mat-card>
+
+  <mat-card id="operas-list" class="margins flex-grow">
+    <h2>Le mie opere</h2>
+
+    <mat-list class="list-items">
+      <mat-list-item *ngFor="let opera of operas">
+        <a (click)="openDetailsperaModal(opera)">{{ opera.name }}</a>
+        <span class="spacer"></span>
+        <button mat-icon-button (click)="openModifyOperaModal(opera)">
+          <mat-icon>list_alt</mat-icon>
+        </button>
+        <mat-divider></mat-divider>
+      </mat-list-item>
+    </mat-list>
+    <button
+      class="margin-top-1"
+      mat-raised-button
+      color="warn"
+      (click)="openAddOperaModal()"
+    >
+      <mat-icon>add</mat-icon>
+      Inserisci nuova opera
+    </button>
+  </mat-card>
+</div>

@@ -2,13 +2,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Nft } from '@model/Nft';
 import { Observable } from 'rxjs';
+import { environment } from './../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class OperaManagementService {
-  private operaManagementUrl = 'http://127.0.0.1:3103/nft/user'; // URL to web api
-  //private operaManagementUrl = 'http://127.0.0.1:3103/nft/user?__example=test';
+  private operaManagementUrl = environment.apiUrl + '/nft/user'; // URL to web api
+  //private operaManagementUrl = environment.apiUrl + '/nft/user?__example=test';
   private user = JSON.parse(localStorage.getItem('User') || '{}');
 
   private httpOptionsGet = {

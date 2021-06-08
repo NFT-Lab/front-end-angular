@@ -6,3 +6,25 @@
   margin-left: 0.5em;
   margin-right: 0.5em;
 }
+
+#header img {
+  width: 7em;
+  margin-top: 0.5em;
+}
+
+#header span {
+  font-size: 0.8em;
+}
+
+#header {
+  overflow: hidden;
+  background-color: #0070ac;
+}
+
+#login-btn {
+  background-color: #84b3ff;
+}
+
+#signup-btn {
+  background-color: #f2ba83;
+}

@@ -5,6 +5,7 @@ import { OperaManagementService } from './../../_services/opera-management.servi
 import { Component, OnInit } from '@angular/core';
 import { Nft } from '@model/Nft';
 import { OperaDetailsComponent } from '../opera-details/opera-details.component';
+import { User } from '@model/User';
 
 @Component({
   selector: 'app-opera-management',
@@ -12,7 +13,8 @@ import { OperaDetailsComponent } from '../opera-details/opera-details.component'
   styleUrls: ['./opera-management.component.css'],
 })
 export class OperaManagementComponent implements OnInit {
-  operas: Nft[];
+  operas: Nft[] = [];
+  userData = JSON.parse(localStorage.getItem('User') || '{}');
 
   constructor(
     private operaManService: OperaManagementService,

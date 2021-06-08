@@ -19,6 +19,10 @@
   color: brown;
 }
 
+#hide-icon {
+  cursor: pointer;
+}
+
 #go-to-home {
   display: none;
 }

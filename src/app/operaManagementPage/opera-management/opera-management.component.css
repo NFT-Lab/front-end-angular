@@ -1,15 +1,50 @@
 #operas-list {
-  width: 40%;
+  background-color: #84b3ff33;
+  height: fit-content;
+}
+
+#info {
+  background-color: #1f75fe33;
+}
+
+.margins {
+  margin: 1em 1em 1em;
+}
+
+.margin-top-2 {
+  margin-top: 2em;
 }
 
 .margin-top-1 {
-  margin-top: 1em;
+  margin-top: 2em;
 }
 
 .spacer {
   flex: 1 1 auto;
 }
 
-#list-items a {
+.list-items a {
   cursor: pointer;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
+
+.title {
+  color: #053074d4;
+  padding-right: 0.5em;
+  font-weight: bold;
+}
+
+.purple {
+  color: rgba(31, 16, 133, 0.673);
+}
+
+.red {
+  color: rgba(154, 7, 22, 0.673);
+}
+
+.inline {
+  display: inline-flex;
 }
