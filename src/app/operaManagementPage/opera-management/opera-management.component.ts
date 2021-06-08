@@ -15,6 +15,7 @@ import { User } from '@model/User';
 export class OperaManagementComponent implements OnInit {
   operas: Nft[] = [];
   userData = JSON.parse(localStorage.getItem('User') || '{}');
+  page: number = 1;
 
   constructor(
     private operaManService: OperaManagementService,

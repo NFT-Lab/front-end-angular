@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -61,6 +62,7 @@ const materialModules = [
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
+    NgxPaginationModule,
     [...materialModules],
   ],
   entryComponents: [NewOperaFormComponent],

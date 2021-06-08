@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
+  userName: string = JSON.parse(localStorage.getItem('User') || '{}').name;
+
   constructor() {}
 
   checkAuth(): boolean {

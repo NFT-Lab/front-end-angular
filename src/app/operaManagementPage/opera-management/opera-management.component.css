@@ -3,8 +3,24 @@
   height: fit-content;
 }
 
+#operas-list h2 {
+  margin: 0;
+}
+
+#operas-list a {
+  margin-bottom: 1.5em;
+}
+
 #info {
   background-color: #1f75fe33;
+}
+
+#info button {
+  margin-left: 1em;
+}
+
+#paginator {
+  padding-bottom: 0;
 }
 
 .margins {
@@ -23,12 +39,18 @@
   flex: 1 1 auto;
 }
 
-.list-items a {
+.list-items a,
+img {
   cursor: pointer;
+}
+
+.list-items:first-child {
+  margin-top: 0;
 }
 
 .flex-grow {
   flex-grow: 1;
+  height: fit-content;
 }
 
 .title {
@@ -47,4 +69,13 @@
 
 .inline {
   display: inline-flex;
+}
+
+.li {
+  margin-top: 2em;
+}
+
+.preview {
+  padding-right: 1em;
+  padding-bottom: 2em;
 }
