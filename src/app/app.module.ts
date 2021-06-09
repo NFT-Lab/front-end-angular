@@ -32,6 +32,7 @@ import { FooterComponent } from './_shared/footer/footer.component';
 import { SignUpComponent } from './signupPage/sign-up/sign-up.component';
 import { SignupFormComponent } from './signupPage/signup-form/signup-form.component';
 import { ModifyUserFormComponent } from './operaManagementPage/modify-user-form/modify-user-form.component';
+import { ModifyPswFormComponent } from './operaManagementPage/modify-psw-form/modify-psw-form.component';
 
 const materialModules = [
   MatToolbarModule,
@@ -61,6 +62,7 @@ const materialModules = [
     SignUpComponent,
     SignupFormComponent,
     ModifyUserFormComponent,
+    ModifyPswFormComponent,
   ],
   imports: [
     BrowserModule,

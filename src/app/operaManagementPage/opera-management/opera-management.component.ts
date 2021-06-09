@@ -1,3 +1,4 @@
+import { ModifyPswFormComponent } from './../modify-psw-form/modify-psw-form.component';
 import { ModifyUserFormComponent } from './../modify-user-form/modify-user-form.component';
 import { ModifyOperaFormComponent } from './../modify-opera-form/modify-opera-form.component';
 import { NewOperaFormComponent } from './../new-opera-form/new-opera-form.component';
@@ -37,6 +38,16 @@ export class OperaManagementComponent implements OnInit {
     let modalRef = this.addOperaModal.open(ModifyUserFormComponent, {
       width: '30%',
       data: this.userData,
+    });
+    /*
+    modalRef.afterClosed().subscribe((opera) => {
+      if (opera) this.operas.push(opera);
+    });*/
+  }
+
+  openModifyUserPsw() {
+    let modalRef = this.addOperaModal.open(ModifyPswFormComponent, {
+      width: '30%',
     });
     /*
     modalRef.afterClosed().subscribe((opera) => {

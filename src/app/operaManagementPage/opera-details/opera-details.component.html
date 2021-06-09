@@ -1,7 +1,26 @@
 <h2>Dettagli opera</h2>
-<p>{{ nft.name }}</p>
+
+<div class="field">
+  <p class="title">Nome:</p>
+  <p class="desc">{{ nft.name }}</p>
+</div>
+
 <img id="preview" src="https://picsum.photos/120/70" [alt]="" />
-<p>{{ nft.description }}</p>
-<p>{{ nft.type }}</p>
+
+<div class="field">
+  <p class="title">Descrizione:</p>
+  <p class="desc">{{ nft.description }}</p>
+</div>
+
+<div class="field">
+  <p class="title">Tipo:</p>
+  <p class="desc">{{ nft.type }}</p>
+</div>
+
+<p class="title">Categorie:</p>
 <p>{{ nft.categories }}</p>
-<p>{{ nft.price }}</p>
+
+<div class="field">
+  <p class="title">Prezzo:</p>
+  <p class="desc">{{ nft.price + " €" }}</p>
+</div>

@@ -15,6 +15,10 @@
         <p>{{ userData.surname }}</p>
       </mat-list-item>
       <mat-list-item>
+        <p class="title">Data di nascita:</p>
+        <p>{{ userData.dob }}</p>
+      </mat-list-item>
+      <mat-list-item>
         <p class="title">Email:</p>
         <p>{{ userData.email }}</p>
       </mat-list-item>
@@ -28,7 +32,7 @@
       Modifica dati
       <mat-icon>create</mat-icon>
     </button>
-    <button mat-raised-button>
+    <button mat-raised-button (click)="openModifyUserPsw()">
       Modifica password
       <mat-icon>vpn_key</mat-icon>
     </button>

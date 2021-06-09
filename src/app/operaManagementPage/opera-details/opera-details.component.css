@@ -1,3 +1,20 @@
 #preview {
   width: 40%;
+  margin: auto;
+  padding-bottom: 0.8em;
+}
+
+.title {
+  color: #053074d4;
+  padding-right: 0.5em;
+  font-weight: bold;
+}
+
+.title,
+.desc {
+  display: inline;
+}
+
+.field {
+  padding-bottom: 0.8em;
 }
