@@ -33,7 +33,8 @@ export class SignupFormComponent implements OnInit {
       confirmPassword: new FormControl('', [Validators.required]),
       wallet: new FormControl('', [
         Validators.required,
-        //Validators.pattern(/^0x[a-fA-F0-9]{40}$/),
+        //example: 0xEd1bB395f00B22454c22B6c76b645657c739D3cc
+        Validators.pattern(/^0x[a-fA-F0-9]{40}$/),
       ]),
     });
   }
@@ -77,7 +78,7 @@ export class SignupFormComponent implements OnInit {
         una lettera minuscola e maiuscola ed un carattere speciale.`;
     } else {
       this.errorMessage = `Indirizzo del wallet non corretto: deve contenere 40 caratteri
-                alfanumerici ed iniziare per "0x".`;
+                alfanumerici, tra 0 e 9 e tra A ed F, ed iniziare per "0x".`;
     }
   }
 }

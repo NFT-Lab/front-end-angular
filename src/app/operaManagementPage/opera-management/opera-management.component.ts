@@ -1,3 +1,4 @@
+import { ModifyUserFormComponent } from './../modify-user-form/modify-user-form.component';
 import { ModifyOperaFormComponent } from './../modify-opera-form/modify-opera-form.component';
 import { NewOperaFormComponent } from './../new-opera-form/new-opera-form.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -32,6 +33,17 @@ export class OperaManagementComponent implements OnInit {
       .subscribe((nft) => (this.operas = nft));
   }
 
+  openModifyUserData() {
+    let modalRef = this.addOperaModal.open(ModifyUserFormComponent, {
+      width: '30%',
+      data: this.userData,
+    });
+    /*
+    modalRef.afterClosed().subscribe((opera) => {
+      if (opera) this.operas.push(opera);
+    });*/
+  }
+
   openAddOperaModal(): void {
     let modalRef = this.addOperaModal.open(NewOperaFormComponent, {
       width: '30%',
@@ -59,7 +71,6 @@ export class OperaManagementComponent implements OnInit {
         this.operas.forEach((nft, i) => {
           if (nft.id === opera.id) index = i;
         });
-        this.operas[index] = opera;
       }
     });
   }

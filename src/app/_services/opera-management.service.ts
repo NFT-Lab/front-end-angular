@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Nft } from '@model/Nft';
-import { Observable } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { environment } from './../../environments/environment';
 
 @Injectable({
@@ -39,7 +39,7 @@ export class OperaManagementService {
     );
   }
 
-  updateOpera(opera: Nft): Observable<any> {
+  updateOpera(opera: Nft): Observable<Object> {
     return this.http.put(this.operaManagementUrl, opera, {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
       params: { id: opera.id },
