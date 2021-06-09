@@ -3,7 +3,7 @@
   transform: translateY(-50%);
   width: 75%;
   margin: auto;
-  background-color: rgba(255, 255, 255, 0.865);
+  background-color: #154fac15;
 }
 
 #forgot {
@@ -30,6 +30,7 @@
 @media screen and (max-width: 800px) {
   .form-inner {
     top: 10em;
+    background-color: rgba(255, 255, 255, 0.865);
   }
 
   #go-to-home {

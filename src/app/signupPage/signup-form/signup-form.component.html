@@ -29,7 +29,15 @@
 
     <div fxLayout="row wrap" fxLayoutAlign="space-between">
       <mat-form-field fxFlex="45">
-        <input matInput placeholder="Password" formControlName="password" />
+        <input
+          matInput
+          placeholder="Password"
+          formControlName="password"
+          [type]="!hide ? 'password' : 'text'"
+        />
+        <mat-icon id="hide-icon" matSuffix (click)="hide = !hide">{{
+          !hide ? "visibility_off" : "visibility"
+        }}</mat-icon>
       </mat-form-field>
 
       <mat-form-field fxFlex="45">
@@ -37,6 +45,7 @@
           matInput
           placeholder="Conferma password"
           formControlName="confirmPassword"
+          [type]="!hide ? 'password' : 'text'"
         />
       </mat-form-field>
     </div>
@@ -45,7 +54,7 @@
       <input matInput placeholder="Indirizzo wallet" formControlName="wallet" />
     </mat-form-field>
 
-    <a id="forgot">Informazioni sul wallet</a>
+    <a href="https://metamask.io/" id="forgot">Informazioni sul wallet</a>
 
     <div fxLayout="row wrap" fxLayoutAlign="end">
       <button id="signup-btn" mat-raised-button color="primary" type="submit">

@@ -1,9 +1,9 @@
 .form-inner {
+  background-color: #154fac15;
   top: 25%;
   transform: translateY(-50%);
   width: 75%;
   margin: auto;
-  background-color: rgba(255, 255, 255, 0.865);
 }
 
 #forgot {
@@ -31,6 +31,7 @@
 
 @media screen and (max-width: 800px) {
   .form-inner {
+    background-color: rgba(255, 255, 255, 0.865);
     top: 10em;
   }
 }
