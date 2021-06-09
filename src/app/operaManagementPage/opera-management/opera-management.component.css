@@ -75,9 +75,14 @@ img {
   margin-top: 2em;
 }
 
-.preview {
+.preview-container {
   padding-right: 1em;
   padding-bottom: 2em;
+}
+
+.preview {
+  border: 1px solid black;
+  border-radius: 0.5em;
 }
 
 #footer {

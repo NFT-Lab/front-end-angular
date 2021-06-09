@@ -18,9 +18,19 @@
 </div>
 
 <p class="title">Categorie:</p>
-<p>{{ nft.categories }}</p>
+<div id="categories-div">
+  <p
+    *ngFor="let cat of nft.categories"
+    class="category"
+    [ngStyle]="{ 'background-color': getColor() }"
+  >
+    {{ cat }}
+  </p>
+</div>
 
 <div class="field">
   <p class="title">Prezzo:</p>
   <p class="desc">{{ nft.price + " €" }}</p>
 </div>
+
+<button mat-raised-button color="warn" (click)="closeModal()">Chiudi</button>

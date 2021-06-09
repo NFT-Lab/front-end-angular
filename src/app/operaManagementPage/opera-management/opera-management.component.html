@@ -58,7 +58,7 @@
   </mat-card>
 
   <mat-card id="operas-list" class="margins flex-grow">
-    <h2>Le mie opere <mat-icon>playlist_play</mat-icon></h2>
+    <h2>Le mie opere <mat-icon class="purple">playlist_play</mat-icon></h2>
 
     <mat-list class="list-items">
       <mat-list-item
@@ -67,15 +67,21 @@
           let opera of operas | paginate: { itemsPerPage: 5, currentPage: page }
         "
       >
-        <img
-          class="preview"
-          (click)="openDetailsperaModal(opera)"
-          src="https://picsum.photos/120/70"
-        />
+        <div class="preview-container">
+          <img
+            class="preview"
+            (click)="openDetailsperaModal(opera)"
+            src="https://picsum.photos/120/70"
+          />
+        </div>
         <a (click)="openDetailsperaModal(opera)">{{ opera.name }}</a>
         <span class="spacer"></span>
-        <button mat-icon-button (click)="openModifyOperaModal(opera)">
-          <mat-icon>list_alt</mat-icon>
+        <button
+          mat-icon-button
+          title="Modifica"
+          (click)="openModifyOperaModal(opera)"
+        >
+          <mat-icon>create</mat-icon>
         </button>
         <mat-divider></mat-divider>
       </mat-list-item>

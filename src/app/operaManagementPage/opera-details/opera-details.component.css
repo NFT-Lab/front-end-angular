@@ -1,7 +1,8 @@
 #preview {
   width: 40%;
-  margin: auto;
-  padding-bottom: 0.8em;
+  border: 1px solid black;
+  border-radius: 0.5em;
+  margin-left: 30%;
 }
 
 .title {
@@ -17,4 +18,24 @@
 
 .field {
   padding-bottom: 0.8em;
+}
+
+#categories-div {
+  position: relative;
+  width: 100%;
+  overflow-wrap: anywhere;
+  text-align: center;
+}
+
+.mat-raised-button {
+  margin-left: 80%;
+}
+
+.category {
+  padding: 0.3em;
+  width: fit-content;
+  border-radius: 0.5em;
+  display: inline-block;
+  margin-right: 0.5em;
+  white-space: nowrap;
 }

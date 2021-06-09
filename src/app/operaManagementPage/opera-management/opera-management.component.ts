@@ -7,7 +7,6 @@ import { OperaManagementService } from './../../_services/opera-management.servi
 import { Component, OnInit } from '@angular/core';
 import { Nft } from '@model/Nft';
 import { OperaDetailsComponent } from '../opera-details/opera-details.component';
-import { User } from '@model/User';
 
 @Component({
   selector: 'app-opera-management',
@@ -39,20 +38,21 @@ export class OperaManagementComponent implements OnInit {
       width: '30%',
       data: this.userData,
     });
-    /*
-    modalRef.afterClosed().subscribe((opera) => {
-      if (opera) this.operas.push(opera);
-    });*/
+
+    modalRef.afterClosed().subscribe((user) => {
+      if (user) {
+        let fields = Object.keys(user);
+        fields.forEach((field: any) => {
+          this.userData[field] = user[field];
+        });
+      }
+    });
   }
 
   openModifyUserPsw() {
-    let modalRef = this.addOperaModal.open(ModifyPswFormComponent, {
+    this.addOperaModal.open(ModifyPswFormComponent, {
       width: '30%',
     });
-    /*
-    modalRef.afterClosed().subscribe((opera) => {
-      if (opera) this.operas.push(opera);
-    });*/
   }
 
   openAddOperaModal(): void {
