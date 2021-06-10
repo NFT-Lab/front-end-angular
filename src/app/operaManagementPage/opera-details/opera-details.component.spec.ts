@@ -1,3 +1,4 @@
+import { AppModule } from 'src/app/app.module';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
@@ -7,12 +8,17 @@ describe('OperaDetailsComponent', () => {
   let component: OperaDetailsComponent;
   let fixture: ComponentFixture<OperaDetailsComponent>;
 
+  const dialogMock = {
+    close: () => {},
+  };
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       providers: [
         { provide: MAT_DIALOG_DATA, useValue: {} },
-        { provide: MatDialogRef, useValue: {} },
+        { provide: MatDialogRef, useValue: dialogMock },
       ],
+      imports: [AppModule],
       declarations: [OperaDetailsComponent],
     }).compileComponents();
   });
@@ -22,7 +28,11 @@ describe('OperaDetailsComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-  /*
-  it('should create', () => {
-    expect*/
+
+  it('dialog should be closed', () => {
+    let spy = spyOn(component.modalRef, 'close').and.callThrough();
+    component.getColor();
+    component.closeModal();
+    expect(spy).toHaveBeenCalled();
+  });
 });

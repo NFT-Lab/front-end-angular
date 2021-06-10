@@ -19,7 +19,7 @@ export class NewOperaFormComponent implements OnInit {
 
   constructor(
     private operaManService: OperaManagementService,
-    private modalRef: MatDialogRef<NewOperaFormComponent>
+    public modalRef: MatDialogRef<NewOperaFormComponent>
   ) {}
 
   ngOnInit(): void {
@@ -48,7 +48,7 @@ export class NewOperaFormComponent implements OnInit {
           this.path = event.target.result;
         };
       } else {
-        this.path = './../../../assets/document.png';
+        this.path = 'assets/document.png';
       }
     }
 

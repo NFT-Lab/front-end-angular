@@ -20,7 +20,7 @@ export class OperaManagementComponent implements OnInit {
 
   constructor(
     private operaManService: OperaManagementService,
-    private addOperaModal: MatDialog //private operaDetailsModal: MatDialog
+    public addOperaModal: MatDialog //private operaDetailsModal: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -64,7 +64,7 @@ export class OperaManagementComponent implements OnInit {
     });
   }
 
-  openDetailsperaModal(opera: Nft) {
+  openDetailsOperaModal(opera: Nft) {
     this.addOperaModal.open(OperaDetailsComponent, {
       width: '30%',
       data: opera,

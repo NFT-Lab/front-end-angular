@@ -11,7 +11,7 @@ export class OperaDetailsComponent {
   nft: Nft;
   constructor(
     @Inject(MAT_DIALOG_DATA) opera: Nft,
-    private modalRef: MatDialogRef<OperaDetailsComponent>
+    public modalRef: MatDialogRef<OperaDetailsComponent>
   ) {
     this.nft = opera;
   }
