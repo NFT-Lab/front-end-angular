@@ -1,32 +1,53 @@
-import { User } from '@model/User';
-import { TestBed } from '@angular/core/testing';
+import { environment } from './../../environments/environment';
+import { fakeAsync, inject, TestBed, tick } from '@angular/core/testing';
 import { AppModule } from '../app.module';
 
 import { AuthenticationService } from './authentication.service';
+import {
+  HttpClientTestingModule,
+  HttpTestingController,
+} from '@angular/common/http/testing';
 
 describe('AuthenticationService', () => {
-  let service: AuthenticationService;
+  const data = {
+    email: 'test@test.it',
+    password: 'Test123@',
+  };
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [AppModule],
+      imports: [HttpClientTestingModule, AppModule],
+      providers: [AuthenticationService],
     });
-    service = TestBed.inject(AuthenticationService);
   });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
+  it('should update user info correctly', fakeAsync(
+    inject(
+      [AuthenticationService, HttpTestingController],
+      (loginService: AuthenticationService, backend: HttpTestingController) => {
+        // Set up
+        const responseObject = {
+          success: true,
+          message: 'user info updated',
+        };
+        let response: any = null;
+        // End Setup
+        loginService.login(data).subscribe(
+          (receivedResponse: any) => {
+            response = receivedResponse;
+          },
+          (error: any) => {}
+        );
 
-  it('login() should return User data', () => {
-    let userInput = { email: 'test@test.it', password: 'Test123@' };
-    let user: User;
-    (done: DoneFn) => {
-      service.login(userInput).subscribe((value) => {
-        expect(value).toBeTruthy();
-        expect(typeof value).toBe(typeof user);
-        done();
-      });
-    };
-  });
+        const requestWrapper = backend.expectOne({
+          url: environment.apiUrl + '/login',
+        });
+        requestWrapper.flush(responseObject);
+
+        tick();
+
+        expect(requestWrapper.request.method).toEqual('POST');
+      }
+    )
+  ));
 });
