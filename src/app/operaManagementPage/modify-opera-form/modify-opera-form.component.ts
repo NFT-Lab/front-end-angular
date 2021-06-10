@@ -24,7 +24,7 @@ export class ModifyOperaFormComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) opera: Nft,
     private operaManService: OperaManagementService,
-    private modalRef: MatDialogRef<ModifyOperaFormComponent>
+    public modalRef: MatDialogRef<ModifyOperaFormComponent>
   ) {
     this.nft = opera;
   }
