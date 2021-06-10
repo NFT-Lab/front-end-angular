@@ -1,6 +1,6 @@
-import { Psw } from '@model/Psw';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Psw } from '@model/Psw';
 import { User } from '@model/User';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';

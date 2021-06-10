@@ -18,7 +18,7 @@ export class ModifyUserFormComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) user: User,
     private userModService: UserManagementService,
-    private modalRef: MatDialogRef<ModifyUserFormComponent>
+    public modalRef: MatDialogRef<ModifyUserFormComponent>
   ) {
     this.user = user;
   }

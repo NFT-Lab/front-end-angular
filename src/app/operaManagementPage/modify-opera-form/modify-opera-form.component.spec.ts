@@ -1,26 +1,12 @@
 import { OperaManagementService } from '@service/opera-management.service';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import {
-  MAT_DIALOG_DATA,
-  MatDialogRef,
-  MatDialog,
-} from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Nft } from '@model/Nft';
 import { of, throwError } from 'rxjs';
 import { AppModule } from 'src/app/app.module';
 
 import { ModifyOperaFormComponent } from './modify-opera-form.component';
-/*
-export class MatDialogMock {
-  // When the component calls this.dialog.open(...) we'll return an object
-  // with an afterClosed method that allows to subscribe to the dialog result observable.
-  open() {
-    return {
-      afterClosed: () => of({ action: true }),
-    };
-  }
-}
-*/
+
 describe('ModifyOperaFormComponent', () => {
   let component: ModifyOperaFormComponent;
   let fixture: ComponentFixture<ModifyOperaFormComponent>;
@@ -50,7 +36,6 @@ describe('ModifyOperaFormComponent', () => {
         OperaManagementService,
         { provide: MAT_DIALOG_DATA, useValue: opera },
         { provide: MatDialogRef, useValue: dialogMock },
-        //{ provide: MatDialog, useClass: MatDialogMock },
       ],
       imports: [AppModule],
       declarations: [ModifyOperaFormComponent],

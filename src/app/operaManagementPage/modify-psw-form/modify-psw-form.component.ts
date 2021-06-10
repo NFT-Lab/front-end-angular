@@ -16,7 +16,7 @@ export class ModifyPswFormComponent implements OnInit {
 
   constructor(
     private userModService: UserManagementService,
-    private modalRef: MatDialogRef<ModifyPswFormComponent>
+    public modalRef: MatDialogRef<ModifyPswFormComponent>
   ) {}
 
   ngOnInit(): void {
@@ -56,10 +56,12 @@ export class ModifyPswFormComponent implements OnInit {
                          Riprova più tardi.`;
         }
       );
-    } else if (!differentFromOld) {
-      this.errorMessage = `La nuova password deve essere diversa da quella attuale.`;
-    } else {
+    } else if (!this.formGroup.valid) {
+      this.errorMessage = 'Compila tutti i campi.';
+    } else if (!equalWithinNew) {
       this.errorMessage = `La nuova password non coincide con il campo di conferma.`;
+    } else {
+      this.errorMessage = `La nuova password deve essere diversa da quella attuale.`;
     }
   }
 
