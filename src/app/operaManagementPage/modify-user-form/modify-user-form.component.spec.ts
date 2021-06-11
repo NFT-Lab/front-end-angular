@@ -80,6 +80,7 @@ describe('ModifyUserFormComponent', () => {
 
   it('should show an error message with internal server error', () => {
     let saveButton = buttons[0];
+    expect(component.formGroup.valid).toBe(false);
     //wait for enabling button
     fixture.whenStable().then(() => {
       psw = fixture.nativeElement.querySelector(
@@ -105,6 +106,7 @@ describe('ModifyUserFormComponent', () => {
 
   it('should show an error message with invalid form', () => {
     let saveButton = buttons[0];
+    expect(component.formGroup.valid).toBe(false);
 
     fixture.whenStable().then(() => {
       //put wrong input
