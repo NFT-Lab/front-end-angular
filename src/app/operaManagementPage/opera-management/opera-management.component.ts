@@ -2,7 +2,7 @@ import { ModifyPswFormComponent } from './../modify-psw-form/modify-psw-form.com
 import { ModifyUserFormComponent } from './../modify-user-form/modify-user-form.component';
 import { ModifyOperaFormComponent } from './../modify-opera-form/modify-opera-form.component';
 import { NewOperaFormComponent } from './../new-opera-form/new-opera-form.component';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { OperaManagementService } from './../../_services/opera-management.service';
 import { Component, OnInit } from '@angular/core';
 import { Nft } from '@model/Nft';
@@ -15,12 +15,12 @@ import { OperaDetailsComponent } from '../opera-details/opera-details.component'
 })
 export class OperaManagementComponent implements OnInit {
   operas: Nft[] = [];
-  userData = JSON.parse(localStorage.getItem('User') || '{}');
+  userData = JSON.parse(localStorage.getItem('User') as string);
   page: number = 1;
 
   constructor(
     private operaManService: OperaManagementService,
-    public addOperaModal: MatDialog //private operaDetailsModal: MatDialog
+    public modal: MatDialog //private operaDetailsModal: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -34,11 +34,10 @@ export class OperaManagementComponent implements OnInit {
   }
 
   openModifyUserData() {
-    let modalRef = this.addOperaModal.open(ModifyUserFormComponent, {
+    let modalRef = this.modal.open(ModifyUserFormComponent, {
       panelClass: 'dialog-responsive',
       data: this.userData,
     });
-
     modalRef.afterClosed().subscribe((user) => {
       if (user) {
         let fields = Object.keys(user);
@@ -50,13 +49,13 @@ export class OperaManagementComponent implements OnInit {
   }
 
   openModifyUserPsw() {
-    this.addOperaModal.open(ModifyPswFormComponent, {
+    this.modal.open(ModifyPswFormComponent, {
       panelClass: 'dialog-responsive',
     });
   }
 
   openAddOperaModal(): void {
-    let modalRef = this.addOperaModal.open(NewOperaFormComponent, {
+    let modalRef = this.modal.open(NewOperaFormComponent, {
       panelClass: 'dialog-responsive',
     });
     modalRef.afterClosed().subscribe((opera) => {
@@ -65,14 +64,14 @@ export class OperaManagementComponent implements OnInit {
   }
 
   openDetailsOperaModal(opera: Nft) {
-    this.addOperaModal.open(OperaDetailsComponent, {
+    this.modal.open(OperaDetailsComponent, {
       panelClass: 'dialog-responsive',
       data: opera,
     });
   }
 
   openModifyOperaModal(opera: Nft) {
-    let modalRef = this.addOperaModal.open(ModifyOperaFormComponent, {
+    let modalRef = this.modal.open(ModifyOperaFormComponent, {
       panelClass: 'dialog-responsive',
       data: opera,
     });

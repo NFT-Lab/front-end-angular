@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatDialogRef } from '@angular/material/dialog';
-import { MatSelect } from '@angular/material/select';
-import { By } from '@angular/platform-browser';
+import { Nft } from '@model/Nft';
 import { OperaManagementService } from '@service/opera-management.service';
+import { of, throwError } from 'rxjs';
 import { AppModule } from 'src/app/app.module';
 
 import { NewOperaFormComponent } from './new-opera-form.component';
@@ -10,11 +10,25 @@ import { NewOperaFormComponent } from './new-opera-form.component';
 describe('NewOperaFormComponent', () => {
   let component: NewOperaFormComponent;
   let fixture: ComponentFixture<NewOperaFormComponent>;
-  let selects: any, buttons: any;
+  let buttons: any;
+  const opera: Nft = {
+    id: 12,
+    name: 'test',
+    description: 'test',
+    author: 'test',
+    owner: 'test',
+    price: 12,
+    categories: ['test'],
+    type: 'test',
+    currency: 'test',
+    path: 'test',
+  };
 
   const dialogMock = {
     close: () => {},
   };
+
+  let operaManService: OperaManagementService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -34,16 +48,14 @@ describe('NewOperaFormComponent', () => {
     //find buttons
     buttons = Array.from(fixture.nativeElement.querySelectorAll('button'));
     //set fields
-    /*
     component.formGroup.controls.name.setValue('test');
-    selects = Array.from(
-      fixture.debugElement.queryAll(By.directive(MatSelect))
-    );
-    expect(selects.length).toBe(2);
-    selects[0].componentInstance.value = ['test'];
-    selects[1].componentInstance.value = ['test'];
-
-    expect(component.formGroup.controls.categories.valid).toBe(true);*/
+    component.formGroup.controls.description.setValue('test');
+    component.formGroup.controls.price.setValue(12);
+    component.formGroup.controls.type.setValue('Immagine');
+    component.formGroup.controls.categories.setValue(['Sport']);
+    component.path = 'test';
+    //mock req
+    operaManService = fixture.debugElement.injector.get(OperaManagementService);
   });
 
   it('dialog should be closed', () => {
@@ -55,24 +67,42 @@ describe('NewOperaFormComponent', () => {
   it('user should upload his opera', () => {
     const mockFile = new File([''], 'filename', { type: 'text/html' });
     const mockEvt = { target: { files: [mockFile] } };
-    /*
-    const mockReader: FileReader = jasmine.createSpyObj('FileReader', [
-      'readAsDataURL',
-      'onload',
-    ]);
-    spyOn(component, 'selectFile').and.returnValue(mockReader);*/
     component.selectFile(mockEvt as any);
     expect(component.path).toBeTruthy();
   });
 
-  it('call', () => {
-    const mockFile = new File([''], 'filename', { type: 'text/html' });
-    const mockEvt = { target: { files: [mockFile] } };
-    //
-    component.selectFile(mockEvt as any);
-    expect(component.path).toBeTruthy();
-    let saveButton = buttons[0];
-    //saveButton.click();
-    //expect(type.value).toBe('test');
+  it('should show an error with invalid form', () => {
+    let saveButton = buttons[1];
+
+    component.path = '';
+    saveButton.click();
+    expect(component.errorMessage).toBe(
+      "Insirisci un'opera e compila tutti i campi per continuare."
+    );
+  });
+
+  it('add opera request', () => {
+    let saveButton = buttons[1];
+
+    spyOn(operaManService, 'addOpera').and.returnValue(of(opera));
+
+    expect(component.path).toBe('test');
+    expect(component.formGroup.valid).toBe(true);
+
+    saveButton.click();
+  });
+
+  it('should show an error message with internal server error', () => {
+    let saveButton = buttons[1];
+    //mock 500 error response
+    spyOn(operaManService, 'addOpera').and.returnValue(
+      throwError({ status: 500 })
+    );
+    //send data
+    saveButton.click();
+    //expects
+    expect(component.errorMessage)
+      .toBe(`Si è verificato un problema nell'inserimento della
+                tua opera. Riprova più tardi.`);
   });
 });

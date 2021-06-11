@@ -39,9 +39,11 @@ describe('OperaManagementComponent', () => {
 
   it('should create dialogs and return data', () => {
     expect(component).toBeTruthy();
-    spyOn(component.addOperaModal, 'open').and.returnValue({
+
+    spyOn(component.modal, 'open').and.returnValue({
       afterClosed: () => of(opera),
     } as MatDialogRef<typeof ModifyOperaFormComponent>);
+
     component.openAddOperaModal();
     component.openModifyOperaModal(opera);
     component.openDetailsOperaModal(opera);

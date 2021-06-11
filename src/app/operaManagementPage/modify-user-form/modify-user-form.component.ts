@@ -48,7 +48,7 @@ export class ModifyUserFormComponent implements OnInit {
   updateUser(): void {
     if (this.formGroup.valid) {
       let payload = this.formGroup.value,
-        userInfo = JSON.parse(localStorage.getItem('User') || '{}'),
+        userInfo = JSON.parse(localStorage.getItem('User') as string),
         email = userInfo.email,
         id = userInfo.id;
       payload.email = email;
@@ -57,9 +57,8 @@ export class ModifyUserFormComponent implements OnInit {
         (res) => {
           this.modalRef.close(res);
         },
-        (error) => {
-          if (error.status === 500)
-            this.errorMessage = `Si è verificato un problema nell'operazione di modifica.
+        () => {
+          this.errorMessage = `Si è verificato un problema nell'operazione di modifica.
                          Riprova più tardi.`;
         }
       );

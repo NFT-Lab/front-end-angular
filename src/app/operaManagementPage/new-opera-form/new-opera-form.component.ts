@@ -58,7 +58,7 @@ export class NewOperaFormComponent implements OnInit {
   addOpera(): void {
     if (this.formGroup.valid && this.path !== '') {
       let newNft = this.formGroup.value,
-        user = JSON.parse(localStorage.getItem('User') || '{}');
+        user = JSON.parse(localStorage.getItem('User') as string);
 
       newNft.currency = 'ETH';
       newNft.owner = newNft.author = user.name;
@@ -69,9 +69,8 @@ export class NewOperaFormComponent implements OnInit {
         (res) => {
           this.modalRef.close(res);
         },
-        (error) => {
-          if (error.status === 500)
-            this.errorMessage = `Si è verificato un problema nell'inserimento della
+        () => {
+          this.errorMessage = `Si è verificato un problema nell'inserimento della
                 tua opera. Riprova più tardi.`;
         }
       );

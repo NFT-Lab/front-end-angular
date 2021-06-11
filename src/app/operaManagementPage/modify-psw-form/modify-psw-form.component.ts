@@ -50,9 +50,8 @@ export class ModifyPswFormComponent implements OnInit {
         (res) => {
           this.modalRef.close(res);
         },
-        (error) => {
-          if (error.status === 500)
-            this.errorMessage = `Si è verificato un problema nell'operazione di modifica.
+        () => {
+          this.errorMessage = `Si è verificato un problema nell'operazione di modifica.
                          Riprova più tardi.`;
         }
       );

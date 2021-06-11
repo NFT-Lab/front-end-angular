@@ -58,9 +58,8 @@ export class ModifyOperaFormComponent implements OnInit {
         (res) => {
           this.modalRef.close(res);
         },
-        (error) => {
-          if (error.status === 500)
-            this.errorMessage = `Si è verificato un problema nell'inserimento della
+        () => {
+          this.errorMessage = `Si è verificato un problema nell'inserimento della
                 tua opera. Riprova più tardi.`;
         }
       );
