@@ -2,7 +2,7 @@ import { ModifyPswFormComponent } from './../modify-psw-form/modify-psw-form.com
 import { ModifyUserFormComponent } from './../modify-user-form/modify-user-form.component';
 import { ModifyOperaFormComponent } from './../modify-opera-form/modify-opera-form.component';
 import { NewOperaFormComponent } from './../new-opera-form/new-opera-form.component';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { OperaManagementService } from './../../_services/opera-management.service';
 import { Component, OnInit } from '@angular/core';
 import { Nft } from '@model/Nft';
@@ -35,7 +35,7 @@ export class OperaManagementComponent implements OnInit {
 
   openModifyUserData() {
     let modalRef = this.addOperaModal.open(ModifyUserFormComponent, {
-      width: '30%',
+      panelClass: 'dialog-responsive',
       data: this.userData,
     });
 
@@ -51,13 +51,13 @@ export class OperaManagementComponent implements OnInit {
 
   openModifyUserPsw() {
     this.addOperaModal.open(ModifyPswFormComponent, {
-      width: '30%',
+      panelClass: 'dialog-responsive',
     });
   }
 
   openAddOperaModal(): void {
     let modalRef = this.addOperaModal.open(NewOperaFormComponent, {
-      width: '30%',
+      panelClass: 'dialog-responsive',
     });
     modalRef.afterClosed().subscribe((opera) => {
       if (opera) this.operas.push(opera);
@@ -66,14 +66,14 @@ export class OperaManagementComponent implements OnInit {
 
   openDetailsOperaModal(opera: Nft) {
     this.addOperaModal.open(OperaDetailsComponent, {
-      width: '30%',
+      panelClass: 'dialog-responsive',
       data: opera,
     });
   }
 
   openModifyOperaModal(opera: Nft) {
     let modalRef = this.addOperaModal.open(ModifyOperaFormComponent, {
-      width: '30%',
+      panelClass: 'dialog-responsive',
       data: opera,
     });
     modalRef.afterClosed().subscribe((opera) => {
