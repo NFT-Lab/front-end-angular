@@ -1,0 +1,62 @@
+<form
+  id="modify-user-form"
+  fxLayout="column"
+  [formGroup]="formGroup"
+  (ngSubmit)="updateUser()"
+>
+  <h2>Modifica i tuoi dati</h2>
+  <p id="error">{{ errorMessage }}</p>
+
+  <mat-form-field>
+    <input matInput placeholder="Nome" formControlName="name" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Cognome" formControlName="surname" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <input
+      matInput
+      type="date"
+      placeholder="Data di nascita"
+      formControlName="dob"
+    />
+  </mat-form-field>
+
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="Indirizzo del wallet"
+      formControlName="wallet"
+    />
+  </mat-form-field>
+
+  <p id="info">Per confermare, inserisci la tua password.</p>
+
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="Password"
+      formControlName="password"
+      [type]="!hide ? 'password' : 'text'"
+    />
+    <mat-icon id="hide-icon" matSuffix (click)="hide = !hide">{{
+      !hide ? "visibility_off" : "visibility"
+    }}</mat-icon>
+  </mat-form-field>
+
+  <div fxLayout="row" fxLayoutAlign="space-between">
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="!formGroup.controls.password.valid"
+    >
+      Salva modifiche
+    </button>
+    <button mat-raised-button color="warn" (click)="closeModal()">
+      Annulla
+    </button>
+  </div>
+</form>

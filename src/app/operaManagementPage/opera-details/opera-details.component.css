@@ -1,0 +1,41 @@
+#preview {
+  width: 40%;
+  border: 1px solid black;
+  border-radius: 0.5em;
+  margin-left: 30%;
+}
+
+.title {
+  color: #053074d4;
+  padding-right: 0.5em;
+  font-weight: bold;
+}
+
+.title,
+.desc {
+  display: inline;
+}
+
+.field {
+  padding-bottom: 0.8em;
+}
+
+#categories-div {
+  position: relative;
+  width: 100%;
+  overflow-wrap: anywhere;
+  text-align: center;
+}
+
+.mat-raised-button {
+  margin-left: 80%;
+}
+
+.category {
+  padding: 0.3em;
+  width: fit-content;
+  border-radius: 0.5em;
+  display: inline-block;
+  margin-right: 0.5em;
+  white-space: nowrap;
+}

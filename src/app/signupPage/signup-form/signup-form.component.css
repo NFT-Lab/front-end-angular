@@ -1,0 +1,37 @@
+.form-inner {
+  background-color: #154fac15;
+  top: 25%;
+  transform: translateY(-50%);
+  width: 75%;
+  margin: auto;
+}
+
+#forgot {
+  padding-bottom: 2%;
+}
+
+.form-inner a {
+  color: rgba(0, 12, 180, 0.89);
+  text-decoration: underline;
+}
+
+#error {
+  color: brown;
+}
+
+#hide-icon {
+  cursor: pointer;
+}
+
+#signup-btn {
+  background-color: lightblue;
+  color: black;
+  margin-right: 1em;
+}
+
+@media screen and (max-width: 800px) {
+  .form-inner {
+    background-color: rgba(255, 255, 255, 0.865);
+    top: 10em;
+  }
+}

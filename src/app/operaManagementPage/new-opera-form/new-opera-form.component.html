@@ -1,31 +1,65 @@
-<button mat-raised-button color="warn" (click)="setTrue()">
-  Inserisci nuova opera
-</button>
+<form
+  id="add-opera-form"
+  fxLayout="column"
+  [formGroup]="formGroup"
+  (ngSubmit)="addOpera()"
+>
+  <h2>Inserisci una nuova opera</h2>
+  <p id="error">{{ errorMessage }}</p>
 
-<mat-card id="new-opera-form" *ngIf="button">
-  <form fxLayout="column" [formGroup]="formGroup" (ngSubmit)="addOpera()">
-    <p id="error">{{ errorMessage }}</p>
+  <mat-form-field>
+    <input matInput placeholder="Nome" formControlName="name" />
+  </mat-form-field>
 
-    <mat-form-field>
-      <input matInput placeholder="Nome" formControlName="name" />
-    </mat-form-field>
+  <div id="input-container" fxLayout="row" fxLayoutAlign="space-around center">
+    <img id="preview" [src]="path" [alt]="" />
+    <button mat-raised-button disabled>
+      <label for="input-file">{{ uploadLabel }}</label>
+    </button>
+    <input id="input-file" type="file" (change)="selectFile($event)" />
+  </div>
 
-    <mat-form-field>
-      <input matInput placeholder="Descrizione" formControlName="description" />
-    </mat-form-field>
+  <p id="file-name" *ngIf="fileName">Nome del file: {{ fileName }}</p>
 
-    <mat-form-field>
-      <input matInput placeholder="Tipo" formControlName="type" />
-    </mat-form-field>
+  <mat-form-field>
+    <textarea
+      matInput
+      placeholder="Descrizione"
+      formControlName="description"
+    ></textarea>
+  </mat-form-field>
 
-    <mat-form-field>
-      <input matInput placeholder="Categoria" formControlName="categories" />
-    </mat-form-field>
+  <mat-form-field>
+    <mat-label>Tipo</mat-label>
+    <mat-select formControlName="type">
+      <mat-option *ngFor="let type of types" [value]="type">
+        {{ type }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 
-    <mat-form-field>
-      <input matInput placeholder="Prezzo" formControlName="price" />
-    </mat-form-field>
+  <mat-form-field>
+    <mat-label>Categoria</mat-label>
+    <mat-select formControlName="categories" multiple>
+      <mat-option *ngFor="let category of categories" [value]="category">
+        {{ category }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 
+  <mat-form-field>
+    <input
+      matInput
+      type="number"
+      placeholder="Prezzo"
+      formControlName="price"
+    />
+    <span matPrefix>€&nbsp;</span>
+  </mat-form-field>
+  <div fxLayout="row" fxLayoutAlign="space-between">
     <button mat-raised-button color="primary" type="submit">Inserisci</button>
-  </form>
-</mat-card>
+    <button mat-raised-button color="warn" (click)="closeModal()">
+      Annulla
+    </button>
+  </div>
+</form>

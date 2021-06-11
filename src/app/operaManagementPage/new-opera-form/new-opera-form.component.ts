@@ -1,22 +1,26 @@
 import { OperaManagementService } from './../../_services/opera-management.service';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Nft } from '@model/Nft';
-
+import { MatDialogRef } from '@angular/material/dialog';
 @Component({
   selector: 'app-new-opera-form',
   templateUrl: './new-opera-form.component.html',
   styleUrls: ['./new-opera-form.component.css'],
 })
 export class NewOperaFormComponent implements OnInit {
-  @Output() nftToAdd: EventEmitter<Nft> = new EventEmitter();
-
   formGroup: FormGroup;
-  button: boolean;
-  private operas: Nft[];
   errorMessage: string;
+  path: string = '';
+  uploadLabel: string = 'Carica la tua opera';
+  fileName: string;
+  types = ['Immagine', 'Video', 'Documento', 'Audio'];
+  categories = ['Calcio', 'Sport', 'Cucina', 'Musica'];
+  private file: File;
 
-  constructor(private operaManService: OperaManagementService) {}
+  constructor(
+    private operaManService: OperaManagementService,
+    public modalRef: MatDialogRef<NewOperaFormComponent>
+  ) {}
 
   ngOnInit(): void {
     this.initForm();
@@ -32,33 +36,51 @@ export class NewOperaFormComponent implements OnInit {
     });
   }
 
-  setTrue(): void {
-    if (!this.button) this.button = true;
-    else this.button = false;
+  selectFile(e: Event) {
+    let target = e.target as HTMLInputElement;
+    if (target.files) {
+      this.fileName = target.files[0].name;
+      this.file = target.files[0];
+      if (target.files[0].type.includes('image')) {
+        let reader = new FileReader();
+        reader.readAsDataURL(target.files[0]);
+        reader.onload = (event: any) => {
+          this.path = event.target.result;
+        };
+      } else {
+        this.path = 'assets/document.png';
+      }
+    }
+
+    this.uploadLabel = 'Modifica';
   }
 
   addOpera(): void {
-    //aggiungere controlli
+    if (this.formGroup.valid && this.path !== '') {
+      let newNft = this.formGroup.value,
+        user = JSON.parse(localStorage.getItem('User') || '{}');
 
-    let newNft = this.formGroup.value,
-      user = JSON.parse(localStorage.getItem('User') || '{}');
+      newNft.currency = 'ETH';
+      newNft.owner = newNft.author = user.name;
+      newNft.categories = [];
+      newNft.price = Number(newNft.price);
 
-    newNft.id = '2';
-    newNft.currency = 'euro';
-    newNft.owner = user.name;
-    newNft.author = user.name;
-    newNft.categories = [];
-    newNft.price = 10;
+      this.operaManService.addOpera(newNft, this.file).subscribe(
+        (res) => {
+          this.modalRef.close(res);
+        },
+        (error) => {
+          if (error.status === 500)
+            this.errorMessage = `Si è verificato un problema nell'inserimento della
+                tua opera. Riprova più tardi.`;
+        }
+      );
+    } else {
+      this.errorMessage = `Insirisci un'opera e compila tutti i campi per continuare.`;
+    }
+  }
 
-    this.operaManService.addOpera(newNft).subscribe(
-      (res) => {
-        this.nftToAdd.emit(res);
-      },
-      (error) => {
-        if (error.status === 500)
-          this.errorMessage = `Si è verificato un problema nell'inserimento della
-                tua opera. Riprova più tardi`;
-      }
-    );
+  closeModal(): void {
+    this.modalRef.close();
   }
 }

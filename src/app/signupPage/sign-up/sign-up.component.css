@@ -1,0 +1,40 @@
+#form-signup {
+  width: 50%;
+}
+
+#form-signup h2 {
+  color: rgba(47, 0, 255, 0.842);
+  font-family: "Brush Script MT";
+  font-size: 3em;
+}
+
+#bg-login {
+  width: 60%;
+  overflow: hidden;
+}
+
+#login-logo {
+  width: 30%;
+  margin-left: 3em;
+  padding-bottom: 2em;
+}
+
+@media screen and (max-width: 800px) {
+  #bg-login {
+    display: none;
+  }
+
+  #form-signup {
+    width: auto;
+  }
+
+  body {
+    background-image: url("./../../../assets/bg-login-mobile.gif");
+  }
+
+  #login-logo {
+    width: 35%;
+    margin-left: 30%;
+    padding-bottom: 4em;
+  }
+}

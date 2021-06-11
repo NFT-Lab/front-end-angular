@@ -1,11 +1,103 @@
-<body fxLayout="row">
-  <h1>Le mie opere</h1>
+<app-header></app-header>
 
-  <ul>
-    <li *ngFor="let opera of operas">
-      <p>{{ opera.name }}</p>
-    </li>
-  </ul>
+<div id="content" fxLayout="row wrap">
+  <mat-card id="info" class="margins flex-grow">
+    <h2>
+      Le mie informazioni <mat-icon class="purple">contact_mail</mat-icon>
+    </h2>
+    <mat-list>
+      <mat-list-item>
+        <p class="title">Nome:</p>
+        <p>{{ userData.name }}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <p class="title">Cognome:</p>
+        <p>{{ userData.surname }}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <p class="title">Data di nascita:</p>
+        <p>{{ userData.dob }}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <p class="title">Email:</p>
+        <p>{{ userData.email }}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <p class="title">Wallet:</p>
+        <p>{{ userData.wallet }}</p>
+      </mat-list-item>
+    </mat-list>
 
-  <app-new-opera-form (nftToAdd)="nftToAddHandler($event)"></app-new-opera-form>
-</body>
+    <button mat-raised-button color="primary" (click)="openModifyUserData()">
+      Modifica dati
+      <mat-icon>create</mat-icon>
+    </button>
+    <button mat-raised-button (click)="openModifyUserPsw()">
+      Modifica password
+      <mat-icon>vpn_key</mat-icon>
+    </button>
+
+    <h2 class="margin-top-2">
+      Statistiche <mat-icon class="red">query_stats</mat-icon>
+    </h2>
+
+    <mat-list fxLayoutAlign="center" class="inline">
+      <mat-list-item>
+        <p class="title">Opere caricate:</p>
+        <p>{{ operas.length }}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <p class="title">Opere acquistate:</p>
+        <p>2</p>
+      </mat-list-item>
+      <mat-list-item>
+        <p class="title">Opere vendute:</p>
+        <p>0</p>
+      </mat-list-item>
+    </mat-list>
+  </mat-card>
+
+  <mat-card id="operas-list" class="margins flex-grow">
+    <h2>Le mie opere <mat-icon class="purple">playlist_play</mat-icon></h2>
+
+    <mat-list class="list-items">
+      <mat-list-item
+        class="li"
+        *ngFor="
+          let opera of operas | paginate: { itemsPerPage: 5, currentPage: page }
+        "
+      >
+        <div class="preview-container">
+          <img
+            class="preview"
+            (click)="openDetailsOperaModal(opera)"
+            src="https://picsum.photos/120/70"
+          />
+        </div>
+        <a (click)="openDetailsOperaModal(opera)">{{ opera.name }}</a>
+        <span class="spacer"></span>
+        <button
+          mat-icon-button
+          title="Modifica"
+          (click)="openModifyOperaModal(opera)"
+        >
+          <mat-icon>create</mat-icon>
+        </button>
+        <mat-divider></mat-divider>
+      </mat-list-item>
+    </mat-list>
+
+    <div fxLayout="row" fxLayoutAlign="space-around center">
+      <pagination-controls
+        nextLabel=""
+        previousLabel=""
+        (pageChange)="page = $event"
+      >
+      </pagination-controls>
+      <button mat-raised-button color="warn" (click)="openAddOperaModal()">
+        <mat-icon>add</mat-icon>
+        Inserisci nuova opera
+      </button>
+    </div>
+  </mat-card>
+</div>

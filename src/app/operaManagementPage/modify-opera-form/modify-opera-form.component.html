@@ -1,0 +1,63 @@
+<form
+  id="add-opera-form"
+  fxLayout="column"
+  [formGroup]="formGroup"
+  (ngSubmit)="updateOpera()"
+>
+  <h2>Modifica la tua opera</h2>
+  <p id="error">{{ errorMessage }}</p>
+
+  <mat-form-field>
+    <input matInput placeholder="Nome" formControlName="name" />
+  </mat-form-field>
+
+  <div id="input-container" fxLayout="row" fxLayoutAlign="space-around center">
+    <img id="preview" src="https://picsum.photos/120/70" [alt]="" />
+  </div>
+
+  <p id="file-name" *ngIf="fileName">Nome del file: {{ fileName }}</p>
+
+  <mat-form-field>
+    <textarea
+      matInput
+      placeholder="Descrizione"
+      formControlName="description"
+    ></textarea>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Tipo</mat-label>
+    <mat-select formControlName="type">
+      <mat-option *ngFor="let type of types" [value]="type">
+        {{ type }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Categoria</mat-label>
+    <mat-select formControlName="categories" multiple>
+      <mat-option *ngFor="let category of categories" [value]="category">
+        {{ category }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input
+      matInput
+      type="number"
+      placeholder="Prezzo"
+      formControlName="price"
+    />
+    <span matPrefix>€&nbsp;</span>
+  </mat-form-field>
+  <div fxLayout="row" fxLayoutAlign="space-between">
+    <button mat-raised-button color="primary" type="submit">
+      Salva modifiche
+    </button>
+    <button mat-raised-button color="warn" (click)="closeModal()">
+      Annulla
+    </button>
+  </div>
+</form>

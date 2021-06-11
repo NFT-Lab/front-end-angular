@@ -1,3 +1,94 @@
-#new-opera-form {
-  width: 30%;
+#operas-list {
+  background-color: #154fac33;
+  height: fit-content;
+}
+
+#operas-list h2 {
+  margin: 0;
+}
+
+#operas-list a {
+  margin-bottom: 1.5em;
+}
+
+#info {
+  background-color: #1f75fe33;
+}
+
+#info button {
+  margin-left: 1em;
+}
+
+#paginator {
+  padding-bottom: 0;
+}
+
+.margins {
+  margin: 1em 1em 1em;
+}
+
+.margin-top-2 {
+  margin-top: 2em;
+}
+
+.margin-top-1 {
+  margin-top: 2em;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.list-items a,
+img {
+  cursor: pointer;
+}
+
+.list-items:first-child {
+  margin-top: 0;
+}
+
+.flex-grow {
+  flex-grow: 1;
+  height: fit-content;
+}
+
+.title {
+  color: #053074d4;
+  padding-right: 0.5em;
+  font-weight: bold;
+}
+
+.purple {
+  color: rgba(31, 16, 133, 0.673);
+}
+
+.red {
+  color: rgba(154, 7, 22, 0.673);
+}
+
+.inline {
+  display: inline-flex;
+}
+
+.li {
+  margin-top: 2em;
+}
+
+.preview-container {
+  padding-right: 1em;
+  padding-bottom: 2em;
+}
+
+.preview {
+  border: 1px solid black;
+  border-radius: 0.5em;
+}
+
+#footer {
+  width: 100%;
+}
+
+#content {
+  padding-bottom: 1em;
 }

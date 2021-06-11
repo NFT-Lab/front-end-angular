@@ -1,0 +1,68 @@
+<mat-card class="form-inner">
+  <h2>Registrati</h2>
+  <p>Hai già un account? <a routerLink="/login">Effettua il login</a></p>
+  <form fxLayout="column" [formGroup]="formGroup" (ngSubmit)="signup()">
+    <p id="error">{{ errorMessage }}</p>
+
+    <div fxLayout="row wrap" fxLayoutAlign="space-between">
+      <mat-form-field fxFlex="45">
+        <input matInput placeholder="Nome" formControlName="name" />
+      </mat-form-field>
+
+      <mat-form-field fxFlex="45">
+        <input matInput placeholder="Cognome" formControlName="surname" />
+      </mat-form-field>
+    </div>
+
+    <mat-form-field>
+      <input
+        matInput
+        type="date"
+        placeholder="Data di nascita"
+        formControlName="dob"
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="E-mail" formControlName="email" />
+    </mat-form-field>
+
+    <div fxLayout="row wrap" fxLayoutAlign="space-between">
+      <mat-form-field fxFlex="45">
+        <input
+          matInput
+          placeholder="Password"
+          formControlName="password"
+          [type]="!hide ? 'password' : 'text'"
+        />
+        <mat-icon id="hide-icon" matSuffix (click)="hide = !hide">{{
+          !hide ? "visibility_off" : "visibility"
+        }}</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field fxFlex="45">
+        <input
+          matInput
+          placeholder="Conferma password"
+          formControlName="confirmPassword"
+          [type]="!hide ? 'password' : 'text'"
+        />
+      </mat-form-field>
+    </div>
+
+    <mat-form-field>
+      <input matInput placeholder="Indirizzo wallet" formControlName="wallet" />
+    </mat-form-field>
+
+    <a href="https://metamask.io/" id="forgot">Informazioni sul wallet</a>
+
+    <div fxLayout="row wrap" fxLayoutAlign="end">
+      <button id="signup-btn" mat-raised-button color="primary" type="submit">
+        Registrati
+      </button>
+      <button mat-raised-button color="primary" routerLink="/">
+        Torna alla home
+      </button>
+    </div>
+  </form>
+</mat-card>

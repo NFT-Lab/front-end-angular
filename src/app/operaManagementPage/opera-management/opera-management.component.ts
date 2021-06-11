@@ -1,7 +1,12 @@
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ModifyPswFormComponent } from './../modify-psw-form/modify-psw-form.component';
+import { ModifyUserFormComponent } from './../modify-user-form/modify-user-form.component';
+import { ModifyOperaFormComponent } from './../modify-opera-form/modify-opera-form.component';
+import { NewOperaFormComponent } from './../new-opera-form/new-opera-form.component';
+import { MatDialog } from '@angular/material/dialog';
 import { OperaManagementService } from './../../_services/opera-management.service';
 import { Component, OnInit } from '@angular/core';
 import { Nft } from '@model/Nft';
+import { OperaDetailsComponent } from '../opera-details/opera-details.component';
 
 @Component({
   selector: 'app-opera-management',
@@ -9,9 +14,14 @@ import { Nft } from '@model/Nft';
   styleUrls: ['./opera-management.component.css'],
 })
 export class OperaManagementComponent implements OnInit {
-  operas: Nft[];
+  operas: Nft[] = [];
+  userData = JSON.parse(localStorage.getItem('User') || '{}');
+  page: number = 1;
 
-  constructor(private operaManService: OperaManagementService) {}
+  constructor(
+    private operaManService: OperaManagementService,
+    public addOperaModal: MatDialog //private operaDetailsModal: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.getOperas();
@@ -23,7 +33,56 @@ export class OperaManagementComponent implements OnInit {
       .subscribe((nft) => (this.operas = nft));
   }
 
-  nftToAddHandler(nft: Nft) {
-    this.operas.push(nft);
+  openModifyUserData() {
+    let modalRef = this.addOperaModal.open(ModifyUserFormComponent, {
+      width: '30%',
+      data: this.userData,
+    });
+
+    modalRef.afterClosed().subscribe((user) => {
+      if (user) {
+        let fields = Object.keys(user);
+        fields.forEach((field: any) => {
+          this.userData[field] = user[field];
+        });
+      }
+    });
+  }
+
+  openModifyUserPsw() {
+    this.addOperaModal.open(ModifyPswFormComponent, {
+      width: '30%',
+    });
+  }
+
+  openAddOperaModal(): void {
+    let modalRef = this.addOperaModal.open(NewOperaFormComponent, {
+      width: '30%',
+    });
+    modalRef.afterClosed().subscribe((opera) => {
+      if (opera) this.operas.push(opera);
+    });
+  }
+
+  openDetailsOperaModal(opera: Nft) {
+    this.addOperaModal.open(OperaDetailsComponent, {
+      width: '30%',
+      data: opera,
+    });
+  }
+
+  openModifyOperaModal(opera: Nft) {
+    let modalRef = this.addOperaModal.open(ModifyOperaFormComponent, {
+      width: '30%',
+      data: opera,
+    });
+    modalRef.afterClosed().subscribe((opera) => {
+      if (opera) {
+        let index = -1;
+        this.operas.forEach((nft, i) => {
+          if (nft.id === opera.id) index = i;
+        });
+      }
+    });
   }
 }
