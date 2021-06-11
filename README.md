@@ -20,7 +20,7 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 ## Test
 
 ### Unit tests
-Run `ng test` to execute all unit test, add the flag `--code-coverage` to create `coverage` folder and update. Tt the next push this will update Coveralls values through the github action.
+Run `ng test` to execute all unit test, add the flag `--code-coverage` to create `coverage` folder and update. At the next push this will update Coveralls values through the github action.
 
 ### E2E tests 
 Functionality tests are made with [taiko](https://taiko.dev/). To execute them, install taiko with `npm install -g taiko`, located on the e2e folder and run the command `taiko <script name>.js`.
