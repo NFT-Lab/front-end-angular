@@ -1,5 +1,9 @@
 # NFT Lab - front-end with Angular framework
 
+<p align="center">
+<img  src="./src/assets/logo-header.png" width="200"/>
+</p>
+
 [![Continuos integration](https://github.com/NFT-Lab/front-end-angular/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/NFT-Lab/front-end-angular/actions/workflows/CI.yml) [![Coverage Status](https://coveralls.io/repos/github/NFT-Lab/front-end-angular/badge.svg?branch=develop)](https://coveralls.io/github/NFT-Lab/front-end-angular?branch=develop) [![](https://img.shields.io/badge/functional%20test-taiko-blue)](https://taiko.dev/)
 [![](https://img.shields.io/badge/powered%20by-Sync%20Lab-9cf)](https://www.synclab.it/) [![](https://img.shields.io/badge/NFT%20Lab-frontend-blueviolet)](https://github.com/NFT-Lab/front-end-angular)
 
