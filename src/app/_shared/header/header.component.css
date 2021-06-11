@@ -38,5 +38,6 @@
 }
 
 #welcome {
+  cursor: pointer;
   margin-top: 1em;
 }
