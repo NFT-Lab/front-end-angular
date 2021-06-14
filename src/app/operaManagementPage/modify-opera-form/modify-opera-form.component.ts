@@ -1,3 +1,4 @@
+import { Category } from '@model/Category';
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -20,7 +21,7 @@ export class ModifyOperaFormComponent implements OnInit {
   fileSystemPath: string = environment.fileSystemPath;
   nft: Nft;
   types = ['Immagine', 'Video', 'Documento', 'Audio'];
-  categories = ['Calcio', 'Sport', 'Cucina', 'Musica'];
+  categories: Category[] = [];
 
   constructor(
     @Inject(MAT_DIALOG_DATA) opera: Nft,
@@ -31,6 +32,7 @@ export class ModifyOperaFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.categories = this.nft.categories;
     this.initForm();
   }
 
@@ -43,7 +45,7 @@ export class ModifyOperaFormComponent implements OnInit {
       name: new FormControl(this.nft.name, [Validators.required]),
       description: new FormControl(this.nft.description, [Validators.required]),
       type: new FormControl(this.types[0], [Validators.required]),
-      categories: new FormControl(this.categories, [Validators.required]),
+      categories: new FormControl(this.nft.categories, [Validators.required]),
       price: new FormControl(this.nft.price, [Validators.required]),
     });
   }
@@ -58,6 +60,8 @@ export class ModifyOperaFormComponent implements OnInit {
       modOpera.type = newNft.type;
       modOpera.categories = newNft.categories;
       modOpera.price = Number(newNft.price);
+
+      console.log(newNft);
 
       this.operaManService.updateOpera(modOpera as Nft).subscribe(
         (res) => {
