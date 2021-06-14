@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Nft } from '@model/Nft';
 import { OperaManagementService } from '@service/opera-management.service';
+import { environment } from 'src/environments/environment';
 import { NewOperaFormComponent } from '../new-opera-form/new-opera-form.component';
 
 @Component({
@@ -16,10 +17,10 @@ export class ModifyOperaFormComponent implements OnInit {
   path: string = '';
   uploadLabel: string = 'Modifica';
   fileName: string;
+  fileSystemPath: string = environment.fileSystemPath;
   nft: Nft;
   types = ['Immagine', 'Video', 'Documento', 'Audio'];
   categories = ['Calcio', 'Sport', 'Cucina', 'Musica'];
-  private file: File;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) opera: Nft,
@@ -31,6 +32,10 @@ export class ModifyOperaFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
+  }
+
+  getPath() {
+    return this.fileSystemPath + this.nft.path;
   }
 
   initForm() {

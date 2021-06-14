@@ -30,7 +30,7 @@
 
 <div class="field">
   <p class="title">Prezzo:</p>
-  <p class="desc">{{ nft.price + " €" }}</p>
+  <p class="desc">{{ nft.price | number }}€</p>
 </div>
 
 <button mat-raised-button color="warn" (click)="closeModal()">Chiudi</button>

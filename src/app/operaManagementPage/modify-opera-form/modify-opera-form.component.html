@@ -12,7 +12,7 @@
   </mat-form-field>
 
   <div id="input-container" fxLayout="row" fxLayoutAlign="space-around center">
-    <img id="preview" src="https://picsum.photos/120/70" [alt]="" />
+    <img id="preview" [src]="getPath()" alt="preview image" />
   </div>
 
   <p id="file-name" *ngIf="fileName">Nome del file: {{ fileName }}</p>

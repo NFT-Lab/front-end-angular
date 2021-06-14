@@ -192,9 +192,11 @@ paths:
           name: userId
       requestBody:
         content:
-          application/json:
+          multipart/form-data:
             schema:
-              $ref: '#/components/schemas/Nft'
+              type: string
+              format: binary
+        description: ''
       tags:
         - NFT
         - User
@@ -218,6 +220,21 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Nft'
+            examples:
+              example-1:
+                value:
+                  id: string
+                  name: string
+                  description: string
+                  author: string
+                  owner: string
+                  price: 0
+                  categories:
+                    - id: 3
+                      name: strin
+                  type: string
+                  currency: string
+                  path: string
 components:
   schemas:
     User:
@@ -233,7 +250,7 @@ components:
           type: string
         name:
           type: string
-          maxLength: 6
+          maxLength: 10
           minLength: 4
         surname:
           type: string
@@ -249,39 +266,27 @@ components:
     Nft:
       title: Nft
       type: object
+      examples: []
       properties:
         id:
           type: string
         name:
           type: string
-          maxLength: 8
-          minLength: 4
         description:
           type: string
-          maxLength: 15
-          minLength: 5
         author:
           type: string
         owner:
           type: string
         price:
           type: number
-          minimum: 100
-          maximum: 15000
-          multipleOf: 50.5
+          example: 0
         categories:
           type: array
-          maxItems: 15
-          minItems: 4
           items:
             $ref: '#/components/schemas/Category'
         type:
           type: string
-          enum:
-            - video
-            - audio
-            - doc
-            - img
         currency:
           type: string
         path:
@@ -307,6 +312,7 @@ components:
           type: number
           minimum: 1
           maximum: 6
+          example: 3
         name:
           type: string
           minLength: 3

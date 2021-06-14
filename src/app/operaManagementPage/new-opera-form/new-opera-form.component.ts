@@ -1,3 +1,5 @@
+import { Category } from './../../_models/Category';
+import { CategoriesService } from './../../_services/categories.service';
 import { OperaManagementService } from './../../_services/opera-management.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -14,16 +16,24 @@ export class NewOperaFormComponent implements OnInit {
   uploadLabel: string = 'Carica la tua opera';
   fileName: string;
   types = ['Immagine', 'Video', 'Documento', 'Audio'];
-  categories = ['Calcio', 'Sport', 'Cucina', 'Musica'];
+  categories: Category[] = [];
   private file: File;
 
   constructor(
     private operaManService: OperaManagementService,
+    private catService: CategoriesService,
     public modalRef: MatDialogRef<NewOperaFormComponent>
   ) {}
 
   ngOnInit(): void {
+    this.getCategories();
     this.initForm();
+  }
+
+  getCategories() {
+    return this.catService
+      .getCategories()
+      .subscribe((cat) => (this.categories = cat));
   }
 
   initForm() {
@@ -62,7 +72,6 @@ export class NewOperaFormComponent implements OnInit {
 
       newNft.currency = 'ETH';
       newNft.owner = newNft.author = user.name;
-      newNft.categories = [];
       newNft.price = Number(newNft.price);
 
       this.operaManService.addOpera(newNft, this.file).subscribe(

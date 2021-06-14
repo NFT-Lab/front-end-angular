@@ -46,8 +46,16 @@ export class SignupFormComponent implements OnInit {
     return a?.value === b?.value;
   }
 
+  checkDob(): boolean {
+    let dob = new Date(this.formGroup.controls.dob.value);
+    var ageDifMs = Date.now() - dob.getTime();
+    var ageDate = new Date(ageDifMs); // miliseconds from epoch
+
+    return Math.abs(ageDate.getUTCFullYear() - 1970) >= 18;
+  }
+
   signup(): void {
-    if (this.formGroup.valid && this.checkPassword()) {
+    if (this.formGroup.valid && this.checkPassword() && this.checkDob()) {
       let payload = this.formGroup.value;
       delete payload.confirmPassword;
       this.signupService.signup(this.formGroup.value).subscribe(
@@ -69,6 +77,8 @@ export class SignupFormComponent implements OnInit {
     } else if (this.formGroup.controls.email.invalid) {
       this.errorMessage = `Formato e-mail non valido. Assicurati di
           averla inserita correttamente.`;
+    } else if (!this.checkDob()) {
+      this.errorMessage = 'Devi essere maggiorenne per registrarti';
     } else if (!this.checkPassword()) {
       this.errorMessage = 'Le password non coincidono.';
     } else if (
