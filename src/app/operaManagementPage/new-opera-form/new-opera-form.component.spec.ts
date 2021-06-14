@@ -18,7 +18,7 @@ describe('NewOperaFormComponent', () => {
     author: 'test',
     owner: 'test',
     price: 12,
-    categories: ['test'],
+    categories: [{ id: 1, name: 'test' }],
     type: 'test',
     currency: 'test',
     path: 'test',

@@ -106,7 +106,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Categories'
+                  $ref: '#/components/schemas/Category'
       operationId: get-categories
       description: Categorie di un opera
   '/user/{id}':
@@ -233,6 +233,8 @@ components:
           type: string
         name:
           type: string
+          maxLength: 6
+          minLength: 4
         surname:
           type: string
         dob:
@@ -240,9 +242,7 @@ components:
           format: date
         wallet:
           type: string
-          pattern: '^[A-Fa-f0-9]'
-          minLength: 34
-          maxLength: 34
+          pattern: '^0x[a-fA-F0-9]{40}$'
       required:
         - email
         - password
@@ -254,19 +254,27 @@ components:
           type: string
         name:
           type: string
+          maxLength: 8
+          minLength: 4
         description:
           type: string
+          maxLength: 15
+          minLength: 5
         author:
           type: string
         owner:
           type: string
         price:
           type: number
-          minimum: 0
+          minimum: 100
+          maximum: 15000
+          multipleOf: 50.5
         categories:
           type: array
+          maxItems: 15
+          minItems: 4
           items:
-            type: string
+            $ref: '#/components/schemas/Category'
         type:
           type: string
           enum:
@@ -277,15 +285,6 @@ components:
         currency:
           type: string
         path:
-          type: string
-    Categories:
-      title: Categories
-      type: object
-      description: Categorie
-      properties:
-        id:
-          type: string
-        name:
           type: string
     NewPassword:
       title: NewPassword
@@ -298,6 +297,20 @@ components:
           type: string
         newPassword:
           type: string
+    Category:
+      title: Category
+      type: object
+      x-tags:
+        - category
+      properties:
+        id:
+          type: number
+          minimum: 1
+          maximum: 6
+        name:
+          type: string
+          minLength: 3
+          maxLength: 5
 tags:
   - name: Log
   - name: NFT

@@ -7,6 +7,7 @@ import { OperaManagementService } from './../../_services/opera-management.servi
 import { Component, OnInit } from '@angular/core';
 import { Nft } from '@model/Nft';
 import { OperaDetailsComponent } from '../opera-details/opera-details.component';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-opera-management',
@@ -17,6 +18,7 @@ export class OperaManagementComponent implements OnInit {
   operas: Nft[] = [];
   userData = JSON.parse(localStorage.getItem('User') as string);
   page: number = 1;
+  fileSystemPath: string = environment.fileSystemPath;
 
   constructor(
     private operaManService: OperaManagementService,
@@ -28,9 +30,18 @@ export class OperaManagementComponent implements OnInit {
   }
 
   getOperas() {
-    return this.operaManService
-      .getOperas()
-      .subscribe((nft) => (this.operas = nft));
+    return this.operaManService.getOperas().subscribe((nft) => {
+      this.operas = nft;
+
+      this.operas.forEach((opera) => {
+        let n = Math.floor(Math.random() * 15) + 1;
+        opera.path = 'test' + n + '.jpeg';
+      });
+    });
+  }
+
+  getPath(opera: Nft) {
+    return this.fileSystemPath + opera.path;
   }
 
   openModifyUserData() {

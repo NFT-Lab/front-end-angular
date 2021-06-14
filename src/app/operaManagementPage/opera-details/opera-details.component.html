@@ -5,7 +5,7 @@
   <p class="desc">{{ nft.name }}</p>
 </div>
 
-<img id="preview" src="https://picsum.photos/120/70" alt="opera preview" />
+<img id="preview" [src]="getPath()" alt="opera preview" />
 
 <div class="field">
   <p class="title">Descrizione:</p>
@@ -22,9 +22,9 @@
   <p
     *ngFor="let cat of nft.categories"
     class="category"
-    [ngStyle]="{ 'background-color': getColor() }"
+    [ngStyle]="{ 'background-color': getColor(cat.id) }"
   >
-    {{ cat }}
+    {{ cat.name }}
   </p>
 </div>
 
