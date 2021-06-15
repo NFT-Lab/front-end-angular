@@ -1,3 +1,4 @@
+import { CategoriesService } from './../../_services/categories.service';
 import { ModifyPswFormComponent } from './../modify-psw-form/modify-psw-form.component';
 import { ModifyUserFormComponent } from './../modify-user-form/modify-user-form.component';
 import { ModifyOperaFormComponent } from './../modify-opera-form/modify-opera-form.component';
@@ -8,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
 import { Nft } from '@model/Nft';
 import { OperaDetailsComponent } from '../opera-details/opera-details.component';
 import { environment } from 'src/environments/environment';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Category } from '@model/Category';
 
 @Component({
   selector: 'app-opera-management',
@@ -15,18 +18,24 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./opera-management.component.css'],
 })
 export class OperaManagementComponent implements OnInit {
+  formGroup: FormGroup;
   operas: Nft[] = [];
+  allCategories: Category[] = [];
+  filteredOperas: Nft[] = [];
   userData = JSON.parse(localStorage.getItem('User') as string);
   page: number = 1;
   fileSystemPath: string = environment.fileSystemPath;
 
   constructor(
     private operaManService: OperaManagementService,
-    public modal: MatDialog //private operaDetailsModal: MatDialog
+    private catService: CategoriesService,
+    public modal: MatDialog
   ) {}
 
   ngOnInit(): void {
     this.getOperas();
+    this.getCategories();
+    this.initForm();
   }
 
   getOperas() {
@@ -37,11 +46,57 @@ export class OperaManagementComponent implements OnInit {
         let n = Math.floor(Math.random() * 15) + 1;
         opera.path = 'test' + n + '.jpeg';
       });
+      //le prossime righe saranno da togliere e servono per testare con stoplight
+      //che il filtro di ricerca funzioni
+      this.operas[0].categories.push({ id: 1, name: 'test' });
+      this.operas[2].categories.push({ id: 1, name: 'test' });
+      //fine
+      this.filteredOperas = [...this.operas];
+    });
+  }
+
+  getCategories() {
+    return this.catService.getCategories().subscribe((cats) => {
+      this.allCategories = cats;
+      //le prossime righe saranno da togliere e servono per testare con stoplight
+      //che il filtro di ricerca funzioni
+      this.allCategories.push({ id: 1, name: 'test' });
+      //fine
     });
   }
 
   getPath(opera: Nft) {
     return this.fileSystemPath + opera.path;
+  }
+
+  initForm() {
+    this.formGroup = new FormGroup({
+      categories: new FormControl(this.allCategories, [Validators.required]),
+    });
+  }
+
+  search() {
+    if (this.formGroup.valid) {
+      let catChosen: Category[] = this.formGroup.controls.categories.value;
+      let operaFiltered: Nft[] = [];
+      let next: boolean = false;
+      this.operas.forEach((opera) => {
+        opera.categories.forEach((cat) => {
+          next = false;
+          for (let i = 0; i < catChosen.length && !next; i++) {
+            if (cat.name === catChosen[i].name) {
+              operaFiltered.push(opera);
+              next = true;
+            }
+          }
+        });
+      });
+      this.filteredOperas = [...operaFiltered];
+    }
+  }
+
+  clearFilters() {
+    this.filteredOperas = [...this.operas];
   }
 
   openModifyUserData() {

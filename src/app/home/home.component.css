@@ -1,3 +1,7 @@
 #content {
-  margin-top: 1em;
+  padding: 1em;
+}
+
+.example-header-image {
+  background-size: cover;
 }

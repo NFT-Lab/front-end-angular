@@ -272,10 +272,15 @@ components:
           type: string
         title:
           type: string
+          maxLength: 10
+          minLength: 2
         description:
           type: string
+          minLength: 5
         author:
           type: string
+          minLength: 2
+          maxLength: 10
         owner:
           type: string
         price:

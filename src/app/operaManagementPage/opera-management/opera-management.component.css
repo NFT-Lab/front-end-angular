@@ -3,6 +3,30 @@
   height: fit-content;
 }
 
+#header > div {
+  margin-left: 2em;
+}
+
+#info > h2 {
+  margin-left: 0.8em;
+}
+
+.header-name {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+#wallet {
+  margin-top: 0;
+  color: rgba(165, 42, 42, 0.582);
+  text-decoration: underline;
+}
+
+#reset {
+  margin-top: 0.4em;
+  color: brown;
+}
+
 #operas-list h2 {
   margin: 0;
 }
@@ -13,6 +37,13 @@
 
 #info {
   background-color: #1f75fe33;
+}
+
+#info img {
+  border: 3px solid #0f397eb2;
+  margin-left: 0.5em;
+  border-radius: 50%;
+  width: 20%;
 }
 
 #info button {
