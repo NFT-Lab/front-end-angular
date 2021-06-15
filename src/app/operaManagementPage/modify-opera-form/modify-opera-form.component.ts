@@ -42,7 +42,7 @@ export class ModifyOperaFormComponent implements OnInit {
 
   initForm() {
     this.formGroup = new FormGroup({
-      name: new FormControl(this.nft.name, [Validators.required]),
+      name: new FormControl(this.nft.title, [Validators.required]),
       description: new FormControl(this.nft.description, [Validators.required]),
       type: new FormControl(this.types[0], [Validators.required]),
       categories: new FormControl(this.nft.categories, [Validators.required]),
@@ -55,7 +55,7 @@ export class ModifyOperaFormComponent implements OnInit {
       let newNft = this.formGroup.value,
         modOpera = { ...this.nft };
 
-      modOpera.name = newNft.name;
+      modOpera.title = newNft.name;
       modOpera.description = newNft.description;
       modOpera.type = newNft.type;
       modOpera.categories = newNft.categories;

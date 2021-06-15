@@ -40,7 +40,7 @@ export class NewOperaFormComponent implements OnInit {
     this.formGroup = new FormGroup({
       name: new FormControl('', [Validators.required]),
       description: new FormControl('', [Validators.required]),
-      type: new FormControl('', [Validators.required]),
+      type: new FormControl('', []),
       categories: new FormControl('', [Validators.required]),
       price: new FormControl('', [Validators.required]),
     });
