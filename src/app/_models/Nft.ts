@@ -1,7 +1,7 @@
 import { Category } from './Category';
 export interface Nft {
   id: number;
-  name: string;
+  title: string;
   description: string;
   author: string;
   owner: string;

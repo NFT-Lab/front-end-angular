@@ -13,7 +13,7 @@ describe('ModifyOperaFormComponent', () => {
   let buttons: any;
   const opera: Nft = {
     id: 12,
-    name: 'test',
+    title: 'test',
     description: 'test',
     author: 'test',
     owner: 'test',

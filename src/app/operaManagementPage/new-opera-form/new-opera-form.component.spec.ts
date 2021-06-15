@@ -1,3 +1,4 @@
+import { CategoriesService } from './../../_services/categories.service';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Nft } from '@model/Nft';
@@ -6,6 +7,7 @@ import { of, throwError } from 'rxjs';
 import { AppModule } from 'src/app/app.module';
 
 import { NewOperaFormComponent } from './new-opera-form.component';
+import { Category } from '@model/Category';
 
 describe('NewOperaFormComponent', () => {
   let component: NewOperaFormComponent;
@@ -13,7 +15,7 @@ describe('NewOperaFormComponent', () => {
   let buttons: any;
   const opera: Nft = {
     id: 12,
-    name: 'test',
+    title: 'test',
     description: 'test',
     author: 'test',
     owner: 'test',
@@ -24,11 +26,14 @@ describe('NewOperaFormComponent', () => {
     path: 'test',
   };
 
+  const cat: Category[] = [{ id: 1, name: 'test' }];
+
   const dialogMock = {
     close: () => {},
   };
 
   let operaManService: OperaManagementService;
+  let catService: CategoriesService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -51,11 +56,11 @@ describe('NewOperaFormComponent', () => {
     component.formGroup.controls.name.setValue('test');
     component.formGroup.controls.description.setValue('test');
     component.formGroup.controls.price.setValue(12);
-    component.formGroup.controls.type.setValue('Immagine');
     component.formGroup.controls.categories.setValue(['Sport']);
     component.path = 'test';
     //mock req
     operaManService = fixture.debugElement.injector.get(OperaManagementService);
+    catService = fixture.debugElement.injector.get(CategoriesService);
   });
 
   it('dialog should be closed', () => {
@@ -85,6 +90,7 @@ describe('NewOperaFormComponent', () => {
     let saveButton = buttons[1];
 
     spyOn(operaManService, 'addOpera').and.returnValue(of(opera));
+    spyOn(catService, 'getCategories').and.returnValue(of(cat));
 
     expect(component.path).toBe('test');
     expect(component.formGroup.valid).toBe(true);
@@ -98,6 +104,7 @@ describe('NewOperaFormComponent', () => {
     spyOn(operaManService, 'addOpera').and.returnValue(
       throwError({ status: 500 })
     );
+    spyOn(catService, 'getCategories').and.returnValue(of(cat));
     //send data
     saveButton.click();
     //expects

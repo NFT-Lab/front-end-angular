@@ -15,8 +15,8 @@ export class NewOperaFormComponent implements OnInit {
   path: string = '';
   uploadLabel: string = 'Carica la tua opera';
   fileName: string;
-  types = ['Immagine', 'Video', 'Documento', 'Audio'];
   categories: Category[] = [];
+  type: string;
   private file: File;
 
   constructor(
@@ -40,7 +40,7 @@ export class NewOperaFormComponent implements OnInit {
     this.formGroup = new FormGroup({
       name: new FormControl('', [Validators.required]),
       description: new FormControl('', [Validators.required]),
-      type: new FormControl('', [Validators.required]),
+      //type: new FormControl('', []),
       categories: new FormControl('', [Validators.required]),
       price: new FormControl('', [Validators.required]),
     });
@@ -52,6 +52,7 @@ export class NewOperaFormComponent implements OnInit {
       this.fileName = target.files[0].name;
       this.file = target.files[0];
       if (target.files[0].type.includes('image')) {
+        this.type = 'Immagine';
         let reader = new FileReader();
         reader.readAsDataURL(target.files[0]);
         reader.onload = (event: any) => {

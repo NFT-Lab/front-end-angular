@@ -29,14 +29,7 @@
     ></textarea>
   </mat-form-field>
 
-  <mat-form-field>
-    <mat-label>Tipo</mat-label>
-    <mat-select formControlName="type">
-      <mat-option *ngFor="let type of types" [value]="type">
-        {{ type }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+  <p *ngIf="fileName">Tipo: {{ type }}</p>
 
   <mat-form-field>
     <mat-label>Categoria</mat-label>
