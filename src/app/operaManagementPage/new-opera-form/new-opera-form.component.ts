@@ -1,3 +1,4 @@
+import { User } from './../../_models/User';
 import { Category } from './../../_models/Category';
 import { CategoriesService } from './../../_services/categories.service';
 import { OperaManagementService } from './../../_services/opera-management.service';
@@ -65,13 +66,17 @@ export class NewOperaFormComponent implements OnInit {
     this.uploadLabel = 'Modifica';
   }
 
+  getUserInfo(): User {
+    return JSON.parse(localStorage.getItem('User') as string);
+  }
+
   addOpera(): void {
     if (this.formGroup.valid && this.path !== '') {
       let newNft = this.formGroup.value,
-        user = JSON.parse(localStorage.getItem('User') as string);
+        user: User = this.getUserInfo();
 
       newNft.currency = 'ETH';
-      newNft.owner = newNft.author = user.name || 'test';
+      newNft.owner = newNft.author = user.name;
       newNft.price = Number(newNft.price);
 
       this.operaManService.addOpera(newNft, this.file).subscribe(

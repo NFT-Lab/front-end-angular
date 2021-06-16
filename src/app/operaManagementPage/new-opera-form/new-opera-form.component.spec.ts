@@ -13,6 +13,7 @@ import { AppModule } from 'src/app/app.module';
 
 import { NewOperaFormComponent } from './new-opera-form.component';
 import { Category } from '@model/Category';
+import { User } from '@model/User';
 
 describe('NewOperaFormComponent', () => {
   let component: NewOperaFormComponent;
@@ -29,6 +30,14 @@ describe('NewOperaFormComponent', () => {
     type: 'test',
     currency: 'test',
     path: 'test',
+  };
+
+  const user: User = {
+    dob: new Date(1997, 5, 12),
+    name: 'test',
+    surname: 'test',
+    wallet: '0xEd1bB395f00B22454c22B6c76b645657c739D3cc',
+    email: 'test@test.it',
   };
 
   const cat: Category[] = [{ id: 1, name: 'test' }];
@@ -96,6 +105,7 @@ describe('NewOperaFormComponent', () => {
 
     spyOn(operaManService, 'addOpera').and.returnValue(of(opera));
     spyOn(catService, 'getCategories').and.returnValue(of(cat));
+    spyOn(component, 'getUserInfo').and.returnValue(user);
 
     expect(component.path).toBe('test');
     expect(component.formGroup.valid).toBe(true);
@@ -109,6 +119,7 @@ describe('NewOperaFormComponent', () => {
     spyOn(operaManService, 'addOpera').and.returnValue(
       throwError({ status: 500 })
     );
+    spyOn(component, 'getUserInfo').and.returnValue(user);
     //spyOn(catService, 'getCategories').and.returnValue(of(cat));
     expect(component.formGroup.valid).toBe(true);
     //send data
