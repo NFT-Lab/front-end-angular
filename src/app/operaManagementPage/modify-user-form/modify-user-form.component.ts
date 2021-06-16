@@ -46,11 +46,15 @@ export class ModifyUserFormComponent implements OnInit {
     });
   }
 
+  getUserInfo(): any {
+    return JSON.parse(localStorage.getItem('User') as string);
+  }
+
   updateUser(): void {
     if (this.formGroup.valid) {
       let payload = this.formGroup.value,
-        userInfo = JSON.parse(localStorage.getItem('User') as string),
-        id = userInfo.id || 'test';
+        userInfo = this.getUserInfo(),
+        id = userInfo.id;
 
       this.userModService.updateUserInfo(payload, id).subscribe(
         (res) => {

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { UserManagementService } from '@service/user-management.service';
+import { User } from '@model/User';
 
 @Component({
   selector: 'app-modify-psw-form',
@@ -37,6 +38,10 @@ export class ModifyPswFormComponent implements OnInit {
     });
   }
 
+  getUserInfo(): User {
+    return JSON.parse(localStorage.getItem('User') as string);
+  }
+
   updatePsw(): void {
     let differentFromOld: boolean =
         this.formGroup.controls.oldPassword.value !==
@@ -46,7 +51,7 @@ export class ModifyPswFormComponent implements OnInit {
         this.formGroup.controls.confirmPsw.value;
 
     if (this.formGroup.valid && differentFromOld && equalWithinNew) {
-      let user = JSON.parse(localStorage.getItem('User') as string),
+      let user = this.getUserInfo(),
         payload = this.formGroup.value;
 
       payload.email = user.email;

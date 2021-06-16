@@ -11,7 +11,8 @@ describe('ModifyUserFormComponent', () => {
   let component: ModifyUserFormComponent;
   let fixture: ComponentFixture<ModifyUserFormComponent>;
   let buttons: any, psw: any;
-  const user: User = {
+  const user = {
+    id: 12,
     dob: new Date(1997, 5, 12),
     name: 'test',
     surname: 'test',
@@ -73,6 +74,7 @@ describe('ModifyUserFormComponent', () => {
       expect(saveButton.disabled).toBe(false);
       //mock response
       spyOn(userManService, 'updateUserInfo').and.returnValue(of(user));
+      spyOn(component, 'getUserInfo').and.returnValue(user);
       //send data
       saveButton.click();
     });
@@ -124,6 +126,7 @@ describe('ModifyUserFormComponent', () => {
       spyOn(userManService, 'updateUserInfo').and.returnValue(
         throwError({ status: 500 })
       );
+      spyOn(component, 'getUserInfo').and.returnValue(user);
       //send data
       saveButton.click();
       //expects

@@ -1,10 +1,5 @@
 import { CategoriesService } from './../../_services/categories.service';
-import {
-  ComponentFixture,
-  TestBed,
-  tick,
-  fakeAsync,
-} from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Nft } from '@model/Nft';
 import { OperaManagementService } from '@service/opera-management.service';
