@@ -38,7 +38,7 @@ export class NewOperaFormComponent implements OnInit {
 
   initForm() {
     this.formGroup = new FormGroup({
-      name: new FormControl('', [Validators.required]),
+      title: new FormControl('', [Validators.required]),
       description: new FormControl('', [Validators.required]),
       //type: new FormControl('', []),
       categories: new FormControl('', [Validators.required]),
@@ -74,6 +74,8 @@ export class NewOperaFormComponent implements OnInit {
       newNft.currency = 'ETH';
       newNft.owner = newNft.author = user.name;
       newNft.price = Number(newNft.price);
+
+      console.log(newNft);
 
       this.operaManService.addOpera(newNft, this.file).subscribe(
         (res) => {

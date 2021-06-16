@@ -9,6 +9,10 @@ import { environment } from 'src/environments/environment';
 })
 export class SignupService {
   private loginUrl = environment.apiUrl + '/signup'; // URL to web api
+
+  //API URL PER INTEGRAZIONE
+  //private loginUrl = environment.userApiUrl + 'signup';
+
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };

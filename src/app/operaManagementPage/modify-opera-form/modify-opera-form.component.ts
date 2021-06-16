@@ -5,7 +5,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Nft } from '@model/Nft';
 import { OperaManagementService } from '@service/opera-management.service';
 import { environment } from 'src/environments/environment';
-import { NewOperaFormComponent } from '../new-opera-form/new-opera-form.component';
+import { Type } from '@model/Utils';
 
 @Component({
   selector: 'app-modify-opera-form',
@@ -57,7 +57,7 @@ export class ModifyOperaFormComponent implements OnInit {
 
       modOpera.title = newNft.name;
       modOpera.description = newNft.description;
-      modOpera.type = newNft.type;
+      modOpera.type = Type[newNft.type];
       modOpera.categories = newNft.categories;
       modOpera.price = Number(newNft.price);
 
