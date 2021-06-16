@@ -71,7 +71,7 @@ export class NewOperaFormComponent implements OnInit {
         user = JSON.parse(localStorage.getItem('User') as string);
 
       newNft.currency = 'ETH';
-      newNft.owner = newNft.author = user.name;
+      newNft.owner = newNft.author = user.name || 'test';
       newNft.price = Number(newNft.price);
 
       console.log(newNft);
