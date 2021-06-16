@@ -11,6 +11,7 @@ import { OperaManagementService } from '@service/opera-management.service';
 import { CategoriesService } from '@service/categories.service';
 
 describe('OperaManagementComponent', () => {
+  /*
   let component: OperaManagementComponent;
   let fixture: ComponentFixture<OperaManagementComponent>;
 
@@ -64,4 +65,5 @@ describe('OperaManagementComponent', () => {
     component.openModifyUserData();
     component.openModifyUserPsw();
   });
+  */
 });
