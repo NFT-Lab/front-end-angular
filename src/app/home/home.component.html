@@ -1,4 +1,17 @@
-<app-header></app-header>
+<app-header
+  (filteredSearchEvent)="filteredSearch($event)"
+  (searchEvent)="search($event)"
+></app-header>
+
+<div
+  fxLayout="row"
+  fxLayoutAlign="space-between"
+  id="results"
+  *ngIf="searchDone"
+>
+  <p>Risultati della ricerca:</p>
+  <button mat-raised-button color="warn" (click)="resetSearch()">Reset</button>
+</div>
 
 <div id="content">
   <div fxLayout="row wrap" fxLayoutGap="1em grid">
@@ -6,7 +19,7 @@
       fxFlex="25%"
       fxFlex.xs="100%"
       fxFlex.sm="33%"
-      *ngFor="let opera of operas"
+      *ngFor="let opera of operasToShow"
     >
       <mat-card>
         <mat-card-header>
@@ -21,12 +34,19 @@
         <img mat-card-image [src]="getPath(opera)" alt="opera preview" />
         <mat-card-content>
           <p>
+            <span class="section">Descrizione:</span>
             {{ opera.description }}
+          </p>
+          <p>
+            <span class="section">Prezzo:</span>
+            {{ opera.price | currency: "":"" }} <span class="section">ETH</span>
           </p>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-button>LIKE</button>
-          <button mat-button>SHARE</button>
+          <button mat-button (click)="openSnackBar()">❤️ Preferiti</button>
+          <button mat-button (click)="openDetailsOperaModal(opera)">
+            🔎 Dettagli
+          </button>
         </mat-card-actions>
       </mat-card>
     </div>

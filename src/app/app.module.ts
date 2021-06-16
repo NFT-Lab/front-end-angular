@@ -16,6 +16,8 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -33,6 +35,7 @@ import { SignUpComponent } from './signupPage/sign-up/sign-up.component';
 import { SignupFormComponent } from './signupPage/signup-form/signup-form.component';
 import { ModifyUserFormComponent } from './operaManagementPage/modify-user-form/modify-user-form.component';
 import { ModifyPswFormComponent } from './operaManagementPage/modify-psw-form/modify-psw-form.component';
+import { FilterSearchComponent } from './_shared/filter-search/filter-search.component';
 
 const materialModules = [
   MatToolbarModule,
@@ -46,6 +49,8 @@ const materialModules = [
   MatListModule,
   MatMenuModule,
   MatSelectModule,
+  MatSnackBarModule,
+  MatCheckboxModule,
 ];
 @NgModule({
   declarations: [
@@ -63,6 +68,7 @@ const materialModules = [
     SignupFormComponent,
     ModifyUserFormComponent,
     ModifyPswFormComponent,
+    FilterSearchComponent,
   ],
   imports: [
     BrowserModule,

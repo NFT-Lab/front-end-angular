@@ -1,5 +1,36 @@
 <mat-toolbar id="header" color="primary">
-  <img src="assets/logo-header.png" />
+  <a [routerLink]="['/']">
+    <img src="assets/logo-header2.png" />
+  </a>
+
+  <span class="spacer"></span>
+
+  <form
+    class="search"
+    [formGroup]="formGroup"
+    (ngSubmit)="search()"
+    *ngIf="route.url === '/'"
+  >
+    <input
+      formControlName="search"
+      type="text"
+      class="searchTerm"
+      placeholder="Cosa stai cercando?"
+    />
+    <button type="submit" class="searchButton">
+      <mat-icon>search</mat-icon>
+    </button>
+  </form>
+
+  <button
+    *ngIf="route.url === '/'"
+    mat-icon-button
+    class="margin-left-1"
+    (click)="openFilterSearchModal()"
+  >
+    <mat-icon>sort</mat-icon>
+    <mat-icon>expand_more</mat-icon>
+  </button>
 
   <span class="spacer"></span>
 
@@ -20,7 +51,7 @@
   <mat-menu #userMenu="matMenu">
     <button routerLink="/user" mat-menu-item>
       <mat-icon>format_list_bulleted</mat-icon>
-      <span>Il mio profilo</span>
+      <span>Profilo</span>
     </button>
     <button routerLink="/" mat-menu-item (click)="logout()">
       <mat-icon>logout</mat-icon>

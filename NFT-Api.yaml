@@ -286,6 +286,7 @@ components:
         price:
           type: number
           example: 0
+          minimum: 1
         categories:
           type: array
           items:
@@ -318,6 +319,7 @@ components:
           minimum: 1
           maximum: 6
           example: 3
+          multipleOf: 1
         name:
           type: string
           minLength: 3
