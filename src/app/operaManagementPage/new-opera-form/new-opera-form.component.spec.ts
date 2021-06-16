@@ -53,7 +53,7 @@ describe('NewOperaFormComponent', () => {
     //find buttons
     buttons = Array.from(fixture.nativeElement.querySelectorAll('button'));
     //set fields
-    component.formGroup.controls.name.setValue('test');
+    component.formGroup.controls.title.setValue('test');
     component.formGroup.controls.description.setValue('test');
     component.formGroup.controls.price.setValue(12);
     component.formGroup.controls.categories.setValue(['Sport']);

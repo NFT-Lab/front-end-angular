@@ -31,22 +31,27 @@ export class ModifyPswFormComponent implements OnInit {
       ),
     ];
     this.formGroup = new FormGroup({
-      oldPsw: new FormControl('', validators),
-      newPsw: new FormControl('', validators),
+      oldPassword: new FormControl('', validators),
+      newPassword: new FormControl('', validators),
       confirmPsw: new FormControl('', validators),
     });
   }
 
   updatePsw(): void {
     let differentFromOld: boolean =
-        this.formGroup.controls.oldPsw.value !==
-        this.formGroup.controls.newPsw.value,
+        this.formGroup.controls.oldPassword.value !==
+        this.formGroup.controls.newPassword.value,
       equalWithinNew: boolean =
-        this.formGroup.controls.newPsw.value ===
+        this.formGroup.controls.newPassword.value ===
         this.formGroup.controls.confirmPsw.value;
 
     if (this.formGroup.valid && differentFromOld && equalWithinNew) {
-      this.userModService.updatePsw(this.formGroup.value).subscribe(
+      let user = JSON.parse(localStorage.getItem('User') as string),
+        payload = this.formGroup.value;
+
+      payload.email = user.email;
+
+      this.userModService.updatePsw(payload).subscribe(
         (res) => {
           this.modalRef.close(res);
         },

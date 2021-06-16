@@ -13,9 +13,9 @@ describe('ModifyPswFormComponent', () => {
   let oldPsw: any, newPsw: any, confPsw: any, buttons: any;
 
   const psw: Psw = {
-    id: '12',
-    oldPassword: 'test',
-    newPassword: 'test',
+    email: 'test@test.it',
+    oldPassword: 'Test123@',
+    newPassword: 'Test123@',
   };
 
   const dialogMock = {
@@ -41,10 +41,10 @@ describe('ModifyPswFormComponent', () => {
     fixture.detectChanges();
     //select fields
     oldPsw = fixture.nativeElement.querySelector(
-      'input[formControlName=oldPsw]'
+      'input[formControlName=oldPassword]'
     );
     newPsw = fixture.nativeElement.querySelector(
-      'input[formControlName=newPsw]'
+      'input[formControlName=newPassword]'
     );
     confPsw = fixture.nativeElement.querySelector(
       'input[formControlName=confirmPsw]'
@@ -91,7 +91,7 @@ describe('ModifyPswFormComponent', () => {
     oldPsw.dispatchEvent(new Event('input'));
     newPsw.dispatchEvent(new Event('input'));
     confPsw.dispatchEvent(new Event('input'));
-    //
+
     let saveButton = buttons[0];
     saveButton.click();
     expect(component.errorMessage).toBe(
