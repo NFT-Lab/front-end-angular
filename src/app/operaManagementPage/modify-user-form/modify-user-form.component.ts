@@ -32,6 +32,7 @@ export class ModifyUserFormComponent implements OnInit {
       name: new FormControl(this.user.name, [Validators.required]),
       surname: new FormControl(this.user.surname, [Validators.required]),
       dob: new FormControl(this.user.dob, [Validators.required]),
+      email: new FormControl(this.user.email, []),
       wallet: new FormControl(this.user.wallet, [
         Validators.required,
         Validators.pattern(/^0x[a-fA-F0-9]{40}$/),
@@ -49,9 +50,7 @@ export class ModifyUserFormComponent implements OnInit {
     if (this.formGroup.valid) {
       let payload = this.formGroup.value,
         userInfo = JSON.parse(localStorage.getItem('User') as string),
-        email = userInfo.email || 'test',
         id = userInfo.id;
-      payload.email = email;
 
       this.userModService.updateUserInfo(payload, id).subscribe(
         (res) => {

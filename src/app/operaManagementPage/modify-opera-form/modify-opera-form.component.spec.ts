@@ -19,7 +19,7 @@ describe('ModifyOperaFormComponent', () => {
     owner: 'test',
     price: 12,
     categories: [{ id: 1, name: 'test' }],
-    type: 'test',
+    type: 'Immagine',
     currency: 'test',
     path: 'test',
   };

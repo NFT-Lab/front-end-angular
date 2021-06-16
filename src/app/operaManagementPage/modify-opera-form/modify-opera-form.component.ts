@@ -20,7 +20,7 @@ export class ModifyOperaFormComponent implements OnInit {
   fileName: string;
   fileSystemPath: string = environment.fileSystemPath;
   nft: Nft;
-  types = ['Immagine', 'Video', 'Documento', 'Audio'];
+  //types = ['Immagine', 'Video', 'Documento', 'Audio'];
   categories: Category[] = [];
 
   constructor(
@@ -44,7 +44,7 @@ export class ModifyOperaFormComponent implements OnInit {
     this.formGroup = new FormGroup({
       name: new FormControl(this.nft.title, [Validators.required]),
       description: new FormControl(this.nft.description, [Validators.required]),
-      type: new FormControl(this.types[0], [Validators.required]),
+      type: new FormControl(this.nft.type, []),
       categories: new FormControl(this.nft.categories, [Validators.required]),
       price: new FormControl(this.nft.price, [Validators.required]),
     });
