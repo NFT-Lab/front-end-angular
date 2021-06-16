@@ -5,7 +5,7 @@
   (ngSubmit)="updateUser()"
 >
   <h2>Modifica i tuoi dati</h2>
-  <p id="error">{{ errorMessage }}</p>
+  <p id="error" *ngIf="errorMessage">{{ errorMessage }}</p>
 
   <mat-form-field>
     <input matInput placeholder="Nome" formControlName="name" />

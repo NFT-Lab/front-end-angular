@@ -74,8 +74,6 @@ export class NewOperaFormComponent implements OnInit {
       newNft.owner = newNft.author = user.name || 'test';
       newNft.price = Number(newNft.price);
 
-      console.log(newNft);
-
       this.operaManService.addOpera(newNft, this.file).subscribe(
         (res) => {
           this.modalRef.close(res);
