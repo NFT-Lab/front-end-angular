@@ -67,33 +67,24 @@
   <mat-card id="operas-list" class="margins flex-grow">
     <div fxLayout="row" fxLayoutAlign="space-around center">
       <h2>Le mie opere <mat-icon class="purple">playlist_play</mat-icon></h2>
-      <div fxLayout="row">
-        <form [formGroup]="formGroup" (submit)="search()">
-          <mat-form-field>
-            <mat-label>Cerca per categoria</mat-label>
-            <mat-select formControlName="categories" multiple>
-              <mat-option
-                *ngFor="let category of allCategories"
-                [value]="category"
-              >
-                {{ category.name }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
+      <button
+        mat-icon-button
+        class="margin-left-1"
+        (click)="openFilterSearchModal()"
+      >
+        Filtra
+        <mat-icon>sort</mat-icon>
+        <mat-icon>expand_more</mat-icon>
+      </button>
 
-          <button mat-icon-button type="submit">
-            <mat-icon>search</mat-icon>
-          </button>
-        </form>
-        <button
-          id="reset"
-          title="Resetta il filtro"
-          mat-icon-button
-          (click)="clearFilters()"
-        >
-          <mat-icon>clear</mat-icon>
-        </button>
-      </div>
+      <button
+        id="reset"
+        title="Resetta il filtro"
+        mat-icon-button
+        (click)="clearFilters()"
+      >
+        <mat-icon>clear</mat-icon>
+      </button>
     </div>
 
     <mat-list class="list-items">

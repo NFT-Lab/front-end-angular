@@ -11,6 +11,7 @@ import { OperaDetailsComponent } from '../opera-details/opera-details.component'
 import { environment } from 'src/environments/environment';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Category } from '@model/Category';
+import { FilterSearchComponent } from 'src/app/_shared/filter-search/filter-search.component';
 
 @Component({
   selector: 'app-opera-management',
@@ -49,6 +50,7 @@ export class OperaManagementComponent implements OnInit {
       //le prossime righe saranno da togliere e servono per testare con stoplight
       //che il filtro di ricerca funzioni
       this.operas[0].categories.push({ id: 1, name: 'test' });
+      this.operas[1].type = 'Immagine';
       this.operas[2].categories.push({ id: 1, name: 'test' });
       //fine
       this.filteredOperas = [...this.operas];
@@ -148,6 +150,43 @@ export class OperaManagementComponent implements OnInit {
           if (nft.id === opera.id) index = i;
         });
       }
+    });
+  }
+
+  filteredSearch(fs: Object): void {
+    let filteredOperas: Nft[] = [];
+    let filters = Object.keys(fs);
+    let filtersValues = Object.values(fs);
+    let next: boolean = false;
+
+    this.operas.forEach((opera) => {
+      filters.forEach((filter: any) => {
+        if (filter === 'cat') {
+          opera.categories.forEach((cat) => {
+            next = false;
+            for (let i = 0; i < filtersValues[0].length && !next; i++) {
+              if (cat.name === filtersValues[0][i].name) {
+                filteredOperas.push(opera);
+                next = true;
+              }
+            }
+          });
+        } else if (filter === 'type') {
+          if (filtersValues[1].includes(opera.type)) filteredOperas.push(opera);
+        } else if (filter === 'like') {
+          //TODO
+        }
+      });
+    });
+    this.filteredOperas = [...filteredOperas];
+  }
+
+  openFilterSearchModal() {
+    let modalRef = this.modal.open(FilterSearchComponent, {
+      panelClass: 'dialog-responsive',
+    });
+    modalRef.afterClosed().subscribe((filters) => {
+      if (filters) this.filteredSearch(filters);
     });
   }
 }
