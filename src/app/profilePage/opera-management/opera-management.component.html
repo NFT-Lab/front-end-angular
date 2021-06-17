@@ -5,8 +5,8 @@
     <div id="header" fxLayout="row" fxLayoutAlign="start center">
       <img src="https://picsum.photos/400/400" />
       <div fxLayout="column">
-        <p class="header-name">{{ userData.name }}</p>
-        <p class="header-name">{{ userData.surname }}</p>
+        <p *ngIf="userData" class="header-name">{{ userData.name }}</p>
+        <p *ngIf="userData" class="header-name">{{ userData.surname }}</p>
         <p>Passionate about crypto 💰 and trading 🚀</p>
       </div>
     </div>
