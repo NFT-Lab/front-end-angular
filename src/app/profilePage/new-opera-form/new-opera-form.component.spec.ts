@@ -1,4 +1,4 @@
-import { CategoriesService } from './../../_services/categories.service';
+import { CategoriesService } from '../../_services/categories.service';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Nft } from '@model/Nft';

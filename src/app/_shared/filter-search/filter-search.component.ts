@@ -50,11 +50,10 @@ export class FilterSearchComponent implements OnInit {
   sendFilters() {
     if (this.payload) {
       let field = this.formGroup.controls;
-      let filters = {
-        cat: field.categories.value,
-        type: field.types.value,
-        like: field.likes.value,
-      };
+      let filters: any = {};
+      if (field.categories.value.length) filters.cat = field.categories.value;
+      if (field.types.value.length) filters.type = field.types.value;
+
       this.modalRef.close(filters);
     }
   }

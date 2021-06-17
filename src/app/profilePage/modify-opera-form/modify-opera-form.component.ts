@@ -1,3 +1,4 @@
+import { CategoriesService } from './../../_services/categories.service';
 import { Category } from '@model/Category';
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -6,6 +7,7 @@ import { Nft } from '@model/Nft';
 import { OperaManagementService } from '@service/opera-management.service';
 import { environment } from 'src/environments/environment';
 import { Type } from '@model/Utils';
+import { TypeToShow } from '@model/Utils';
 
 @Component({
   selector: 'app-modify-opera-form',
@@ -20,12 +22,12 @@ export class ModifyOperaFormComponent implements OnInit {
   fileName: string;
   fileSystemPath: string = environment.fileSystemPath;
   nft: Nft;
-  //types = ['Immagine', 'Video', 'Documento', 'Audio'];
   categories: Category[] = [];
 
   constructor(
     @Inject(MAT_DIALOG_DATA) opera: Nft,
     private operaManService: OperaManagementService,
+    private catService: CategoriesService,
     public modalRef: MatDialogRef<ModifyOperaFormComponent>
   ) {
     this.nft = opera;
@@ -34,6 +36,13 @@ export class ModifyOperaFormComponent implements OnInit {
   ngOnInit(): void {
     this.categories = this.nft.categories;
     this.initForm();
+    this.getCategories();
+  }
+
+  getCategories() {
+    return this.catService
+      .getCategories()
+      .subscribe((cat) => (this.categories = cat));
   }
 
   getPath() {
@@ -44,8 +53,8 @@ export class ModifyOperaFormComponent implements OnInit {
     this.formGroup = new FormGroup({
       name: new FormControl(this.nft.title, [Validators.required]),
       description: new FormControl(this.nft.description, [Validators.required]),
-      type: new FormControl(this.nft.type, []),
-      categories: new FormControl(this.nft.categories, [Validators.required]),
+      type: new FormControl(TypeToShow[this.nft.type], []),
+      categories: new FormControl(this.categories, [Validators.required]),
       price: new FormControl(this.nft.price, [Validators.required]),
     });
   }

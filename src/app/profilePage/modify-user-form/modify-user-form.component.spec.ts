@@ -108,11 +108,10 @@ describe('ModifyUserFormComponent', () => {
     });
   });
 
-  it('should show an error message with internal server error', () => {
+  it('should show an error message with internal server error', async () => {
     let saveButton = buttons[0];
     expect(component.formGroup.valid).toBe(false);
     //wait for enabling button
-
     fixture.whenStable().then(() => {
       psw = fixture.nativeElement.querySelector(
         'input[formControlName=password]'
@@ -130,10 +129,9 @@ describe('ModifyUserFormComponent', () => {
       //send data
       saveButton.click();
       //expects
-      /*
       expect(component.errorMessage)
         .toBe(`Si è verificato un problema nell'operazione di modifica.
-                         Riprova più tardi.`);*/
+                         Riprova più tardi.`);
     });
   });
 });

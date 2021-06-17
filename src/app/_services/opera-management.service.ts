@@ -11,21 +11,12 @@ export class OperaManagementService {
   private operaManagementUrl = environment.apiUrl + '/nft/user'; // URL to web api
   //private operaManagementUrl = environment.apiUrl + '/nft/user?__example=test';
 
-  private user = JSON.parse(localStorage.getItem('User') || '{}');
-
   //API URL PER INTEGRAZIONE
   //private operaManagementUrl = environment.nftApiUrl + 'nft/user/' + this.user.id;
 
   private httpOptionsGet = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-    //params: { id: this.user.id },
   };
-
-  /*
-  private httpOptionsPost = {
-    params: { id: this.user.id },
-  };
-  */
 
   constructor(private http: HttpClient) {}
 
@@ -38,11 +29,7 @@ export class OperaManagementService {
     formData.append('file', file);
     formData.append('opera', JSON.stringify(opera));
 
-    return this.http.post<Nft>(
-      this.operaManagementUrl,
-      formData
-      //this.httpOptionsPost
-    );
+    return this.http.post<Nft>(this.operaManagementUrl, formData);
   }
 
   updateOpera(opera: Nft): Observable<Object> {

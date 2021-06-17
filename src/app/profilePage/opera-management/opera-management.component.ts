@@ -1,10 +1,10 @@
-import { CategoriesService } from './../../_services/categories.service';
-import { ModifyPswFormComponent } from './../modify-psw-form/modify-psw-form.component';
-import { ModifyUserFormComponent } from './../modify-user-form/modify-user-form.component';
-import { ModifyOperaFormComponent } from './../modify-opera-form/modify-opera-form.component';
-import { NewOperaFormComponent } from './../new-opera-form/new-opera-form.component';
+import { CategoriesService } from '../../_services/categories.service';
+import { ModifyPswFormComponent } from '../modify-psw-form/modify-psw-form.component';
+import { ModifyUserFormComponent } from '../modify-user-form/modify-user-form.component';
+import { ModifyOperaFormComponent } from '../modify-opera-form/modify-opera-form.component';
+import { NewOperaFormComponent } from '../new-opera-form/new-opera-form.component';
 import { MatDialog } from '@angular/material/dialog';
-import { OperaManagementService } from './../../_services/opera-management.service';
+import { OperaManagementService } from '../../_services/opera-management.service';
 import { Component, OnInit } from '@angular/core';
 import { Nft } from '@model/Nft';
 import { OperaDetailsComponent } from '../opera-details/opera-details.component';
@@ -52,6 +52,7 @@ export class OperaManagementComponent implements OnInit {
       this.operas[0].categories.push({ id: 1, name: 'test' });
       this.operas[1].type = 'Immagine';
       this.operas[2].categories.push({ id: 1, name: 'test' });
+      this.operas[2].type = 'Immagine';
       //fine
       this.filteredOperas = [...this.operas];
     });
@@ -76,26 +77,28 @@ export class OperaManagementComponent implements OnInit {
       categories: new FormControl(this.allCategories, [Validators.required]),
     });
   }
-
+  /*
   search() {
     if (this.formGroup.valid) {
       let catChosen: Category[] = this.formGroup.controls.categories.value;
       let operaFiltered: Nft[] = [];
       let next: boolean = false;
-      this.operas.forEach((opera) => {
-        opera.categories.forEach((cat) => {
-          next = false;
-          for (let i = 0; i < catChosen.length && !next; i++) {
-            if (cat.name === catChosen[i].name) {
-              operaFiltered.push(opera);
-              next = true;
+      if (this.operas.length) {
+        this.operas.forEach((opera) => {
+          opera.categories.forEach((cat) => {
+            next = false;
+            for (let i = 0; i < catChosen.length && !next; i++) {
+              if (cat.name === catChosen[i].name) {
+                operaFiltered.push(opera);
+                next = true;
+              }
             }
-          }
+          });
         });
-      });
+      }
       this.filteredOperas = [...operaFiltered];
     }
-  }
+  }*/
 
   clearFilters() {
     this.filteredOperas = [...this.operas];
@@ -154,30 +157,39 @@ export class OperaManagementComponent implements OnInit {
   }
 
   filteredSearch(fs: Object): void {
+    this.filteredOperas = [...this.operas];
     let filteredOperas: Nft[] = [];
     let filters = Object.keys(fs);
-    let filtersValues = Object.values(fs);
+    let filtersValues: any = fs;
     let next: boolean = false;
+    let ok: boolean = true;
+    let k = 0;
 
-    this.operas.forEach((opera) => {
-      filters.forEach((filter: any) => {
-        if (filter === 'cat') {
-          opera.categories.forEach((cat) => {
-            next = false;
-            for (let i = 0; i < filtersValues[0].length && !next; i++) {
-              if (cat.name === filtersValues[0][i].name) {
-                filteredOperas.push(opera);
-                next = true;
+    if (filters.length && this.operas.length) {
+      this.operas.forEach((opera) => {
+        k = 0;
+        ok = true;
+        filters.forEach((filter: any) => {
+          if (filter === 'cat' && opera.categories.length) {
+            opera.categories.forEach((cat) => {
+              next = false;
+              for (let i = 0; i < filtersValues.cat.length && !next; i++) {
+                if (cat.name === filtersValues.cat[i].name) {
+                  next = true;
+                  k++;
+                  ok = true;
+                } else ok = false;
               }
-            }
-          });
-        } else if (filter === 'type') {
-          if (filtersValues[1].includes(opera.type)) filteredOperas.push(opera);
-        } else if (filter === 'like') {
-          //TODO
-        }
+            });
+          }
+          if (ok && filter === 'type') {
+            if (filtersValues.type.includes(opera.type)) k++;
+          }
+        });
+        if (k === filters.length) filteredOperas.push(opera);
       });
-    });
+    }
+
     this.filteredOperas = [...filteredOperas];
   }
 

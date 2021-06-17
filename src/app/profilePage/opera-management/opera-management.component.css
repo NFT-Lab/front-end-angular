@@ -37,6 +37,7 @@
 
 #info {
   background-color: #1f75fe33;
+  max-width: 50%;
 }
 
 #info img {
@@ -122,4 +123,10 @@ img {
 
 #content {
   padding-bottom: 1em;
+}
+
+@media screen and (max-width: 1100px) {
+  #info {
+    max-width: none;
+  }
 }

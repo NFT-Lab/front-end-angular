@@ -1,7 +1,7 @@
-import { User } from './../../_models/User';
-import { Category } from './../../_models/Category';
-import { CategoriesService } from './../../_services/categories.service';
-import { OperaManagementService } from './../../_services/opera-management.service';
+import { User } from '../../_models/User';
+import { Category } from '../../_models/Category';
+import { CategoriesService } from '../../_services/categories.service';
+import { OperaManagementService } from '../../_services/opera-management.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';

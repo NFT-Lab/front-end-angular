@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Nft } from '@model/Nft';
 import { environment } from 'src/environments/environment';
 import { MatDialog } from '@angular/material/dialog';
-import { OperaDetailsComponent } from '../operaManagementPage/opera-details/opera-details.component';
+import { OperaDetailsComponent } from '../profilePage/opera-details/opera-details.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -44,31 +44,39 @@ export class HomeComponent implements OnInit {
   }
 
   filteredSearch(fs: Object): void {
+    this.operasToShow = [...this.allOperas];
     this.searchDone = true;
     let filteredOperas: Nft[] = [];
     let filters = Object.keys(fs);
-    let filtersValues = Object.values(fs);
+    let filtersValues: any = fs;
     let next: boolean = false;
+    let ok: boolean = true;
+    let k = 0;
 
-    this.allOperas.forEach((opera) => {
-      filters.forEach((filter: any) => {
-        if (filter === 'cat') {
-          opera.categories.forEach((cat) => {
-            next = false;
-            for (let i = 0; i < filtersValues[0].length && !next; i++) {
-              if (cat.name === filtersValues[0][i].name) {
-                filteredOperas.push(opera);
-                next = true;
+    if (filters.length && this.allOperas.length) {
+      this.allOperas.forEach((opera) => {
+        k = 0;
+        ok = true;
+        filters.forEach((filter: any) => {
+          if (filter === 'cat' && opera.categories.length) {
+            opera.categories.forEach((cat) => {
+              next = false;
+              for (let i = 0; i < filtersValues.cat.length && !next; i++) {
+                if (cat.name === filtersValues.cat[i].name) {
+                  next = true;
+                  k++;
+                  ok = true;
+                } else ok = false;
               }
-            }
-          });
-        } else if (filter === 'type') {
-          if (filtersValues[1].includes(opera.type)) filteredOperas.push(opera);
-        } else if (filter === 'like') {
-          //TODO
-        }
+            });
+          }
+          if (ok && filter === 'type') {
+            if (filtersValues.type.includes(opera.type)) k++;
+          }
+        });
+        if (k === filters.length) filteredOperas.push(opera);
       });
-    });
+    }
     this.operasToShow = [...filteredOperas];
   }
 
@@ -81,9 +89,12 @@ export class HomeComponent implements OnInit {
       this.allOperas = this.operasToShow = operas;
       //le prossime righe saranno da togliere e servono per testare con stoplight
       //che il filtro di ricerca funzioni
+
       this.allOperas[0].categories.push({ id: 1, name: 'test' });
       this.allOperas[1].type = 'Immagine';
       this.allOperas[2].categories.push({ id: 1, name: 'test' });
+      this.allOperas[2].type = 'Immagine';
+
       //fine
 
       //le prossime righe saranno da togliere e servono per assegnare un nome a caso

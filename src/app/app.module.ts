@@ -25,16 +25,16 @@ import { HomeComponent } from './home/home.component';
 import { LoginFormComponent } from './loginPage/login-form/login-form.component';
 import { LoginComponent } from './loginPage/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { OperaManagementComponent } from './operaManagementPage/opera-management/opera-management.component';
-import { NewOperaFormComponent } from './operaManagementPage/new-opera-form/new-opera-form.component';
+import { OperaManagementComponent } from './profilePage/opera-management/opera-management.component';
+import { NewOperaFormComponent } from './profilePage/new-opera-form/new-opera-form.component';
 import { HeaderComponent } from './_shared/header/header.component';
-import { OperaDetailsComponent } from './operaManagementPage/opera-details/opera-details.component';
-import { ModifyOperaFormComponent } from './operaManagementPage/modify-opera-form/modify-opera-form.component';
+import { OperaDetailsComponent } from './profilePage/opera-details/opera-details.component';
+import { ModifyOperaFormComponent } from './profilePage/modify-opera-form/modify-opera-form.component';
 import { FooterComponent } from './_shared/footer/footer.component';
 import { SignUpComponent } from './signupPage/sign-up/sign-up.component';
 import { SignupFormComponent } from './signupPage/signup-form/signup-form.component';
-import { ModifyUserFormComponent } from './operaManagementPage/modify-user-form/modify-user-form.component';
-import { ModifyPswFormComponent } from './operaManagementPage/modify-psw-form/modify-psw-form.component';
+import { ModifyUserFormComponent } from './profilePage/modify-user-form/modify-user-form.component';
+import { ModifyPswFormComponent } from './profilePage/modify-psw-form/modify-psw-form.component';
 import { FilterSearchComponent } from './_shared/filter-search/filter-search.component';
 
 const materialModules = [

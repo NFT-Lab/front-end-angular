@@ -11,3 +11,10 @@ export const Type: any = {
   Audio: 'audio',
   Documento: 'doc',
 };
+
+export const TypeToShow: any = {
+  img: 'Immagine',
+  video: 'Video',
+  audio: 'Audio',
+  doc: 'Documento',
+};
