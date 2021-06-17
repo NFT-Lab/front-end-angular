@@ -6,6 +6,7 @@ import { of, throwError } from 'rxjs';
 import { AppModule } from 'src/app/app.module';
 
 import { ModifyOperaFormComponent } from './modify-opera-form.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('ModifyOperaFormComponent', () => {
   let component: ModifyOperaFormComponent;
@@ -37,7 +38,7 @@ describe('ModifyOperaFormComponent', () => {
         { provide: MAT_DIALOG_DATA, useValue: opera },
         { provide: MatDialogRef, useValue: dialogMock },
       ],
-      imports: [AppModule],
+      imports: [AppModule, HttpClientTestingModule],
       declarations: [ModifyOperaFormComponent],
     }).compileComponents();
   });
