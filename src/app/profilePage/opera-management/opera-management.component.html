@@ -14,18 +14,19 @@
     <mat-list>
       <mat-list-item>
         <p class="title">Data di nascita:</p>
-        <p>{{ userData.dob }}</p>
+        <p *ngIf="userData">{{ userData.dob }}</p>
       </mat-list-item>
       <mat-list-item>
         <p class="title">Email:</p>
-        <p>{{ userData.email }}</p>
+        <p *ngIf="userData">{{ userData.email }}</p>
       </mat-list-item>
       <mat-list-item>
         <p class="title">Wallet:</p>
-        <p>{{ userData.wallet }}</p>
+        <p *ngIf="userData">{{ userData.wallet }}</p>
       </mat-list-item>
       <mat-list-item>
         <a
+          *ngIf="userData"
           href="{{
             'https://www.blockchain.com/eth/address/' + userData.wallet
           }}"
