@@ -9,6 +9,7 @@ import { AppModule } from 'src/app/app.module';
 import { NewOperaFormComponent } from './new-opera-form.component';
 import { Category } from '@model/Category';
 import { User } from '@model/User';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('NewOperaFormComponent', () => {
   let component: NewOperaFormComponent;
@@ -50,7 +51,7 @@ describe('NewOperaFormComponent', () => {
         OperaManagementService,
         { provide: MatDialogRef, useValue: dialogMock },
       ],
-      imports: [AppModule],
+      imports: [AppModule, HttpClientTestingModule],
       declarations: [NewOperaFormComponent],
     }).compileComponents();
   });

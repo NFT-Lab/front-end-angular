@@ -9,6 +9,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { Category } from '@model/Category';
 import { OperaManagementService } from '@service/opera-management.service';
 import { CategoriesService } from '@service/categories.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('OperaManagementComponent', () => {
   let component: OperaManagementComponent;
@@ -34,7 +35,7 @@ describe('OperaManagementComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppModule],
+      imports: [AppModule, HttpClientTestingModule],
       declarations: [OperaManagementComponent],
     }).compileComponents();
   });
