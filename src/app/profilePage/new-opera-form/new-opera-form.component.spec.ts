@@ -74,6 +74,7 @@ describe('NewOperaFormComponent', () => {
 
   it('dialog should be closed', () => {
     let spy = spyOn(component.modalRef, 'close').and.callThrough();
+    component.getUserInfo();
     component.closeModal();
     expect(spy).toHaveBeenCalled();
   });

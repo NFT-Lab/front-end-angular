@@ -58,10 +58,17 @@ describe('OperaManagementComponent', () => {
       afterClosed: () => of(opera),
     } as MatDialogRef<typeof ModifyOperaFormComponent>);
 
+    component.getPath(opera);
+    component.clearFilters();
+    component.filteredSearch({
+      cat: [{ id: 1, name: 'test' }],
+      type: ['test'],
+    });
     component.openAddOperaModal();
     component.openModifyOperaModal(opera);
     component.openDetailsOperaModal(opera);
     component.openModifyUserData();
     component.openModifyUserPsw();
+    component.openFilterSearchModal();
   });
 });
