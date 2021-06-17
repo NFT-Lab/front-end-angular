@@ -1,3 +1,4 @@
+import { Type } from '@model/Utils';
 import { User } from '../../_models/User';
 import { Category } from '../../_models/Category';
 import { CategoriesService } from '../../_services/categories.service';
@@ -51,13 +52,26 @@ export class NewOperaFormComponent implements OnInit {
     if (target.files) {
       this.fileName = target.files[0].name;
       this.file = target.files[0];
-      if (target.files[0].type.includes('image')) {
+
+      let type = target.files[0].type;
+      console.log(type);
+
+      if (type.includes('image')) {
         this.type = 'Immagine';
         let reader = new FileReader();
         reader.readAsDataURL(target.files[0]);
         reader.onload = (event: any) => {
           this.path = event.target.result;
         };
+      } else if (type.includes('audio')) {
+        this.type = 'Audio';
+        this.path = 'assets/document.png';
+      } else if (type.includes('video')) {
+        this.type = 'Video';
+        this.path = 'assets/document.png';
+      } else if (type.includes('application')) {
+        this.type = 'Documento';
+        this.path = 'assets/document.png';
       } else {
         this.path = 'assets/document.png';
       }
@@ -75,6 +89,7 @@ export class NewOperaFormComponent implements OnInit {
       let newNft = this.formGroup.value,
         user: User = this.getUserInfo();
 
+      newNft.type = Type[this.type];
       newNft.currency = 'ETH';
       newNft.owner = newNft.author = user.name;
       newNft.price = Number(newNft.price);
