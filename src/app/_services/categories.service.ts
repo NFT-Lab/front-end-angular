@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class CategoriesService {
-  private categoriesUrl = environment.apiUrl + '/categories'; // URL to web api
+  private categoriesUrl = environment.apiUrl + '/categories?__example=test1'; // URL to web api
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),

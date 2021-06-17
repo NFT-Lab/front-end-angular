@@ -8,8 +8,8 @@ import { environment } from './../../environments/environment';
   providedIn: 'root',
 })
 export class OperaManagementService {
-  private operaManagementUrl = environment.apiUrl + '/nft/user'; // URL to web api
-  //private operaManagementUrl = environment.apiUrl + '/nft/user?__example=test';
+  //private operaManagementUrl = environment.apiUrl + '/nft/user'; // URL to web api
+  private operaManagementUrl = environment.apiUrl + '/nft/user?__example=test1';
 
   //API URL PER INTEGRAZIONE
   //private operaManagementUrl = environment.nftApiUrl + 'nft/user/' + this.user.id;

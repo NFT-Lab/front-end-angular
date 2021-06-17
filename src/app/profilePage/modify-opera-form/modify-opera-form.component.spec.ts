@@ -70,7 +70,7 @@ describe('ModifyOperaFormComponent', () => {
     saveButton.click();
   });
 
-  it('should show an error message with internal server error', () => {
+  it('should show an error message with internal server error', async () => {
     let saveButton = buttons[0];
     //mock 500 error response
     spyOn(operaManService, 'updateOpera').and.returnValue(

@@ -8,7 +8,8 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class OperasService {
-  private operasUrl = environment.apiUrl + '/nft'; // URL to web api
+  //private operasUrl = environment.apiUrl + '/nft'; // URL to web api
+  private operasUrl = environment.apiUrl + '/nft?__example=test1';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),

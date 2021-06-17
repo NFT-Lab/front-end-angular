@@ -1,3 +1,4 @@
+import { Type } from '@model/Utils';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Category } from '@model/Category';
@@ -13,7 +14,7 @@ export class FilterSearchComponent implements OnInit {
   allCategories: Category[] = [];
   formGroup: FormGroup;
   payload: boolean = true;
-  types: string[] = ['Immagine', 'Video', 'Audio', 'Documento', 'Altro'];
+  types: string[] = ['Immagine', 'Video', 'Audio', 'Documento'];
 
   constructor(
     private catService: CategoriesService,
@@ -38,7 +39,7 @@ export class FilterSearchComponent implements OnInit {
       this.allCategories = cats;
       //le prossime righe saranno da togliere e servono per testare con stoplight
       //che il filtro di ricerca funzioni
-      this.allCategories.push({ id: 1, name: 'test' });
+      //this.allCategories.push({ id: 3, name: 'food' });
       //fine
     });
   }
@@ -52,7 +53,13 @@ export class FilterSearchComponent implements OnInit {
       let field = this.formGroup.controls;
       let filters: any = {};
       if (field.categories.value.length) filters.cat = field.categories.value;
-      if (field.types.value.length) filters.type = field.types.value;
+      if (field.types.value.length) {
+        for (let i = 0; i < field.types.value.length; i++) {
+          field.types.value[i] = Type[field.types.value[i]];
+        }
+
+        filters.type = field.types.value;
+      }
 
       this.modalRef.close(filters);
     }

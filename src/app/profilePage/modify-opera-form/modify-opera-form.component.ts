@@ -23,6 +23,8 @@ export class ModifyOperaFormComponent implements OnInit {
   fileSystemPath: string = environment.fileSystemPath;
   nft: Nft;
   categories: Category[] = [];
+  selectedCategories: Category[] = [];
+  close: boolean;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) opera: Nft,
@@ -30,7 +32,9 @@ export class ModifyOperaFormComponent implements OnInit {
     private catService: CategoriesService,
     public modalRef: MatDialogRef<ModifyOperaFormComponent>
   ) {
+    this.close = false;
     this.nft = opera;
+    this.selectedCategories = this.nft.categories;
   }
 
   ngOnInit(): void {
@@ -57,10 +61,12 @@ export class ModifyOperaFormComponent implements OnInit {
       categories: new FormControl(this.categories, [Validators.required]),
       price: new FormControl(this.nft.price, [Validators.required]),
     });
+    //let cats = this.formGroup.controls.categories as any;
+    //cats.updateValue(this.selectedCategories);
   }
 
   updateOpera(): void {
-    if (this.formGroup.valid) {
+    if (this.formGroup.valid && !this.close) {
       let newNft = this.formGroup.value,
         modOpera = { ...this.nft };
 
@@ -85,6 +91,7 @@ export class ModifyOperaFormComponent implements OnInit {
   }
 
   closeModal(): void {
+    this.close = true;
     this.modalRef.close();
   }
 }

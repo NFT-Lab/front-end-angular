@@ -49,10 +49,8 @@ export class OperaManagementComponent implements OnInit {
       });
       //le prossime righe saranno da togliere e servono per testare con stoplight
       //che il filtro di ricerca funzioni
-      this.operas[0].categories.push({ id: 1, name: 'test' });
-      this.operas[1].type = 'Immagine';
-      this.operas[2].categories.push({ id: 1, name: 'test' });
-      this.operas[2].type = 'Immagine';
+      //this.operas[0].categories.push({ id: 1, name: 'test' });
+      //this.operas[2].categories.push({ id: 1, name: 'test' });
       //fine
       this.filteredOperas = [...this.operas];
     });
@@ -63,7 +61,7 @@ export class OperaManagementComponent implements OnInit {
       this.allCategories = cats;
       //le prossime righe saranno da togliere e servono per testare con stoplight
       //che il filtro di ricerca funzioni
-      this.allCategories.push({ id: 1, name: 'test' });
+      //this.allCategories.push({ id: 1, name: 'test' });
       //fine
     });
   }

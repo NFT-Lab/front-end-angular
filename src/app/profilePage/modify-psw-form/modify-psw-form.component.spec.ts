@@ -126,7 +126,7 @@ describe('ModifyPswFormComponent', () => {
     expect(component.formGroup.valid).toBe(true);
   });
 
-  it('should show an error message with internal server error', () => {
+  it('should show an error message with internal server error', async () => {
     //set fields
     oldPsw.value = 'Test123@';
     newPsw.value = 'Test123@2';
@@ -144,10 +144,9 @@ describe('ModifyPswFormComponent', () => {
     saveButton.click();
     //expects
     expect(component.formGroup.valid).toBe(true);
-    /*
+
     expect(component.errorMessage)
       .toBe(`Si è verificato un problema nell'operazione di modifica.
                          Riprova più tardi.`);
-                         */
   });
 });

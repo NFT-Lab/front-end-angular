@@ -38,9 +38,13 @@ export class LoginFormComponent implements OnInit {
     if (this.formGroup.valid) {
       this.authenticationService.login(this.formGroup.value).subscribe(
         (res) => {
-          this.errorMessage = '';
-          localStorage.setItem('User', JSON.stringify(res));
-          this.router.navigateByUrl('');
+          if (res != null) {
+            this.errorMessage = '';
+            localStorage.setItem('User', JSON.stringify(res));
+            this.router.navigateByUrl('');
+          } else {
+            this.errorMessage = 'Nessunca corrispondenza';
+          }
         },
         (error) => {
           if (error.status === 204)

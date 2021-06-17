@@ -89,12 +89,10 @@ export class HomeComponent implements OnInit {
       this.allOperas = this.operasToShow = operas;
       //le prossime righe saranno da togliere e servono per testare con stoplight
       //che il filtro di ricerca funzioni
-
+      /*
       this.allOperas[0].categories.push({ id: 1, name: 'test' });
-      this.allOperas[1].type = 'Immagine';
       this.allOperas[2].categories.push({ id: 1, name: 'test' });
-      this.allOperas[2].type = 'Immagine';
-
+      */
       //fine
 
       //le prossime righe saranno da togliere e servono per assegnare un nome a caso

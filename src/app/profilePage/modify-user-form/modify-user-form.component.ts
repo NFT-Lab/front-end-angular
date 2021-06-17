@@ -58,7 +58,10 @@ export class ModifyUserFormComponent implements OnInit {
 
       this.userModService.updateUserInfo(payload, id).subscribe(
         (res) => {
-          this.modalRef.close(res);
+          if (res !== null) {
+            localStorage['User'] = JSON.stringify(res);
+            this.modalRef.close(res);
+          }
         },
         () => {
           this.errorMessage = `Si è verificato un problema nell'operazione di modifica.
