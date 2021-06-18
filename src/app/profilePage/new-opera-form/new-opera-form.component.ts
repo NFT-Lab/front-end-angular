@@ -54,7 +54,6 @@ export class NewOperaFormComponent implements OnInit {
       this.file = target.files[0];
 
       let type = target.files[0].type;
-      console.log(type);
 
       if (type.includes('image')) {
         this.type = 'Immagine';
