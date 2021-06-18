@@ -23,7 +23,7 @@ export class ModifyOperaFormComponent implements OnInit {
   fileSystemPath: string = environment.fileSystemPath;
   nft: Nft;
   categories: Category[] = [];
-  selectedCategories: Category[] = [];
+  selectedCategories: any = [];
   close: boolean;
 
   constructor(
@@ -34,13 +34,16 @@ export class ModifyOperaFormComponent implements OnInit {
   ) {
     this.close = false;
     this.nft = opera;
-    this.selectedCategories = this.nft.categories;
   }
 
   ngOnInit(): void {
     this.categories = this.nft.categories;
     this.initForm();
     this.getCategories();
+
+    for (let i = 0; i < this.categories.length; i++) {
+      this.selectedCategories[i] = this.categories[i].name;
+    }
   }
 
   getCategories() {
@@ -61,8 +64,8 @@ export class ModifyOperaFormComponent implements OnInit {
       categories: new FormControl(this.categories, [Validators.required]),
       price: new FormControl(this.nft.price, [Validators.required]),
     });
-    //let cats = this.formGroup.controls.categories as any;
-    //cats.updateValue(this.selectedCategories);
+    let cats = this.formGroup.get('categories') as any;
+    cats.setValue(this.selectedCategories);
   }
 
   updateOpera(): void {

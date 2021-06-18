@@ -26,6 +26,7 @@
     *ngIf="route.url === '/'"
     mat-icon-button
     class="margin-left-1"
+    id="filter-button"
     (click)="openFilterSearchModal()"
   >
     <mat-icon>sort</mat-icon>
@@ -34,16 +35,18 @@
 
   <span class="spacer"></span>
 
-  <div *ngIf="checkAuth()">
-    <span class="spaces">Effettua il</span>
-    <a routerLink="/login" id="login-btn" mat-raised-button>Login</a>
-    <span class="spaces">oppure</span>
-    <a routerLink="/signup" id="signup-btn" mat-raised-button>Iscriviti</a>
-  </div>
+  <div id="welcome-container">
+    <div *ngIf="checkAuth()">
+      <span class="spaces">Effettua il</span>
+      <a routerLink="/login" id="login-btn" mat-raised-button>Login</a>
+      <span class="spaces">oppure</span>
+      <a routerLink="/signup" id="signup-btn" mat-raised-button>Iscriviti</a>
+    </div>
 
-  <p id="welcome" [matMenuTriggerFor]="userMenu" *ngIf="!checkAuth()">
-    Ciao, {{ userName }}
-  </p>
+    <p id="welcome" [matMenuTriggerFor]="userMenu" *ngIf="!checkAuth()">
+      Ciao, {{ userName }}
+    </p>
+  </div>
 
   <button mat-icon-button [matMenuTriggerFor]="userMenu" *ngIf="!checkAuth()">
     <mat-icon id="icon">account_circle</mat-icon>

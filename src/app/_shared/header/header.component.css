@@ -13,7 +13,7 @@
 
 #header img {
   width: 7em;
-  margin-top: 0.8em;
+  margin-top: 0.4em;
 }
 
 #header span {
@@ -47,6 +47,7 @@
 }
 
 .search {
+  min-width: 10em;
   width: 30%;
   position: relative;
   display: flex;
@@ -77,4 +78,41 @@
   border-radius: 0 5px 5px 0;
   cursor: pointer;
   font-size: 20px;
+}
+
+@media screen and (max-width: 800px) {
+  #header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: initial;
+    height: fit-content;
+  }
+
+  #filter-button {
+    margin-left: 0.3em;
+    margin-top: 0.7em;
+  }
+
+  #welcome-container {
+    margin-left: auto;
+  }
+
+  #welcome-container > div {
+    padding-bottom: 0.5em;
+  }
+
+  .mat-icon-button {
+    margin-top: 0.2em;
+  }
+
+  .search {
+    width: 60%;
+    margin-top: 2.2em;
+  }
+
+  #header img {
+    width: 5em;
+    margin-top: 1.6em;
+  }
 }

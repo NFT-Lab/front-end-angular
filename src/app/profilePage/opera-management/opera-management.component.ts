@@ -130,6 +130,7 @@ export class OperaManagementComponent implements OnInit {
     modalRef.afterClosed().subscribe((opera) => {
       if (opera) this.operas.push(opera);
     });
+    this.filteredOperas = [...this.operas];
   }
 
   openDetailsOperaModal(opera: Nft) {
@@ -150,6 +151,7 @@ export class OperaManagementComponent implements OnInit {
         this.operas.forEach((nft, i) => {
           if (nft.id === opera.id) index = i;
         });
+        this.filteredOperas = [...this.operas];
       }
     });
   }
