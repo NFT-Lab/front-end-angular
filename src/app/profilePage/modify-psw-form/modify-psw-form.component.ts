@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { UserManagementService } from '@service/user-management.service';
+import { User } from '@model/User';
 
 @Component({
   selector: 'app-modify-psw-form',
@@ -30,22 +31,31 @@ export class ModifyPswFormComponent implements OnInit {
       ),
     ];
     this.formGroup = new FormGroup({
-      oldPsw: new FormControl('', validators),
-      newPsw: new FormControl('', validators),
+      oldPassword: new FormControl('', validators),
+      newPassword: new FormControl('', validators),
       confirmPsw: new FormControl('', validators),
     });
   }
 
+  getUserInfo(): User {
+    return JSON.parse(localStorage.getItem('User') as string);
+  }
+
   updatePsw(): void {
     let differentFromOld: boolean =
-        this.formGroup.controls.oldPsw.value !==
-        this.formGroup.controls.newPsw.value,
+        this.formGroup.controls.oldPassword.value !==
+        this.formGroup.controls.newPassword.value,
       equalWithinNew: boolean =
-        this.formGroup.controls.newPsw.value ===
+        this.formGroup.controls.newPassword.value ===
         this.formGroup.controls.confirmPsw.value;
 
     if (this.formGroup.valid && differentFromOld && equalWithinNew) {
-      this.userModService.updatePsw(this.formGroup.value).subscribe(
+      let user = this.getUserInfo(),
+        payload = this.formGroup.value;
+
+      payload.email = user.email;
+
+      this.userModService.updatePsw(payload).subscribe(
         (res) => {
           this.modalRef.close(res);
         },

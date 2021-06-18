@@ -1,3 +1,4 @@
+import { TypeToShow } from './../../_models/Utils';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Nft } from '@model/Nft';
@@ -16,6 +17,10 @@ export class OperaDetailsComponent {
     public modalRef: MatDialogRef<OperaDetailsComponent>
   ) {
     this.nft = opera;
+  }
+
+  getType(): string {
+    return TypeToShow[this.nft.type];
   }
 
   getPath() {

@@ -31,7 +31,13 @@ describe('OperaDetailsComponent', () => {
 
   it('dialog should be closed', () => {
     let spy = spyOn(component.modalRef, 'close').and.callThrough();
+    component.getColor(1);
     component.getColor(2);
+    component.getColor(3);
+    component.getColor(4);
+    component.getColor(5);
+    component.getColor(6);
+    component.getColor(0);
     component.closeModal();
     expect(spy).toHaveBeenCalled();
   });

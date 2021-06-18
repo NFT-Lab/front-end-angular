@@ -86,7 +86,8 @@
             "main": "src/test.ts",
             "codeCoverageExclude": [
               "src/app/_services/**",
-              "src/app/_shared/**"
+              "src/app/_shared/**",
+              "src/app/home/**"
             ],
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",

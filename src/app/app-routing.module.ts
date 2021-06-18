@@ -1,5 +1,5 @@
 import { SignUpComponent } from './signupPage/sign-up/sign-up.component';
-import { OperaManagementComponent } from './operaManagementPage/opera-management/opera-management.component';
+import { OperaManagementComponent } from './profilePage/opera-management/opera-management.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './loginPage/login/login.component';
 import { NgModule } from '@angular/core';

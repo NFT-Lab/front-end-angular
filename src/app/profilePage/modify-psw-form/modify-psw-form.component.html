@@ -11,7 +11,7 @@
     <input
       matInput
       placeholder="Password attuale"
-      formControlName="oldPsw"
+      formControlName="oldPassword"
       [type]="!hide ? 'password' : 'text'"
     />
     <mat-icon id="hide-icon" matSuffix (click)="hide = !hide">{{
@@ -23,7 +23,7 @@
     <input
       matInput
       placeholder="Nuova password"
-      formControlName="newPsw"
+      formControlName="newPassword"
       [type]="!hide ? 'password' : 'text'"
     />
   </mat-form-field>

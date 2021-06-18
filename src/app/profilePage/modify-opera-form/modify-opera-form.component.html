@@ -2,9 +2,9 @@
   id="add-opera-form"
   fxLayout="column"
   [formGroup]="formGroup"
-  (ngSubmit)="addOpera()"
+  (ngSubmit)="updateOpera()"
 >
-  <h2>Inserisci una nuova opera</h2>
+  <h2>Modifica la tua opera</h2>
   <p id="error">{{ errorMessage }}</p>
 
   <mat-form-field>
@@ -12,11 +12,7 @@
   </mat-form-field>
 
   <div id="input-container" fxLayout="row" fxLayoutAlign="space-around center">
-    <img id="preview" [src]="path" [alt]="" />
-    <button mat-raised-button disabled>
-      <label for="input-file">{{ uploadLabel }}</label>
-    </button>
-    <input id="input-file" type="file" (change)="selectFile($event)" />
+    <img id="preview" [src]="getPath()" alt="preview image" />
   </div>
 
   <p id="file-name" *ngIf="fileName">Nome del file: {{ fileName }}</p>
@@ -29,6 +25,7 @@
     ></textarea>
   </mat-form-field>
 
+  <!--
   <mat-form-field>
     <mat-label>Tipo</mat-label>
     <mat-select formControlName="type">
@@ -37,11 +34,20 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
+  -->
+
+  <mat-form-field>
+    <input matInput placeholder="Tipo" formControlName="type" readonly />
+  </mat-form-field>
 
   <mat-form-field>
     <mat-label>Categoria</mat-label>
-    <mat-select formControlName="categories" multiple>
-      <mat-option *ngFor="let category of categories" [value]="category">
+    <mat-select
+      formControlName="categories"
+      [(value)]="selectedCategories"
+      multiple
+    >
+      <mat-option *ngFor="let category of categories" [value]="category.name">
         {{ category.name }}
       </mat-option>
     </mat-select>
@@ -57,7 +63,9 @@
     <span matPrefix>€&nbsp;</span>
   </mat-form-field>
   <div fxLayout="row" fxLayoutAlign="space-between">
-    <button mat-raised-button color="primary" type="submit">Inserisci</button>
+    <button mat-raised-button color="primary" type="submit">
+      Salva modifiche
+    </button>
     <button mat-raised-button color="warn" (click)="closeModal()">
       Annulla
     </button>

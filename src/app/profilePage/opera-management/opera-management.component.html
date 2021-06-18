@@ -2,29 +2,37 @@
 
 <div id="content" fxLayout="row wrap">
   <mat-card id="info" class="margins flex-grow">
-    <h2>
-      Le mie informazioni <mat-icon class="purple">contact_mail</mat-icon>
-    </h2>
+    <div id="header" fxLayout="row" fxLayoutAlign="start center">
+      <img src="https://picsum.photos/400/400" />
+      <div fxLayout="column">
+        <p *ngIf="userData" class="header-name">{{ userData.name }}</p>
+        <p *ngIf="userData" class="header-name">{{ userData.surname }}</p>
+        <p>Passionate about crypto 💰 and trading 🚀</p>
+      </div>
+    </div>
+
     <mat-list>
       <mat-list-item>
-        <p class="title">Nome:</p>
-        <p>{{ userData.name }}</p>
-      </mat-list-item>
-      <mat-list-item>
-        <p class="title">Cognome:</p>
-        <p>{{ userData.surname }}</p>
-      </mat-list-item>
-      <mat-list-item>
         <p class="title">Data di nascita:</p>
-        <p>{{ userData.dob }}</p>
+        <p *ngIf="userData">{{ userData.dob }}</p>
       </mat-list-item>
       <mat-list-item>
         <p class="title">Email:</p>
-        <p>{{ userData.email }}</p>
+        <p *ngIf="userData">{{ userData.email }}</p>
       </mat-list-item>
       <mat-list-item>
         <p class="title">Wallet:</p>
-        <p>{{ userData.wallet }}</p>
+        <p *ngIf="userData">{{ userData.wallet }}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <a
+          *ngIf="userData"
+          href="{{
+            'https://www.blockchain.com/eth/address/' + userData.wallet
+          }}"
+          id="wallet"
+          >Ottieni informazioni sul tuo wallet</a
+        >
       </mat-list-item>
     </mat-list>
 
@@ -58,13 +66,34 @@
   </mat-card>
 
   <mat-card id="operas-list" class="margins flex-grow">
-    <h2>Le mie opere <mat-icon class="purple">playlist_play</mat-icon></h2>
+    <div fxLayout="row" fxLayoutAlign="space-around center">
+      <h2>Le mie opere <mat-icon class="purple">playlist_play</mat-icon></h2>
+      <button
+        mat-icon-button
+        class="margin-left-1"
+        (click)="openFilterSearchModal()"
+      >
+        Filtra
+        <mat-icon>sort</mat-icon>
+        <mat-icon>expand_more</mat-icon>
+      </button>
+
+      <button
+        id="reset"
+        title="Resetta il filtro"
+        mat-icon-button
+        (click)="clearFilters()"
+      >
+        <mat-icon>clear</mat-icon>
+      </button>
+    </div>
 
     <mat-list class="list-items">
       <mat-list-item
         class="li"
         *ngFor="
-          let opera of operas | paginate: { itemsPerPage: 5, currentPage: page }
+          let opera of filteredOperas
+            | paginate: { itemsPerPage: 5, currentPage: page }
         "
       >
         <div class="preview-container">

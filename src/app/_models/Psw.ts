@@ -1,5 +1,5 @@
 export interface Psw {
-  id: string;
+  email: string;
   oldPassword: string;
   newPassword: string;
 }

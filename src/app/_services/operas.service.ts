@@ -1,14 +1,15 @@
-import { Category } from '@model/Category';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Nft } from '@model/Nft';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
-export class CategoriesService {
-  private categoriesUrl = environment.apiUrl + '/categories?__example=test1'; // URL to web api
+export class OperasService {
+  //private operasUrl = environment.apiUrl + '/nft'; // URL to web api
+  private operasUrl = environment.apiUrl + '/nft?__example=test1';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -16,7 +17,7 @@ export class CategoriesService {
 
   constructor(private http: HttpClient) {}
 
-  getCategories(): Observable<Category[]> {
-    return this.http.get<Category[]>(this.categoriesUrl, this.httpOptions);
+  getCategories(): Observable<Nft[]> {
+    return this.http.get<Nft[]>(this.operasUrl, this.httpOptions);
   }
 }

@@ -1,6 +1,8 @@
-import { Category } from './../../_models/Category';
-import { CategoriesService } from './../../_services/categories.service';
-import { OperaManagementService } from './../../_services/opera-management.service';
+import { Type } from '@model/Utils';
+import { User } from '../../_models/User';
+import { Category } from '../../_models/Category';
+import { CategoriesService } from '../../_services/categories.service';
+import { OperaManagementService } from '../../_services/opera-management.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
@@ -15,8 +17,8 @@ export class NewOperaFormComponent implements OnInit {
   path: string = '';
   uploadLabel: string = 'Carica la tua opera';
   fileName: string;
-  types = ['Immagine', 'Video', 'Documento', 'Audio'];
   categories: Category[] = [];
+  type: string;
   private file: File;
 
   constructor(
@@ -38,9 +40,8 @@ export class NewOperaFormComponent implements OnInit {
 
   initForm() {
     this.formGroup = new FormGroup({
-      name: new FormControl('', [Validators.required]),
+      title: new FormControl('', [Validators.required]),
       description: new FormControl('', [Validators.required]),
-      type: new FormControl('', []),
       categories: new FormControl('', [Validators.required]),
       price: new FormControl('', [Validators.required]),
     });
@@ -51,12 +52,25 @@ export class NewOperaFormComponent implements OnInit {
     if (target.files) {
       this.fileName = target.files[0].name;
       this.file = target.files[0];
-      if (target.files[0].type.includes('image')) {
+
+      let type = target.files[0].type;
+
+      if (type.includes('image')) {
+        this.type = 'Immagine';
         let reader = new FileReader();
         reader.readAsDataURL(target.files[0]);
         reader.onload = (event: any) => {
           this.path = event.target.result;
         };
+      } else if (type.includes('audio')) {
+        this.type = 'Audio';
+        this.path = 'assets/document.png';
+      } else if (type.includes('video')) {
+        this.type = 'Video';
+        this.path = 'assets/document.png';
+      } else if (type.includes('application')) {
+        this.type = 'Documento';
+        this.path = 'assets/document.png';
       } else {
         this.path = 'assets/document.png';
       }
@@ -65,11 +79,16 @@ export class NewOperaFormComponent implements OnInit {
     this.uploadLabel = 'Modifica';
   }
 
+  getUserInfo(): User {
+    return JSON.parse(localStorage.getItem('User') as string);
+  }
+
   addOpera(): void {
     if (this.formGroup.valid && this.path !== '') {
       let newNft = this.formGroup.value,
-        user = JSON.parse(localStorage.getItem('User') as string);
+        user: User = this.getUserInfo();
 
+      newNft.type = Type[this.type];
       newNft.currency = 'ETH';
       newNft.owner = newNft.author = user.name;
       newNft.price = Number(newNft.price);

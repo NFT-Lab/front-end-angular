@@ -1,18 +1,52 @@
 <mat-toolbar id="header" color="primary">
-  <img src="assets/logo-header.png" />
+  <a [routerLink]="['/']">
+    <img src="assets/logo-header2.png" />
+  </a>
 
   <span class="spacer"></span>
 
-  <div *ngIf="checkAuth()">
-    <span class="spaces">Effettua il</span>
-    <a routerLink="/login" id="login-btn" mat-raised-button>Login</a>
-    <span class="spaces">oppure</span>
-    <a routerLink="/signup" id="signup-btn" mat-raised-button>Iscriviti</a>
-  </div>
+  <form
+    class="search"
+    [formGroup]="formGroup"
+    (ngSubmit)="search()"
+    *ngIf="route.url === '/'"
+  >
+    <input
+      formControlName="search"
+      type="text"
+      class="searchTerm"
+      placeholder="Cosa stai cercando?"
+    />
+    <button type="submit" class="searchButton">
+      <mat-icon>search</mat-icon>
+    </button>
+  </form>
 
-  <p id="welcome" [matMenuTriggerFor]="userMenu" *ngIf="!checkAuth()">
-    Ciao, {{ userName }}
-  </p>
+  <button
+    *ngIf="route.url === '/'"
+    mat-icon-button
+    class="margin-left-1"
+    id="filter-button"
+    (click)="openFilterSearchModal()"
+  >
+    <mat-icon>sort</mat-icon>
+    <mat-icon>expand_more</mat-icon>
+  </button>
+
+  <span class="spacer"></span>
+
+  <div id="welcome-container">
+    <div *ngIf="checkAuth()">
+      <span class="spaces">Effettua il</span>
+      <a routerLink="/login" id="login-btn" mat-raised-button>Login</a>
+      <span class="spaces">oppure</span>
+      <a routerLink="/signup" id="signup-btn" mat-raised-button>Iscriviti</a>
+    </div>
+
+    <p id="welcome" [matMenuTriggerFor]="userMenu" *ngIf="!checkAuth()">
+      Ciao, {{ userName }}
+    </p>
+  </div>
 
   <button mat-icon-button [matMenuTriggerFor]="userMenu" *ngIf="!checkAuth()">
     <mat-icon id="icon">account_circle</mat-icon>
@@ -20,7 +54,7 @@
   <mat-menu #userMenu="matMenu">
     <button routerLink="/user" mat-menu-item>
       <mat-icon>format_list_bulleted</mat-icon>
-      <span>Le mie opere</span>
+      <span>Profilo</span>
     </button>
     <button routerLink="/" mat-menu-item (click)="logout()">
       <mat-icon>logout</mat-icon>

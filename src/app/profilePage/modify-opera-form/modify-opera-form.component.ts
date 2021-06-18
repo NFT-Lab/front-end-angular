@@ -1,3 +1,4 @@
+import { CategoriesService } from './../../_services/categories.service';
 import { Category } from '@model/Category';
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -5,7 +6,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Nft } from '@model/Nft';
 import { OperaManagementService } from '@service/opera-management.service';
 import { environment } from 'src/environments/environment';
-import { NewOperaFormComponent } from '../new-opera-form/new-opera-form.component';
+import { Type } from '@model/Utils';
+import { TypeToShow } from '@model/Utils';
 
 @Component({
   selector: 'app-modify-opera-form',
@@ -20,20 +22,34 @@ export class ModifyOperaFormComponent implements OnInit {
   fileName: string;
   fileSystemPath: string = environment.fileSystemPath;
   nft: Nft;
-  types = ['Immagine', 'Video', 'Documento', 'Audio'];
   categories: Category[] = [];
+  selectedCategories: any = [];
+  close: boolean;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) opera: Nft,
     private operaManService: OperaManagementService,
+    private catService: CategoriesService,
     public modalRef: MatDialogRef<ModifyOperaFormComponent>
   ) {
+    this.close = false;
     this.nft = opera;
   }
 
   ngOnInit(): void {
     this.categories = this.nft.categories;
     this.initForm();
+    this.getCategories();
+
+    for (let i = 0; i < this.categories.length; i++) {
+      this.selectedCategories[i] = this.categories[i].name;
+    }
+  }
+
+  getCategories() {
+    return this.catService
+      .getCategories()
+      .subscribe((cat) => (this.categories = cat));
   }
 
   getPath() {
@@ -44,24 +60,24 @@ export class ModifyOperaFormComponent implements OnInit {
     this.formGroup = new FormGroup({
       name: new FormControl(this.nft.title, [Validators.required]),
       description: new FormControl(this.nft.description, [Validators.required]),
-      type: new FormControl(this.types[0], [Validators.required]),
-      categories: new FormControl(this.nft.categories, [Validators.required]),
+      type: new FormControl(TypeToShow[this.nft.type], []),
+      categories: new FormControl(this.categories, [Validators.required]),
       price: new FormControl(this.nft.price, [Validators.required]),
     });
+    let cats = this.formGroup.get('categories') as any;
+    cats.setValue(this.selectedCategories);
   }
 
   updateOpera(): void {
-    if (this.formGroup.valid) {
+    if (this.formGroup.valid && !this.close) {
       let newNft = this.formGroup.value,
         modOpera = { ...this.nft };
 
       modOpera.title = newNft.name;
       modOpera.description = newNft.description;
-      modOpera.type = newNft.type;
+      modOpera.type = Type[newNft.type];
       modOpera.categories = newNft.categories;
       modOpera.price = Number(newNft.price);
-
-      console.log(newNft);
 
       this.operaManService.updateOpera(modOpera as Nft).subscribe(
         (res) => {
@@ -78,6 +94,7 @@ export class ModifyOperaFormComponent implements OnInit {
   }
 
   closeModal(): void {
+    this.close = true;
     this.modalRef.close();
   }
 }

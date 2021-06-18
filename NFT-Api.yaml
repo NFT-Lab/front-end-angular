@@ -70,7 +70,85 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Nft'
-              examples: {}
+              examples:
+                test1:
+                  value:
+                    - id: Qmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat
+                      title: Filippo Baggio
+                      description: ciccio pasticcio
+                      authorId: 18
+                      price: 52
+                      currency: ETH
+                      status: false
+                      path: gallery/imgQmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat.jpg
+                      type: video
+                      owner: Frank Sinatra
+                      author: Frank Sinatra
+                      categories:
+                        - id: 2
+                          name: sport
+                        - id: 3
+                          name: food
+                    - id: Qmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat
+                      title: Filippo Baggio
+                      description: ciccio pasticcio
+                      authorId: 18
+                      price: 52
+                      currency: ETH
+                      status: false
+                      path: gallery/imgQmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat.jpg
+                      type: img
+                      owner: Frank Sinatra
+                      author: Frank Sinatra
+                      categories:
+                        - id: 2
+                          name: sport
+                        - id: 3
+                          name: food
+                    - id: Qmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat
+                      title: Filippo Baggio
+                      description: ciccio pasticcio
+                      authorId: 18
+                      price: 52
+                      currency: ETH
+                      status: false
+                      path: gallery/imgQmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat.jpg
+                      type: img
+                      owner: Frank Sinatra
+                      author: Frank Sinatra
+                      categories:
+                        - id: 2
+                          name: sport
+                        - id: 3
+                          name: food
+                    - id: Qmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat
+                      title: Filippo Baggio
+                      description: ciccio pasticcio
+                      authorId: 18
+                      price: 52
+                      currency: ETH
+                      status: false
+                      path: gallery/imgQmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat.jpg
+                      type: img
+                      owner: Frank Sinatra
+                      author: Frank Sinatra
+                      categories:
+                        - id: 3
+                          name: food
+                    - id: Qmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat
+                      title: Filippo Baggio
+                      description: ciccio pasticcio
+                      authorId: 18
+                      price: 52
+                      currency: ETH
+                      status: false
+                      path: gallery/imgQmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat.jpg
+                      type: img
+                      owner: Frank Sinatra
+                      author: Frank Sinatra
+                      categories:
+                        - id: 2
+                          name: sport
       operationId: get-nft
       description: Homepage
       parameters:
@@ -107,6 +185,13 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Category'
+              examples:
+                test1:
+                  value:
+                    - id: 3
+                      name: food
+                    - id: 2
+                      name: sport
       operationId: get-categories
       description: Categorie di un opera
   '/user/{id}':
@@ -165,6 +250,85 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Nft'
+              examples:
+                test1:
+                  value:
+                    - id: Qmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat
+                      title: Filippo Baggio
+                      description: ciccio pasticcio
+                      authorId: 18
+                      price: 52
+                      currency: ETH
+                      status: false
+                      path: gallery/imgQmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat.jpg
+                      type: video
+                      owner: Frank Sinatra
+                      author: Frank Sinatra
+                      categories:
+                        - id: 2
+                          name: sport
+                        - id: 3
+                          name: food
+                    - id: Qmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat
+                      title: Filippo Baggio
+                      description: ciccio pasticcio
+                      authorId: 18
+                      price: 52
+                      currency: ETH
+                      status: false
+                      path: gallery/imgQmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat.jpg
+                      type: img
+                      owner: Frank Sinatra
+                      author: Frank Sinatra
+                      categories:
+                        - id: 2
+                          name: sport
+                        - id: 3
+                          name: food
+                    - id: Qmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat
+                      title: Filippo Baggio
+                      description: ciccio pasticcio
+                      authorId: 18
+                      price: 52
+                      currency: ETH
+                      status: false
+                      path: gallery/imgQmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat.jpg
+                      type: img
+                      owner: Frank Sinatra
+                      author: Frank Sinatra
+                      categories:
+                        - id: 2
+                          name: sport
+                        - id: 3
+                          name: food
+                    - id: Qmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat
+                      title: Filippo Baggio
+                      description: ciccio pasticcio
+                      authorId: 18
+                      price: 52
+                      currency: ETH
+                      status: false
+                      path: gallery/imgQmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat.jpg
+                      type: img
+                      owner: Frank Sinatra
+                      author: Frank Sinatra
+                      categories:
+                        - id: 3
+                          name: food
+                    - id: Qmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat
+                      title: Filippo Baggio
+                      description: ciccio pasticcio
+                      authorId: 18
+                      price: 52
+                      currency: ETH
+                      status: false
+                      path: gallery/imgQmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat.jpg
+                      type: img
+                      owner: Frank Sinatra
+                      author: Frank Sinatra
+                      categories:
+                        - id: 2
+                          name: sport
       operationId: get-nft-user
       description: Opere dell'utente
       parameters:
@@ -270,23 +434,34 @@ components:
       properties:
         id:
           type: string
-        name:
+        title:
           type: string
+          maxLength: 10
+          minLength: 2
         description:
           type: string
+          minLength: 5
         author:
           type: string
+          minLength: 2
+          maxLength: 10
         owner:
           type: string
         price:
           type: number
           example: 0
+          minimum: 1
         categories:
           type: array
           items:
             $ref: '#/components/schemas/Category'
         type:
           type: string
+          enum:
+            - img
+            - video
+            - audio
+            - doc
         currency:
           type: string
         path:
@@ -313,6 +488,7 @@ components:
           minimum: 1
           maximum: 6
           example: 3
+          multipleOf: 1
         name:
           type: string
           minLength: 3

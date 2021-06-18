@@ -6,6 +6,7 @@ import { of, throwError } from 'rxjs';
 import { AppModule } from 'src/app/app.module';
 
 import { ModifyOperaFormComponent } from './modify-opera-form.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('ModifyOperaFormComponent', () => {
   let component: ModifyOperaFormComponent;
@@ -13,13 +14,13 @@ describe('ModifyOperaFormComponent', () => {
   let buttons: any;
   const opera: Nft = {
     id: 12,
-    name: 'test',
+    title: 'test',
     description: 'test',
     author: 'test',
     owner: 'test',
     price: 12,
     categories: [{ id: 1, name: 'test' }],
-    type: 'test',
+    type: 'Immagine',
     currency: 'test',
     path: 'test',
   };
@@ -37,7 +38,7 @@ describe('ModifyOperaFormComponent', () => {
         { provide: MAT_DIALOG_DATA, useValue: opera },
         { provide: MatDialogRef, useValue: dialogMock },
       ],
-      imports: [AppModule],
+      imports: [AppModule, HttpClientTestingModule],
       declarations: [ModifyOperaFormComponent],
     }).compileComponents();
   });
@@ -70,7 +71,7 @@ describe('ModifyOperaFormComponent', () => {
     saveButton.click();
   });
 
-  it('should show an error message with internal server error', () => {
+  it('should show an error message with internal server error', async () => {
     let saveButton = buttons[0];
     //mock 500 error response
     spyOn(operaManService, 'updateOpera').and.returnValue(

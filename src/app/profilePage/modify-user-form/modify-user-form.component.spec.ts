@@ -1,5 +1,5 @@
 import { User } from '@model/User';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, tick } from '@angular/core/testing';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { UserManagementService } from '@service/user-management.service';
 import { AppModule } from 'src/app/app.module';
@@ -11,7 +11,8 @@ describe('ModifyUserFormComponent', () => {
   let component: ModifyUserFormComponent;
   let fixture: ComponentFixture<ModifyUserFormComponent>;
   let buttons: any, psw: any;
-  const user: User = {
+  const user = {
+    id: 12,
     dob: new Date(1997, 5, 12),
     name: 'test',
     surname: 'test',
@@ -73,34 +74,9 @@ describe('ModifyUserFormComponent', () => {
       expect(saveButton.disabled).toBe(false);
       //mock response
       spyOn(userManService, 'updateUserInfo').and.returnValue(of(user));
+      spyOn(component, 'getUserInfo').and.returnValue(user);
       //send data
       saveButton.click();
-    });
-  });
-
-  it('should show an error message with internal server error', () => {
-    let saveButton = buttons[0];
-    expect(component.formGroup.valid).toBe(false);
-    //wait for enabling button
-    fixture.whenStable().then(() => {
-      psw = fixture.nativeElement.querySelector(
-        'input[formControlName=password]'
-      );
-      psw.value = 'Test123@';
-      psw.dispatchEvent(new Event('input'));
-      fixture.detectChanges();
-      //expect form valid
-      expect(component.formGroup.valid).toBe(true);
-      //mock 500 error response
-      spyOn(userManService, 'updateUserInfo').and.returnValue(
-        throwError({ status: 500 })
-      );
-      //send data
-      saveButton.click();
-      //expects
-      expect(component.errorMessage)
-        .toBe(`Si è verificato un problema nell'operazione di modifica.
-                         Riprova più tardi.`);
     });
   });
 
@@ -129,6 +105,33 @@ describe('ModifyUserFormComponent', () => {
       expect(component.errorMessage).toBe(
         'Tutti i campi devono essere compilati.'
       );
+    });
+  });
+
+  it('should show an error message with internal server error', async () => {
+    let saveButton = buttons[0];
+    expect(component.formGroup.valid).toBe(false);
+    //wait for enabling button
+    fixture.whenStable().then(() => {
+      psw = fixture.nativeElement.querySelector(
+        'input[formControlName=password]'
+      );
+      psw.value = 'Test123@';
+      psw.dispatchEvent(new Event('input'));
+      fixture.detectChanges();
+      //expect form valid
+      expect(component.formGroup.valid).toBe(true);
+      //mock 500 error response
+      spyOn(userManService, 'updateUserInfo').and.returnValue(
+        throwError({ status: 500 })
+      );
+      spyOn(component, 'getUserInfo').and.returnValue(user);
+      //send data
+      saveButton.click();
+      //expects
+      expect(component.errorMessage)
+        .toBe(`Si è verificato un problema nell'operazione di modifica.
+                         Riprova più tardi.`);
     });
   });
 });
