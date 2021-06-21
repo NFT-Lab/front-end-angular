@@ -25,6 +25,7 @@
           >account_balance_wallet</mat-icon
         >
         <a
+          class="ellipsis"
           *ngIf="userData"
           href="{{
             'https://www.blockchain.com/eth/address/' + userData.wallet
@@ -93,13 +94,11 @@
             | paginate: { itemsPerPage: 6, currentPage: page }
         "
       >
-        <div class="preview-container">
-          <img
-            class="preview"
-            (click)="openDetailsOperaModal(opera)"
-            [src]="getPath(opera)"
-          />
-        </div>
+        <div
+          class="preview-container"
+          (click)="openDetailsOperaModal(opera)"
+          [ngStyle]="{ 'background-image': getPath(opera) }"
+        ></div>
         <a (click)="openDetailsOperaModal(opera)">{{ opera.title }}</a>
         <span class="spacer"></span>
         <button

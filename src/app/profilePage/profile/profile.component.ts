@@ -26,6 +26,19 @@ export class ProfileComponent implements OnInit {
   userData = JSON.parse(localStorage.getItem('User') as string);
   page: number = 1;
   fileSystemPath: string = environment.fileSystemPath;
+  //array di ID di opere caricate in blockchain
+  photos: string[] = [
+    'QmX5FkTotxKRziu5a7NXz16YeHrVgYw98RzTgNWvi8HmDC',
+    'QmUZr5giEkQynVP4whjkrPA5x9HjfmonCt2j5WCCJ6GJYt',
+    'QmdDN19DFWsGAL5hsdYDiPWLJpcNnezEqcMai8UnWayTCy',
+    'QmUoxQnAHehMEKH1CCbr1bu69P4r79kPXRKFqn6v3Pyret',
+    'QmNe7jwQqawJ9TNouzBwDLfS294SxNo7FEuuKBkkpRRFHh',
+    'QmRMEwa9jLv2iNxrpfZ8Z2bNMTZEFeyUVnt6fF5Xenk7Ms',
+    'QmbHx7zHgibMF9ktjaRm5dDT3bRAtqa7EVBPJ8jTvpLahe',
+    'QmWjHc9zb5ojPsjA43B3SFyKRPqd9Mc57R9EnTCgduyNzv',
+    'Qmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat',
+    'QmUZKcyxFm82CpsuRxkentY3zw8dRxGxHni8ggDuxQQYDP',
+  ];
 
   constructor(
     private operaManService: OperaManagementService,
@@ -44,30 +57,21 @@ export class ProfileComponent implements OnInit {
       this.operas = nft;
 
       this.operas.forEach((opera) => {
-        let n = Math.floor(Math.random() * 15) + 1;
-        opera.path = 'test' + n + '.jpeg';
+        let n = Math.floor(Math.random() * 9) + 1;
+        opera.path = 'https://cloudflare-ipfs.com/ipfs/' + this.photos[n];
       });
-      //le prossime righe saranno da togliere e servono per testare con stoplight
-      //che il filtro di ricerca funzioni
-      //this.operas[0].categories.push({ id: 1, name: 'test' });
-      //this.operas[2].categories.push({ id: 1, name: 'test' });
-      //fine
       this.filteredOperas = [...this.operas];
     });
+  }
+
+  getPath(opera: Nft): string {
+    return 'url(' + opera.path + ')';
   }
 
   getCategories() {
     return this.catService.getCategories().subscribe((cats) => {
       this.allCategories = cats;
-      //le prossime righe saranno da togliere e servono per testare con stoplight
-      //che il filtro di ricerca funzioni
-      //this.allCategories.push({ id: 1, name: 'test' });
-      //fine
     });
-  }
-
-  getPath(opera: Nft) {
-    return this.fileSystemPath + opera.path;
   }
 
   initForm() {
@@ -75,28 +79,6 @@ export class ProfileComponent implements OnInit {
       categories: new FormControl(this.allCategories, [Validators.required]),
     });
   }
-  /*
-  search() {
-    if (this.formGroup.valid) {
-      let catChosen: Category[] = this.formGroup.controls.categories.value;
-      let operaFiltered: Nft[] = [];
-      let next: boolean = false;
-      if (this.operas.length) {
-        this.operas.forEach((opera) => {
-          opera.categories.forEach((cat) => {
-            next = false;
-            for (let i = 0; i < catChosen.length && !next; i++) {
-              if (cat.name === catChosen[i].name) {
-                operaFiltered.push(opera);
-                next = true;
-              }
-            }
-          });
-        });
-      }
-      this.filteredOperas = [...operaFiltered];
-    }
-  }*/
 
   clearFilters() {
     this.filteredOperas = [...this.operas];

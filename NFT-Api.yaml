@@ -504,6 +504,7 @@ components:
         email:
           type: string
           format: email
+          example: michele.baldi@gmail.com
         password:
           type: string
         name:

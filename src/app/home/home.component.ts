@@ -16,6 +16,15 @@ export class HomeComponent implements OnInit {
   operasToShow: Nft[] = [];
   fileSystemPath: string = environment.fileSystemPath;
   searchDone: boolean = false;
+  //array di ID di opere caricate in blockchain
+  photos: string[] = [
+    'QmUoxQnAHehMEKH1CCbr1bu69P4r79kPXRKFqn6v3Pyret',
+    'QmNe7jwQqawJ9TNouzBwDLfS294SxNo7FEuuKBkkpRRFHh',
+    'QmbHx7zHgibMF9ktjaRm5dDT3bRAtqa7EVBPJ8jTvpLahe',
+    'QmWjHc9zb5ojPsjA43B3SFyKRPqd9Mc57R9EnTCgduyNzv',
+    'Qmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat',
+    'QmUZKcyxFm82CpsuRxkentY3zw8dRxGxHni8ggDuxQQYDP',
+  ];
 
   constructor(
     private operasService: OperasService,
@@ -81,26 +90,18 @@ export class HomeComponent implements OnInit {
   }
 
   getPath(opera: Nft): string {
-    return this.fileSystemPath + opera.path;
+    return opera.path;
   }
 
   getOperas() {
     return this.operasService.getCategories().subscribe((operas) => {
       this.allOperas = this.operasToShow = operas;
-      //le prossime righe saranno da togliere e servono per testare con stoplight
-      //che il filtro di ricerca funzioni
-      /*
-      this.allOperas[0].categories.push({ id: 1, name: 'test' });
-      this.allOperas[2].categories.push({ id: 1, name: 'test' });
-      */
-      //fine
 
-      //le prossime righe saranno da togliere e servono per assegnare un nome a caso
-      //tra le foto che vengono esposte tramite xampp
       this.allOperas.forEach((opera) => {
-        let n = Math.floor(Math.random() * (25 - 16 + 1) + 16);
-        opera.path = 'test' + n + '.jpeg';
+        let n = Math.floor(Math.random() * 6);
+        opera.path = 'https://cloudflare-ipfs.com/ipfs/' + this.photos[n];
       });
+      this.operasToShow = [...this.allOperas];
     });
   }
 

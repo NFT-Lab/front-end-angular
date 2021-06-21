@@ -24,7 +24,7 @@ export class OperaDetailsComponent {
   }
 
   getPath() {
-    return this.fileSystemPath + this.nft.path;
+    return this.nft.path;
   }
 
   getColor(cat: number) {

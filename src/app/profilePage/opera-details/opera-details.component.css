@@ -1,8 +1,8 @@
 #preview {
-  width: 40%;
-  border: 1px solid black;
+  width: 80%;
+  border: 3px solid #053074d4;
   border-radius: 0.5em;
-  margin-left: 30%;
+  margin-bottom: 0.8em;
 }
 
 .title {

@@ -51,7 +51,7 @@
   <button mat-icon-button [matMenuTriggerFor]="userMenu" *ngIf="!checkAuth()">
     <mat-icon class="icon">account_circle</mat-icon>
   </button>
-  <button mat-icon-button id="home" routerLink="/">
+  <button *ngIf="route.url !== '/'" mat-icon-button id="home" routerLink="/">
     <mat-icon class="icon display-none">home</mat-icon>
   </button>
 

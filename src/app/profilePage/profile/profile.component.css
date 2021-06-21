@@ -106,8 +106,19 @@ img {
 }
 
 .preview-container {
+  width: 120px;
+  height: 35px;
+  margin-bottom: 2.1em;
   padding-right: 1em;
   padding-bottom: 2em;
+  border-radius: 0.5em;
+  background-position: center;
+  border: 3px solid #0f397eb2;
+  cursor: pointer;
+}
+
+.list-items.a {
+  margin-left: 1em;
 }
 
 .padding-right {
@@ -116,11 +127,6 @@ img {
 
 .margin-bottom {
   margin-bottom: 0.5em;
-}
-
-.preview {
-  border: 1px solid black;
-  border-radius: 0.5em;
 }
 
 #footer {
@@ -141,5 +147,12 @@ img {
 @media screen and (max-width: 550px) {
   .mat-list-item {
     display: block;
+  }
+  a.ellipsis {
+    max-width: 250px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: inline-block;
   }
 }

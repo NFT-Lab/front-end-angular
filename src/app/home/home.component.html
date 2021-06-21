@@ -31,7 +31,14 @@
           <mat-card-title>{{ opera.title }}</mat-card-title>
           <mat-card-subtitle>{{ opera.author }}</mat-card-subtitle>
         </mat-card-header>
-        <img mat-card-image [src]="getPath(opera)" alt="opera preview" />
+
+        <img
+          class="images"
+          mat-card-image
+          [src]="getPath(opera)"
+          alt="opera preview"
+        />
+
         <mat-card-content>
           <p>
             <span class="section">Descrizione:</span>
