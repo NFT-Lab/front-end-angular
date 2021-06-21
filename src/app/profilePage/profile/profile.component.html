@@ -82,7 +82,7 @@
         mat-icon-button
         (click)="clearFilters()"
       >
-        <mat-icon>clear</mat-icon>
+        <mat-icon class="margin-bottom">clear</mat-icon>
       </button>
     </div>
 
@@ -99,7 +99,9 @@
           (click)="openDetailsOperaModal(opera)"
           [ngStyle]="{ 'background-image': getPath(opera) }"
         ></div>
-        <a (click)="openDetailsOperaModal(opera)">{{ opera.title }}</a>
+        <a class="anchor" (click)="openDetailsOperaModal(opera)">{{
+          opera.title
+        }}</a>
         <span class="spacer"></span>
         <button
           mat-icon-button
@@ -121,7 +123,7 @@
       </pagination-controls>
       <button mat-raised-button color="warn" (click)="openAddOperaModal()">
         <mat-icon>add</mat-icon>
-        Inserisci nuova opera
+        Nuova opera
       </button>
     </div>
   </mat-card>
