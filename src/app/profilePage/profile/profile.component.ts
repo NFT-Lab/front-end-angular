@@ -15,10 +15,10 @@ import { FilterSearchComponent } from 'src/app/_shared/filter-search/filter-sear
 
 @Component({
   selector: 'app-opera-management',
-  templateUrl: './opera-management.component.html',
-  styleUrls: ['./opera-management.component.css'],
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.css'],
 })
-export class OperaManagementComponent implements OnInit {
+export class ProfileComponent implements OnInit {
   formGroup: FormGroup;
   operas: Nft[] = [];
   allCategories: Category[] = [];

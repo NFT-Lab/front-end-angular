@@ -1,7 +1,7 @@
 import { AppModule } from 'src/app/app.module';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OperaManagementComponent } from './opera-management.component';
+import { ProfileComponent } from './profile.component';
 import { Nft } from '@model/Nft';
 import { of } from 'rxjs';
 import { ModifyOperaFormComponent } from '../modify-opera-form/modify-opera-form.component';
@@ -12,8 +12,8 @@ import { CategoriesService } from '@service/categories.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('OperaManagementComponent', () => {
-  let component: OperaManagementComponent;
-  let fixture: ComponentFixture<OperaManagementComponent>;
+  let component: ProfileComponent;
+  let fixture: ComponentFixture<ProfileComponent>;
 
   const opera: Nft = {
     id: 12,
@@ -36,12 +36,12 @@ describe('OperaManagementComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AppModule, HttpClientTestingModule],
-      declarations: [OperaManagementComponent],
+      declarations: [ProfileComponent],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(OperaManagementComponent);
+    fixture = TestBed.createComponent(ProfileComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
     //mock req

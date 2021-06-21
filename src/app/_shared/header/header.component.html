@@ -5,6 +5,17 @@
 
   <span class="spacer"></span>
 
+  <button
+    *ngIf="route.url === '/'"
+    mat-icon-button
+    class="margin-left-1"
+    id="filter-button"
+    (click)="openFilterSearchModal()"
+  >
+    <mat-icon>sort</mat-icon>
+    <mat-icon>expand_more</mat-icon>
+  </button>
+
   <form
     class="search"
     [formGroup]="formGroup"
@@ -22,17 +33,6 @@
     </button>
   </form>
 
-  <button
-    *ngIf="route.url === '/'"
-    mat-icon-button
-    class="margin-left-1"
-    id="filter-button"
-    (click)="openFilterSearchModal()"
-  >
-    <mat-icon>sort</mat-icon>
-    <mat-icon>expand_more</mat-icon>
-  </button>
-
   <span class="spacer"></span>
 
   <div id="welcome-container">
@@ -49,8 +49,12 @@
   </div>
 
   <button mat-icon-button [matMenuTriggerFor]="userMenu" *ngIf="!checkAuth()">
-    <mat-icon id="icon">account_circle</mat-icon>
+    <mat-icon class="icon">account_circle</mat-icon>
   </button>
+  <button mat-icon-button id="home" routerLink="/">
+    <mat-icon class="icon display-none">home</mat-icon>
+  </button>
+
   <mat-menu #userMenu="matMenu">
     <button routerLink="/user" mat-menu-item>
       <mat-icon>format_list_bulleted</mat-icon>

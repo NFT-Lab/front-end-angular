@@ -25,7 +25,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginFormComponent } from './loginPage/login-form/login-form.component';
 import { LoginComponent } from './loginPage/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { OperaManagementComponent } from './profilePage/opera-management/opera-management.component';
+import { ProfileComponent } from './profilePage/profile/profile.component';
 import { NewOperaFormComponent } from './profilePage/new-opera-form/new-opera-form.component';
 import { HeaderComponent } from './_shared/header/header.component';
 import { OperaDetailsComponent } from './profilePage/opera-details/opera-details.component';
@@ -58,7 +58,7 @@ const materialModules = [
     LoginComponent,
     HomeComponent,
     LoginFormComponent,
-    OperaManagementComponent,
+    ProfileComponent,
     NewOperaFormComponent,
     HeaderComponent,
     OperaDetailsComponent,

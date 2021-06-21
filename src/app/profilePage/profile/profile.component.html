@@ -3,7 +3,7 @@
 <div id="content" fxLayout="row wrap">
   <mat-card id="info" class="margins flex-grow">
     <div id="header" fxLayout="row" fxLayoutAlign="start center">
-      <img src="https://picsum.photos/400/400" />
+      <img id="profile-img" src="https://picsum.photos/400/400" />
       <div fxLayout="column">
         <p *ngIf="userData" class="header-name">{{ userData.name }}</p>
         <p *ngIf="userData" class="header-name">{{ userData.surname }}</p>
@@ -13,56 +13,53 @@
 
     <mat-list>
       <mat-list-item>
-        <p class="title">Data di nascita:</p>
+        <mat-icon class="blue padding-right margin-bottom">event</mat-icon>
         <p *ngIf="userData">{{ userData.dob }}</p>
       </mat-list-item>
       <mat-list-item>
-        <p class="title">Email:</p>
+        <mat-icon class="blue padding-right margin-bottom">email</mat-icon>
         <p *ngIf="userData">{{ userData.email }}</p>
       </mat-list-item>
       <mat-list-item>
-        <p class="title">Wallet:</p>
-        <p *ngIf="userData">{{ userData.wallet }}</p>
-      </mat-list-item>
-      <mat-list-item>
+        <mat-icon class="blue padding-right margin-bottom"
+          >account_balance_wallet</mat-icon
+        >
         <a
           *ngIf="userData"
           href="{{
             'https://www.blockchain.com/eth/address/' + userData.wallet
           }}"
           id="wallet"
-          >Ottieni informazioni sul tuo wallet</a
+          >{{ userData.wallet }}</a
         >
       </mat-list-item>
     </mat-list>
 
-    <button mat-raised-button color="primary" (click)="openModifyUserData()">
+    <button
+      mat-raised-button
+      class="margin-top-1"
+      color="primary"
+      (click)="openModifyUserData()"
+    >
       Modifica dati
       <mat-icon>create</mat-icon>
     </button>
-    <button mat-raised-button (click)="openModifyUserPsw()">
+    <button
+      mat-raised-button
+      class="margin-top-1"
+      (click)="openModifyUserPsw()"
+    >
       Modifica password
       <mat-icon>vpn_key</mat-icon>
     </button>
 
-    <h2 class="margin-top-2">
+    <h2 class="margin-top-1">
       Statistiche <mat-icon class="red">query_stats</mat-icon>
     </h2>
 
-    <mat-list fxLayoutAlign="center" class="inline">
-      <mat-list-item>
-        <p class="title">Opere caricate:</p>
-        <p>{{ operas.length }}</p>
-      </mat-list-item>
-      <mat-list-item>
-        <p class="title">Opere acquistate:</p>
-        <p>2</p>
-      </mat-list-item>
-      <mat-list-item>
-        <p class="title">Opere vendute:</p>
-        <p>0</p>
-      </mat-list-item>
-    </mat-list>
+    <div fxLayoutAlign="center">
+      <img id="chart" src="assets/chart.png" />
+    </div>
   </mat-card>
 
   <mat-card id="operas-list" class="margins flex-grow">
@@ -93,7 +90,7 @@
         class="li"
         *ngFor="
           let opera of filteredOperas
-            | paginate: { itemsPerPage: 5, currentPage: page }
+            | paginate: { itemsPerPage: 6, currentPage: page }
         "
       >
         <div class="preview-container">

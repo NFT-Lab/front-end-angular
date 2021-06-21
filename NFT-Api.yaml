@@ -74,8 +74,8 @@ paths:
                 test1:
                   value:
                     - id: Qmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat
-                      title: Filippo Baggio
-                      description: ciccio pasticcio
+                      title: Opera di test
+                      description: Descrizione di test
                       authorId: 18
                       price: 52
                       currency: ETH
@@ -83,72 +83,124 @@ paths:
                       path: gallery/imgQmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat.jpg
                       type: video
                       owner: Frank Sinatra
-                      author: Frank Sinatra
+                      author: Michele Baldisseri
                       categories:
                         - id: 2
                           name: sport
                         - id: 3
                           name: food
                     - id: Qmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat
-                      title: Filippo Baggio
-                      description: ciccio pasticcio
+                      title: Opera di test
+                      description: Descrizione di test
                       authorId: 18
                       price: 52
                       currency: ETH
                       status: false
                       path: gallery/imgQmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat.jpg
-                      type: img
+                      type: video
                       owner: Frank Sinatra
-                      author: Frank Sinatra
+                      author: Michele Baldisseri
                       categories:
                         - id: 2
                           name: sport
                         - id: 3
                           name: food
                     - id: Qmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat
-                      title: Filippo Baggio
-                      description: ciccio pasticcio
+                      title: Opera di test
+                      description: Descrizione di test
                       authorId: 18
                       price: 52
                       currency: ETH
                       status: false
                       path: gallery/imgQmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat.jpg
-                      type: img
+                      type: video
                       owner: Frank Sinatra
-                      author: Frank Sinatra
+                      author: Michele Baldisseri
                       categories:
                         - id: 2
                           name: sport
                         - id: 3
                           name: food
                     - id: Qmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat
-                      title: Filippo Baggio
-                      description: ciccio pasticcio
+                      title: Opera di test
+                      description: Descrizione di test
                       authorId: 18
                       price: 52
                       currency: ETH
                       status: false
                       path: gallery/imgQmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat.jpg
-                      type: img
+                      type: video
                       owner: Frank Sinatra
-                      author: Frank Sinatra
-                      categories:
-                        - id: 3
-                          name: food
-                    - id: Qmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat
-                      title: Filippo Baggio
-                      description: ciccio pasticcio
-                      authorId: 18
-                      price: 52
-                      currency: ETH
-                      status: false
-                      path: gallery/imgQmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat.jpg
-                      type: img
-                      owner: Frank Sinatra
-                      author: Frank Sinatra
+                      author: Michele Baldisseri
                       categories:
                         - id: 2
                           name: sport
+                        - id: 3
+                          name: food
+                    - id: Qmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat
+                      title: Opera di test
+                      description: Descrizione di test
+                      authorId: 18
+                      price: 52
+                      currency: ETH
+                      status: false
+                      path: gallery/imgQmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat.jpg
+                      type: video
+                      owner: Frank Sinatra
+                      author: Michele Baldisseri
+                      categories:
+                        - id: 2
+                          name: sport
+                        - id: 3
+                          name: food
+                    - id: Qmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat
+                      title: Opera di test
+                      description: Descrizione di test
+                      authorId: 18
+                      price: 52
+                      currency: ETH
+                      status: false
+                      path: gallery/imgQmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat.jpg
+                      type: video
+                      owner: Frank Sinatra
+                      author: Michele Baldisseri
+                      categories:
+                        - id: 2
+                          name: sport
+                        - id: 3
+                          name: food
+                    - id: Qmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat
+                      title: Opera di test
+                      description: Descrizione di test
+                      authorId: 18
+                      price: 52
+                      currency: ETH
+                      status: false
+                      path: gallery/imgQmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat.jpg
+                      type: video
+                      owner: Frank Sinatra
+                      author: Michele Baldisseri
+                      categories:
+                        - id: 2
+                          name: sport
+                        - id: 3
+                          name: food
+                    - id: Qmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat
+                      title: Opera di test
+                      description: Descrizione di test
+                      authorId: 18
+                      price: 52
+                      currency: ETH
+                      status: false
+                      path: gallery/imgQmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat.jpg
+                      type: video
+                      owner: Frank Sinatra
+                      author: Michele Baldisseri
+                      categories:
+                        - id: 2
+                          name: sport
+                        - id: 3
+                          name: food
       operationId: get-nft
       description: Homepage
       parameters:
@@ -327,8 +379,50 @@ paths:
                       owner: Frank Sinatra
                       author: Frank Sinatra
                       categories:
-                        - id: 2
-                          name: sport
+                        - id: 3
+                          name: food
+                    - id: Qmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat
+                      title: Filippo Baggio
+                      description: ciccio pasticcio
+                      authorId: 18
+                      price: 52
+                      currency: ETH
+                      status: false
+                      path: gallery/imgQmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat.jpg
+                      type: img
+                      owner: Frank Sinatra
+                      author: Frank Sinatra
+                      categories:
+                        - id: 3
+                          name: food
+                    - id: Qmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat
+                      title: Filippo Baggio
+                      description: ciccio pasticcio
+                      authorId: 18
+                      price: 52
+                      currency: ETH
+                      status: false
+                      path: gallery/imgQmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat.jpg
+                      type: img
+                      owner: Frank Sinatra
+                      author: Frank Sinatra
+                      categories:
+                        - id: 3
+                          name: food
+                    - id: Qmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat
+                      title: Filippo Baggio
+                      description: ciccio pasticcio
+                      authorId: 18
+                      price: 52
+                      currency: ETH
+                      status: false
+                      path: gallery/imgQmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat.jpg
+                      type: img
+                      owner: Frank Sinatra
+                      author: Frank Sinatra
+                      categories:
+                        - id: 3
+                          name: food
       operationId: get-nft-user
       description: Opere dell'utente
       parameters:
