@@ -9,7 +9,10 @@ import { environment } from './../../environments/environment';
 })
 export class AuthenticationService {
   private loginUrl = environment.apiUrl + '/login'; // URL to web api
+
+  //API URL PER INTEGRAZIONE
   //private loginUrl = environment.userApiUrl + 'login';
+
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };

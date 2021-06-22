@@ -12,6 +12,7 @@ export class OperaManagementService {
   private operaManagementUrl = environment.apiUrl + '/nft/user?__example=test1';
 
   //API URL PER INTEGRAZIONE
+  //user = JSON.parse(localStorage.getItem('User') as string);
   //private operaManagementUrl = environment.nftApiUrl + 'nft/user/' + this.user.id;
 
   private httpOptionsGet = {
