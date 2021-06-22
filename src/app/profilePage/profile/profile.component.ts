@@ -25,7 +25,6 @@ export class ProfileComponent implements OnInit {
   filteredOperas: Nft[] = [];
   userData = JSON.parse(localStorage.getItem('User') as string);
   page: number = 1;
-  fileSystemPath: string = environment.fileSystemPath;
   //array di ID di opere caricate in blockchain
   photos: string[] = [
     'QmX5FkTotxKRziu5a7NXz16YeHrVgYw98RzTgNWvi8HmDC',

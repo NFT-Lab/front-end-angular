@@ -34,7 +34,6 @@ export class OperaManagementService {
   }
 
   updateOpera(opera: Nft): Observable<Object> {
-    console.log(opera);
     return this.http.put(this.operaManagementUrl, opera, {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
       params: { id: opera.id },

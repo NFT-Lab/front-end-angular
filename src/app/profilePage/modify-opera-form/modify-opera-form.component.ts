@@ -1,4 +1,4 @@
-import { CategoriesService } from './../../_services/categories.service';
+import { CategoriesService } from '@service/categories.service';
 import { Category } from '@model/Category';
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -53,7 +53,7 @@ export class ModifyOperaFormComponent implements OnInit {
   }
 
   getPath() {
-    return this.fileSystemPath + this.nft.path;
+    return this.nft.path;
   }
 
   initForm() {
@@ -76,7 +76,16 @@ export class ModifyOperaFormComponent implements OnInit {
       modOpera.title = newNft.name;
       modOpera.description = newNft.description;
       modOpera.type = Type[newNft.type];
-      modOpera.categories = newNft.categories;
+
+      modOpera.categories = [];
+      if (newNft.categories.length) {
+        newNft.categories.forEach((cat: string) =>
+          modOpera.categories.push(
+            this.categories.find((c) => c.name === cat) as Category
+          )
+        );
+      }
+
       modOpera.price = Number(newNft.price);
 
       this.operaManService.updateOpera(modOpera as Nft).subscribe(

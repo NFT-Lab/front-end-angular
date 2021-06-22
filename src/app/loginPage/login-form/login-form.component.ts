@@ -42,12 +42,10 @@ export class LoginFormComponent implements OnInit {
             this.errorMessage = '';
             localStorage.setItem('User', JSON.stringify(res));
             this.router.navigateByUrl('');
-          } else {
-            this.errorMessage = 'Nessunca corrispondenza';
           }
         },
         (error) => {
-          if (error.status === 204)
+          if (error.status === 404)
             this.errorMessage = 'Nessunca corrispondenza';
           if (error.status === 400) {
             this.errorMessage = 'Campi non compilati correttamente';

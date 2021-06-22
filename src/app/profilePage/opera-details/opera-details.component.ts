@@ -11,7 +11,6 @@ import { environment } from 'src/environments/environment';
 })
 export class OperaDetailsComponent {
   nft: Nft;
-  fileSystemPath: string = environment.fileSystemPath;
   constructor(
     @Inject(MAT_DIALOG_DATA) opera: Nft,
     public modalRef: MatDialogRef<OperaDetailsComponent>
