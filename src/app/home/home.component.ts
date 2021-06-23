@@ -58,32 +58,31 @@ export class HomeComponent implements OnInit {
     let filteredOperas: Nft[] = [];
     let filters = Object.keys(fs);
     let filtersValues: any = fs;
-    let next: boolean = false;
     let ok: boolean = true;
     let k = 0;
 
     if (filters.length && this.allOperas.length) {
+      //scorro tutte le opere
       this.allOperas.forEach((opera) => {
         k = 0;
         ok = true;
+        //scorro tutti i filtri
         filters.forEach((filter: any) => {
           if (filter === 'cat' && opera.categories.length) {
             opera.categories.forEach((cat) => {
-              next = false;
-              for (let i = 0; i < filtersValues.cat.length && !next; i++) {
-                if (cat.name === filtersValues.cat[i].name) {
-                  next = true;
-                  k++;
-                  ok = true;
-                } else ok = false;
+              for (let i = 0; i < filtersValues.cat.length; i++) {
+                //se matcho una categoria aumento il contatore
+                if (cat.name === filtersValues.cat[i].name) k++;
               }
             });
+            //se il numero di match != categorie che cerco mi fermo
+            if (k !== filtersValues.cat.length) ok = false;
           }
           if (ok && filter === 'type') {
-            if (filtersValues.type.includes(opera.type)) k++;
+            if (!filtersValues.type.includes(opera.type)) ok = false;
           }
         });
-        if (k === filters.length) filteredOperas.push(opera);
+        if (ok) filteredOperas.push(opera);
       });
     }
     this.operasToShow = [...filteredOperas];

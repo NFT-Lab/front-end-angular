@@ -84,11 +84,49 @@ paths:
                       type: video
                       owner: Frank Sinatra
                       author: Michele Baldisseri
+                      categories: []
+                    - id: Qmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat
+                      title: Opera di test
+                      description: Descrizione di test
+                      authorId: 18
+                      price: 52
+                      currency: ETH
+                      status: false
+                      path: gallery/imgQmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat.jpg
+                      type: video
+                      owner: Frank Sinatra
+                      author: Michele Baldisseri
                       categories:
                         - id: 2
                           name: sport
+                    - id: Qmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat
+                      title: Opera di test
+                      description: Descrizione di test
+                      authorId: 18
+                      price: 52
+                      currency: ETH
+                      status: false
+                      path: gallery/imgQmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat.jpg
+                      type: video
+                      owner: Frank Sinatra
+                      author: Michele Baldisseri
+                      categories:
                         - id: 3
                           name: food
+                    - id: Qmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat
+                      title: Opera di test
+                      description: Descrizione di test
+                      authorId: 18
+                      price: 52
+                      currency: ETH
+                      status: false
+                      path: gallery/imgQmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat.jpg
+                      type: video
+                      owner: Frank Sinatra
+                      author: Michele Baldisseri
+                      categories:
+                        - id: 2
+                          name: sport
                     - id: Qmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat
                       title: Opera di test
                       description: Descrizione di test
@@ -133,56 +171,6 @@ paths:
                       owner: Frank Sinatra
                       author: Michele Baldisseri
                       categories:
-                        - id: 2
-                          name: sport
-                        - id: 3
-                          name: food
-                    - id: Qmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat
-                      title: Opera di test
-                      description: Descrizione di test
-                      authorId: 18
-                      price: 52
-                      currency: ETH
-                      status: false
-                      path: gallery/imgQmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat.jpg
-                      type: video
-                      owner: Frank Sinatra
-                      author: Michele Baldisseri
-                      categories:
-                        - id: 2
-                          name: sport
-                        - id: 3
-                          name: food
-                    - id: Qmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat
-                      title: Opera di test
-                      description: Descrizione di test
-                      authorId: 18
-                      price: 52
-                      currency: ETH
-                      status: false
-                      path: gallery/imgQmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat.jpg
-                      type: video
-                      owner: Frank Sinatra
-                      author: Michele Baldisseri
-                      categories:
-                        - id: 2
-                          name: sport
-                        - id: 3
-                          name: food
-                    - id: Qmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat
-                      title: Opera di test
-                      description: Descrizione di test
-                      authorId: 18
-                      price: 52
-                      currency: ETH
-                      status: false
-                      path: gallery/imgQmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat.jpg
-                      type: video
-                      owner: Frank Sinatra
-                      author: Michele Baldisseri
-                      categories:
-                        - id: 2
-                          name: sport
                         - id: 3
                           name: food
                     - id: Qmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat

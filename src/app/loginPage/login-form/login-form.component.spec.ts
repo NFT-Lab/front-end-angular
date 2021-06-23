@@ -66,8 +66,8 @@ describe('Authentication with correct inputs', () => {
     expect(component.errorMessage).toBe('Campi non compilati correttamente');
   });
 
-  it('should show a specific error if server responds with error 204', () => {
-    spyOn(authService, 'login').and.returnValue(throwError({ status: 204 }));
+  it('should show a specific error if server responds with error 404', () => {
+    spyOn(authService, 'login').and.returnValue(throwError({ status: 404 }));
     //login
     loginButton.click();
     //expects

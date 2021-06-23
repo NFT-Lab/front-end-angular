@@ -132,6 +132,7 @@ export class ProfileComponent implements OnInit {
         this.operas.forEach((nft, i) => {
           if (nft.id === opera.id) index = i;
         });
+        this.operas[index] = opera;
         this.filteredOperas = [...this.operas];
       }
     });
@@ -142,16 +143,14 @@ export class ProfileComponent implements OnInit {
     let filteredOperas: Nft[] = [];
     let filters = Object.keys(fs);
     let filtersValues: any = fs;
-    let next: boolean = false;
-    let ok: boolean = true;
-    let k = 0;
+    let ok: boolean;
+    let k: number;
 
     if (filters.length && this.operas.length) {
       //scorro tutte le opere
       this.operas.forEach((opera) => {
         k = 0;
         ok = true;
-        next = true;
         //scorro tutti i filtri
         filters.forEach((filter: any) => {
           if (filter === 'cat' && opera.categories.length) {
