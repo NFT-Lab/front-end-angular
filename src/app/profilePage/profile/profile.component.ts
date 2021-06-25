@@ -117,9 +117,12 @@ export class ProfileComponent implements OnInit {
       panelClass: 'dialog-responsive',
     });
     modalRef.afterClosed().subscribe((opera) => {
-      if (opera) this.operas.push(opera);
+      if (opera) {
+        opera.path = 'https://cloudflare-ipfs.com/ipfs/' + opera.id;
+        this.operas.push(opera);
+        this.filteredOperas = [...this.operas];
+      }
     });
-    this.filteredOperas = [...this.operas];
   }
 
   openDetailsOperaModal(opera: Nft) {
