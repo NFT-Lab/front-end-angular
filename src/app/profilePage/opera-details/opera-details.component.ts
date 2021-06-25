@@ -23,7 +23,7 @@ export class OperaDetailsComponent {
   }
 
   getPath() {
-    return this.nft.path;
+    return 'https://cloudflare-ipfs.com/ipfs/' + this.nft.id;
   }
 
   getColor(cat: number) {

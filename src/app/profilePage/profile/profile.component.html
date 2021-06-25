@@ -58,9 +58,21 @@
       Statistiche <mat-icon class="red">query_stats</mat-icon>
     </h2>
 
-    <div fxLayoutAlign="center">
-      <img id="chart" src="assets/chart.png" />
-    </div>
+    <mat-list>
+      <mat-list-item>
+        <mat-icon class="blue padding-right margin-bottom">add_chart</mat-icon>
+        <p>
+          Opere caricate:<span class="stats">{{ operas.length }}</span>
+        </p>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon class="blue padding-right margin-bottom">savings</mat-icon>
+        <p>
+          Valore totale:<span class="stats">{{ getPrice() }}</span>
+          ETH
+        </p>
+      </mat-list-item>
+    </mat-list>
   </mat-card>
 
   <mat-card id="operas-list" class="margins flex-grow">

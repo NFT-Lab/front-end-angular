@@ -11,10 +11,6 @@ export class OperaManagementService {
   //private operaManagementUrl = environment.apiUrl + '/nft/user'; // URL to web api
   private operaManagementUrl = environment.apiUrl + '/nft/user?__example=test1';
 
-  //API URL PER INTEGRAZIONE
-  //user = JSON.parse(localStorage.getItem('User') as string);
-  //private operaManagementUrl = environment.nftApiUrl + 'nft/user/' + this.user.id;
-
   private httpOptionsGet = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
@@ -22,6 +18,8 @@ export class OperaManagementService {
   constructor(private http: HttpClient) {}
 
   getOperas(): Observable<Nft[]> {
+    //API URL PER INTEGRAZIONE
+    //let operaManagementUrl = environment.nftApiUrl + 'nft/user/' + JSON.parse(localStorage.getItem('User') as string).id;
     return this.http.get<Nft[]>(this.operaManagementUrl, this.httpOptionsGet);
   }
 
@@ -30,10 +28,14 @@ export class OperaManagementService {
     formData.append('file', file);
     formData.append('opera', JSON.stringify(opera));
 
+    //API URL PER INTEGRAZIONE
+    //let operaManagementUrl = environment.nftApiUrl + 'nft/user/' + JSON.parse(localStorage.getItem('User') as string).id;
     return this.http.post<Nft>(this.operaManagementUrl, formData);
   }
 
   updateOpera(opera: Nft): Observable<Object> {
+    //API URL PER INTEGRAZIONE
+    //let operaManagementUrl = environment.nftApiUrl + 'nft/user/' + JSON.parse(localStorage.getItem('User') as string).id;
     return this.http.put(this.operaManagementUrl, opera, {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
       params: { id: opera.id },

@@ -58,9 +58,17 @@ export class ProfileComponent implements OnInit {
       this.operas.forEach((opera) => {
         let n = Math.floor(Math.random() * 9) + 1;
         opera.path = 'https://cloudflare-ipfs.com/ipfs/' + this.photos[n];
+        //INTEGRAZIONE
+        //opera.path = 'https://cloudflare-ipfs.com/ipfs/' + this.id;
       });
       this.filteredOperas = [...this.operas];
     });
+  }
+
+  getPrice() {
+    let price = 0;
+    this.operas.forEach((opera) => (price += opera.price));
+    return price;
   }
 
   getPath(opera: Nft): string {
@@ -132,6 +140,7 @@ export class ProfileComponent implements OnInit {
         this.operas.forEach((nft, i) => {
           if (nft.id === opera.id) index = i;
         });
+        opera.path = 'https://cloudflare-ipfs.com/ipfs/' + opera.id;
         this.operas[index] = opera;
         this.filteredOperas = [...this.operas];
       }
