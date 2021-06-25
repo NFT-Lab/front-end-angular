@@ -55,6 +55,7 @@ export class NewOperaFormComponent implements OnInit {
 
       let type = target.files[0].type;
 
+      //TODO gestire le preview per opere che non siano immagini
       if (type.includes('image')) {
         this.type = 'Immagine';
         let reader = new FileReader();
@@ -88,10 +89,10 @@ export class NewOperaFormComponent implements OnInit {
       let newNft = this.formGroup.value,
         user: User = this.getUserInfo();
 
-      newNft.type = Type[this.type];
-      newNft.currency = 'ETH';
-      newNft.owner = newNft.author = user.name;
-      newNft.price = Number(newNft.price);
+      newNft.type = Type[this.type]; //Immagine -> img, Documento -> doc, ...
+      newNft.currency = 'ETH'; //Al momento nel back-end non sono gestite valute diverse
+      newNft.owner = newNft.author = user.name; //l'utente è autore e proprietario dell'opera caricata
+      newNft.price = Number(newNft.price); //string -> number
 
       this.operaManService.addOpera(newNft, this.file).subscribe(
         (res) => {

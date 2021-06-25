@@ -70,13 +70,16 @@ export class ModifyOperaFormComponent implements OnInit {
 
   updateOpera(): void {
     if (this.formGroup.valid && !this.close) {
+      //preparazione del JSON da inviare al backend
       let newNft = this.formGroup.value,
         modOpera = { ...this.nft };
 
       modOpera.title = newNft.name;
       modOpera.description = newNft.description;
-      modOpera.type = Type[newNft.type];
+      modOpera.type = Type[newNft.type]; //Immagine -> img, Documento -> doc, ...
+      modOpera.price = Number(newNft.price); //string -> number
 
+      //["cat"] -> [{id: 2, name: "cat"}]
       modOpera.categories = [];
       if (newNft.categories.length) {
         newNft.categories.forEach((cat: string) =>
@@ -85,8 +88,6 @@ export class ModifyOperaFormComponent implements OnInit {
           )
         );
       }
-
-      modOpera.price = Number(newNft.price);
 
       this.operaManService.updateOpera(modOpera as Nft).subscribe(
         (res) => {
