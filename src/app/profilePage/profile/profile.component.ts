@@ -57,9 +57,9 @@ export class ProfileComponent implements OnInit {
 
       this.operas.forEach((opera) => {
         let n = Math.floor(Math.random() * 9) + 1;
-        opera.path = 'https://cloudflare-ipfs.com/ipfs/' + this.photos[n];
+        //opera.path = 'https://cloudflare-ipfs.com/ipfs/' + this.photos[n];
         //INTEGRAZIONE
-        //opera.path = 'https://cloudflare-ipfs.com/ipfs/' + this.id;
+        opera.path = 'https://cloudflare-ipfs.com/ipfs/' + opera.id;
       });
       this.filteredOperas = [...this.operas];
     });

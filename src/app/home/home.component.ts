@@ -98,9 +98,9 @@ export class HomeComponent implements OnInit {
 
       this.allOperas.forEach((opera) => {
         let n = Math.floor(Math.random() * 6);
-        opera.path = 'https://cloudflare-ipfs.com/ipfs/' + this.photos[n];
+        //opera.path = 'https://cloudflare-ipfs.com/ipfs/' + this.photos[n];
         //INTEGRAZIONE
-        //opera.path = 'https://cloudflare-ipfs.com/ipfs/' + opera.id;
+        opera.path = 'https://cloudflare-ipfs.com/ipfs/' + opera.id;
       });
       this.operasToShow = [...this.allOperas];
     });

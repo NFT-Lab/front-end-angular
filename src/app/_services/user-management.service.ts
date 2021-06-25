@@ -9,10 +9,10 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class UserManagementService {
-  private userManagementUrl = environment.apiUrl + '/user'; // URL to web api
+  //private userManagementUrl = environment.apiUrl + '/user'; // URL to web api
 
   //API URL PER INTEGRAZIONE
-  //private userManagementUrl = environment.userApiUrl + 'user';
+  private userManagementUrl = environment.userApiUrl + 'user';
 
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
