@@ -9,6 +9,10 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+.mat-button-focus-overlay {
+  display: none;
+}
+
 .dialog-responsive {
   width: 30%;
 }

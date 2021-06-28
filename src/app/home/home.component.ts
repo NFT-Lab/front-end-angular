@@ -28,9 +28,9 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private operasService: OperasService,
-    public modal: MatDialog,
-    private snackBar: MatSnackBar
-  ) {}
+    public modal: MatDialog
+  ) //private snackBar: MatSnackBar
+  {}
 
   ngOnInit(): void {
     this.getOperas();
@@ -112,10 +112,10 @@ export class HomeComponent implements OnInit {
       data: opera,
     });
   }
-
+  /*
   openSnackBar() {
     this.snackBar.open('Aggiunto ai preferiti! ❤️', 'Chiudi', {
       duration: 3000,
     });
-  }
+  }*/
 }

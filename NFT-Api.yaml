@@ -81,7 +81,7 @@ paths:
                       currency: ETH
                       status: false
                       path: gallery/imgQmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat.jpg
-                      type: video
+                      type: img
                       owner: Frank Sinatra
                       author: Michele Baldisseri
                       categories: []
@@ -93,7 +93,7 @@ paths:
                       currency: ETH
                       status: false
                       path: gallery/imgQmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat.jpg
-                      type: video
+                      type: doc
                       owner: Frank Sinatra
                       author: Michele Baldisseri
                       categories:
