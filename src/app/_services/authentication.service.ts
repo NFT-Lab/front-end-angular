@@ -2,12 +2,17 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '@model/User';
+import { environment } from './../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthenticationService {
-  private loginUrl = 'http://127.0.0.1:3100/login'; // URL to web api
+  //private loginUrl = environment.apiUrl + '/login'; // URL to web api
+
+  //API URL PER INTEGRAZIONE
+  private loginUrl = environment.userApiUrl + 'login';
+
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };

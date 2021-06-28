@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class LoginFormComponent implements OnInit {
   formGroup: FormGroup;
   errorMessage: string;
+  hide: boolean = true;
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -37,12 +38,14 @@ export class LoginFormComponent implements OnInit {
     if (this.formGroup.valid) {
       this.authenticationService.login(this.formGroup.value).subscribe(
         (res) => {
-          this.errorMessage = '';
-          localStorage.setItem('User', JSON.stringify(res));
-          this.router.navigateByUrl('');
+          if (res != null) {
+            this.errorMessage = '';
+            localStorage.setItem('User', JSON.stringify(res));
+            this.router.navigateByUrl('');
+          }
         },
         (error) => {
-          if (error.status === 204)
+          if (error.status === 404)
             this.errorMessage = 'Nessunca corrispondenza';
           if (error.status === 400) {
             this.errorMessage = 'Campi non compilati correttamente';

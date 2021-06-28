@@ -1,0 +1,38 @@
+<h2>Dettagli opera</h2>
+
+<div class="field">
+  <p class="title">Nome:</p>
+  <p class="desc">{{ nft.title }}</p>
+</div>
+
+<div fxLayoutAlign="center">
+  <img id="preview" [src]="getPath()" alt="opera preview" />
+</div>
+
+<div class="field">
+  <p class="title">Descrizione:</p>
+  <p class="desc">{{ nft.description }}</p>
+</div>
+
+<div class="field">
+  <p class="title">Tipo:</p>
+  <p class="desc">{{ getType() }}</p>
+</div>
+
+<p class="title">Categorie:</p>
+<div id="categories-div">
+  <p
+    *ngFor="let cat of nft.categories"
+    class="category"
+    [ngStyle]="{ 'background-color': getColor(cat.id) }"
+  >
+    {{ cat.name }}
+  </p>
+</div>
+
+<div class="field">
+  <p class="title">Prezzo:</p>
+  <p class="desc">{{ nft.price | number }}€</p>
+</div>
+
+<button mat-raised-button color="warn" (click)="closeModal()">Chiudi</button>

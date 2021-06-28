@@ -1,0 +1,33 @@
+<form fxLayout="column" [formGroup]="formGroup" (submit)="sendFilters()">
+  <h2>Scegli i parametri di ricerca</h2>
+  <div fxLayout="row" fxLayoutAlign="space-between">
+    <mat-form-field fxFlex="45">
+      <mat-label>Cerca per categoria</mat-label>
+      <mat-select formControlName="categories" multiple>
+        <mat-option *ngFor="let category of allCategories" [value]="category">
+          {{ category.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field fxFlex="45">
+      <mat-label>Cerca per tipo</mat-label>
+      <mat-select formControlName="types" multiple>
+        <mat-option *ngFor="let type of types" [value]="type">
+          {{ type }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <!--<p><mat-checkbox formControlName="likes">Preferiti</mat-checkbox></p>-->
+
+  <div fxLayout="row" fxLayoutAlign="space-between">
+    <button mat-raised-button fxFlex="45" color="primary" type="submit">
+      Cerca
+    </button>
+    <button mat-raised-button fxFlex="45" color="warn" (click)="closeModal()">
+      Annulla
+    </button>
+  </div>
+</form>

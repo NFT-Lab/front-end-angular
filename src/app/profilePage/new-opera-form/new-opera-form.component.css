@@ -1,0 +1,31 @@
+#error {
+  color: brown;
+}
+
+#add-opera-form button {
+  width: 45%;
+}
+
+#preview {
+  width: 40%;
+}
+
+#input-container button {
+  background-color: rgb(64, 81, 181);
+  color: white;
+  width: fit-content;
+}
+
+#input-container label {
+  cursor: pointer;
+}
+
+#input-file {
+  display: none;
+}
+
+#file-name {
+  margin-top: 1em;
+  font-weight: bold;
+  color: black;
+}

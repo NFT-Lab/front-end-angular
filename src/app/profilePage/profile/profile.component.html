@@ -1,0 +1,142 @@
+<app-header></app-header>
+
+<div id="content" fxLayout="row wrap">
+  <mat-card id="info" class="margins flex-grow">
+    <div id="header" fxLayout="row" fxLayoutAlign="start center">
+      <img id="profile-img" src="https://picsum.photos/400/400" />
+      <div fxLayout="column">
+        <p *ngIf="userData" class="header-name">{{ userData.name }}</p>
+        <p *ngIf="userData" class="header-name">{{ userData.surname }}</p>
+        <p>Passionate about crypto 💰 and trading 🚀</p>
+      </div>
+    </div>
+
+    <mat-list>
+      <mat-list-item>
+        <mat-icon class="blue padding-right margin-bottom">event</mat-icon>
+        <p *ngIf="userData">{{ userData.dob | date: "shortDate" }}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon class="blue padding-right margin-bottom">email</mat-icon>
+        <p *ngIf="userData">{{ userData.email }}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon class="blue padding-right margin-bottom"
+          >account_balance_wallet</mat-icon
+        >
+        <a
+          class="ellipsis"
+          *ngIf="userData"
+          href="{{
+            'https://www.blockchain.com/eth/address/' + userData.wallet
+          }}"
+          id="wallet"
+          >{{ userData.wallet }}</a
+        >
+      </mat-list-item>
+    </mat-list>
+
+    <button
+      mat-raised-button
+      class="margin-top-1"
+      color="primary"
+      (click)="openModifyUserData()"
+    >
+      Modifica dati
+      <mat-icon>create</mat-icon>
+    </button>
+    <button
+      mat-raised-button
+      class="margin-top-1"
+      (click)="openModifyUserPsw()"
+    >
+      Modifica password
+      <mat-icon>vpn_key</mat-icon>
+    </button>
+
+    <h2 class="margin-top-1">
+      Statistiche <mat-icon class="red">query_stats</mat-icon>
+    </h2>
+
+    <mat-list>
+      <mat-list-item>
+        <mat-icon class="blue padding-right margin-bottom">add_chart</mat-icon>
+        <p>
+          Opere caricate:<span class="stats">{{ operas.length }}</span>
+        </p>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon class="blue padding-right margin-bottom">savings</mat-icon>
+        <p>
+          Valore totale:<span class="stats">{{ getPrice() }}</span>
+          ETH
+        </p>
+      </mat-list-item>
+    </mat-list>
+  </mat-card>
+
+  <mat-card id="operas-list" class="margins flex-grow">
+    <div fxLayout="row" fxLayoutAlign="space-around center">
+      <h2>Le mie opere <mat-icon class="purple">playlist_play</mat-icon></h2>
+      <button
+        mat-icon-button
+        class="margin-left-1"
+        (click)="openFilterSearchModal()"
+      >
+        Filtra
+        <mat-icon>sort</mat-icon>
+        <mat-icon>expand_more</mat-icon>
+      </button>
+
+      <button
+        id="reset"
+        title="Resetta il filtro"
+        mat-icon-button
+        (click)="clearFilters()"
+      >
+        <mat-icon class="margin-bottom">clear</mat-icon>
+      </button>
+    </div>
+
+    <mat-list class="list-items">
+      <mat-list-item
+        class="li"
+        *ngFor="
+          let opera of filteredOperas
+            | paginate: { itemsPerPage: 6, currentPage: page }
+        "
+      >
+        <div
+          class="preview-container"
+          (click)="openDetailsOperaModal(opera)"
+          [ngStyle]="{ 'background-image': getPath(opera) }"
+        ></div>
+        <a class="anchor" (click)="openDetailsOperaModal(opera)">{{
+          opera.title
+        }}</a>
+        <span class="spacer"></span>
+        <button
+          mat-icon-button
+          title="Modifica"
+          (click)="openModifyOperaModal(opera)"
+        >
+          <mat-icon>create</mat-icon>
+        </button>
+        <mat-divider></mat-divider>
+      </mat-list-item>
+    </mat-list>
+
+    <div fxLayout="row" fxLayoutAlign="space-around center">
+      <pagination-controls
+        nextLabel=""
+        previousLabel=""
+        (pageChange)="page = $event"
+      >
+      </pagination-controls>
+      <button mat-raised-button color="warn" (click)="openAddOperaModal()">
+        <mat-icon>add</mat-icon>
+        Nuova opera
+      </button>
+    </div>
+  </mat-card>
+</div>

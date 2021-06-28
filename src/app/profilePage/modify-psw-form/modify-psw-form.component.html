@@ -1,0 +1,48 @@
+<form
+  id="modify-psw-form"
+  fxLayout="column"
+  [formGroup]="formGroup"
+  (ngSubmit)="updatePsw()"
+>
+  <h2>Modifica la tua password</h2>
+  <p id="error">{{ errorMessage }}</p>
+
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="Password attuale"
+      formControlName="oldPassword"
+      [type]="!hide ? 'password' : 'text'"
+    />
+    <mat-icon id="hide-icon" matSuffix (click)="hide = !hide">{{
+      !hide ? "visibility_off" : "visibility"
+    }}</mat-icon>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="Nuova password"
+      formControlName="newPassword"
+      [type]="!hide ? 'password' : 'text'"
+    />
+  </mat-form-field>
+
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="Conferma password"
+      formControlName="confirmPsw"
+      [type]="!hide ? 'password' : 'text'"
+    />
+  </mat-form-field>
+
+  <div fxLayout="row" fxLayoutAlign="space-between">
+    <button mat-raised-button color="primary" type="submit">
+      Salva modifiche
+    </button>
+    <button mat-raised-button color="warn" (click)="closeModal()">
+      Annulla
+    </button>
+  </div>
+</form>

@@ -1,0 +1,129 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+.spaces {
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+}
+
+.margin-left-1 {
+  margin-left: 1em;
+}
+
+#header img {
+  width: 7em;
+  margin-top: 0.4em;
+}
+
+#header span {
+  font-size: 0.8em;
+}
+
+#header {
+  overflow: hidden;
+  background-color: #0070ac;
+}
+
+#login-btn {
+  background-color: #84b3ff;
+}
+
+#signup-btn {
+  background-color: #f2ba83;
+}
+
+.mat-icon-button {
+  font-size: 2.5em;
+}
+
+.icon {
+  font-size: 0.6em;
+}
+
+#welcome {
+  cursor: pointer;
+  margin-top: 1em;
+}
+
+.search {
+  min-width: 10em;
+  width: 30%;
+  position: relative;
+  display: flex;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 3px solid #ccad00be;
+  border-right: none;
+  padding: 5px;
+  height: 20px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9dbfaf;
+}
+
+.searchTerm:focus {
+  color: black;
+}
+
+.searchButton {
+  width: 40px;
+  height: 36px;
+  border: 1px solid #ccad00be;
+  background: #ccad0050;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+#home {
+  display: none;
+}
+
+#filter-button {
+  margin-right: 0.8em;
+}
+
+@media screen and (max-width: 800px) {
+  #header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: initial;
+    height: fit-content;
+  }
+
+  #filter-button {
+    margin: 0.3em 0 0 0;
+  }
+
+  #welcome-container {
+    margin-left: auto;
+  }
+
+  #welcome-container > div {
+    padding-bottom: 0.5em;
+  }
+
+  .mat-icon-button {
+    margin-top: 0.2em;
+  }
+
+  .search {
+    padding-left: 0.8em;
+    width: 80%;
+    margin-top: 1em;
+  }
+
+  #header img {
+    display: none;
+  }
+
+  #home {
+    display: unset;
+  }
+}

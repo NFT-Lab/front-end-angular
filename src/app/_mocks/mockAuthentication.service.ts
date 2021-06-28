@@ -14,7 +14,7 @@ export class MockAuthenticationService {
   };
   constructor() {}
 
-  login(): Observable<User> {
+  login(data: Object) {
     return of(this.user);
   }
 }

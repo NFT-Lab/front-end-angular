@@ -1,11 +1,12 @@
+import { Category } from './Category';
 export interface Nft {
   id: number;
-  name: string;
+  title: string;
   description: string;
   author: string;
   owner: string;
   price: number;
-  categories: string[];
+  categories: Category[];
   type: string;
   currency: string;
   path: string;

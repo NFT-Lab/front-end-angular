@@ -1,0 +1,166 @@
+#operas-list {
+  background-color: #154fac33;
+}
+
+#header > div {
+  margin-left: 2em;
+}
+
+#info > h2 {
+  margin-left: 0.8em;
+}
+
+.header-name {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.stats {
+  font-weight: bold;
+  color: rgba(23, 43, 131, 0.924);
+  margin-left: 1em;
+  font-size: 1.1em;
+}
+
+#wallet {
+  margin-top: 0;
+  color: rgba(32, 59, 177, 0.719);
+  text-decoration: underline;
+}
+
+#reset {
+  margin-top: 0.4em;
+  color: brown;
+}
+
+#operas-list h2 {
+  margin: 0;
+}
+
+#operas-list a {
+  margin-bottom: 1.5em;
+}
+
+#info {
+  background-color: #1f75fe33;
+  max-width: 50%;
+  word-break: break-all;
+  text-overflow: hidden;
+}
+
+#profile-img {
+  border: 3px solid #0f397eb2;
+  margin-left: 0.5em;
+  border-radius: 50%;
+  width: 20%;
+}
+
+#chart {
+  max-width: 90%;
+}
+
+#info button {
+  margin-left: 1em;
+}
+
+#paginator {
+  padding-bottom: 0;
+}
+
+.margins {
+  margin: 1em 1em 1em;
+}
+
+.margin-top-2 {
+  margin-top: 2em;
+}
+
+.margin-top-1 {
+  margin-top: 1em;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.list-items a,
+img {
+  cursor: pointer;
+}
+
+.list-items:first-child {
+  margin-top: 0;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
+
+.purple {
+  color: rgba(31, 16, 133, 0.673);
+}
+
+.red {
+  color: rgba(154, 7, 22, 0.673);
+}
+
+.blue {
+  color: rgb(14, 73, 112);
+}
+
+.li {
+  margin-top: 2em;
+}
+
+.preview-container {
+  width: 120px;
+  height: 35px;
+  margin-bottom: 2.1em;
+  padding-right: 1em;
+  padding-bottom: 2em;
+  border-radius: 0.5em;
+  background-position: center;
+  border: 3px solid #0f397eb2;
+  cursor: pointer;
+}
+
+.anchor {
+  display: block;
+  padding-left: 2em;
+}
+
+.padding-right {
+  padding-right: 0.5em;
+}
+
+.margin-bottom {
+  margin-bottom: 0.4em;
+}
+
+#footer {
+  width: 100%;
+}
+
+#content {
+  padding-bottom: 1em;
+  height: 90%;
+}
+
+@media screen and (max-width: 1100px) {
+  #info {
+    max-width: none;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .mat-list-item {
+    display: block;
+  }
+  a.ellipsis {
+    max-width: 250px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: inline-block;
+  }
+}
